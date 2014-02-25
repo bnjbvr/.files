@@ -1,0 +1,2 @@
+#!/bin/bash
+hg qpush 2>&1 | colout "saving rejects to file (.*)"
