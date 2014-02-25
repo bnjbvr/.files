@@ -1,0 +1,24 @@
+[extensions]
+mq=
+rebase=
+progress=
+color=
+pager=
+graphlog=
+qbackout=~/bin/qbackout
+crecord=~/bin/crecord
+
+[diff]
+git = 1
+unified = 8
+showfunc = 1
+
+[ui]
+username=Benjamin Bouvier <benj@benj.me>
+editor=vim
+
+[paths]
+try = ssh://hg.mozilla.org/try
+
+[alias]
+try = push -f try
