@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 import subprocess
 
-JS_ROOT = '/home/ben/moz/inbound/js/src/configure'
-
-prefix32 = "CC='gcc -m32 -march=pentiumpro' CXX='g++ -m32 -march=pentiumpro' AR=ar"
-suffix32 = "--target=i686-pc-linux"
+JS_ROOT = '/home/ben/code/moz/inbound/js/src/configure'
 
 options = (
         ('GGC', '--enable-gcgenerational --enable-exact-rooting', ''),
@@ -17,6 +14,7 @@ options = (
 
 initial_str = ''
 cfg = JS_ROOT + ' ' + initial_str
+env = {}
 
 def get_yesno_answer(question):
     while True:
@@ -41,17 +39,21 @@ for name, yes, no in options:
             cfg += ' ' + no
 
 if get_yesno_answer('32 bits builds?'):
-    cfg = prefix32 + ' ' + cfg + ' ' + suffix32
+    env['CC'] = '"gcc -m32 -march=pentiumpro"'
+    env['CXX'] = '"g++ -m32 -march=pentiumpro"'
+    env['AR'] = 'ar'
+    cfg += " --target=i686-pc-linux"
     if get_yesno_answer('arm simulator build?'):
         cfg += ' --enable-arm-simulator'
 
-print cfg
+envString = ' '.join(['%s=%s' % (k, env[k]) for k in env])
+print envString + ' ' + cfg
 while True:
     a = raw_input("Would you like to run it (r), save it (s), or quit (q) ?")
     if a == 'r':
         run_args = [arg for arg in cfg.split(' ') if len(arg) > 0]
         print run_args
-        p = subprocess.Popen(run_args, stdout=subprocess.PIPE)
+        p = subprocess.Popen(run_args, stdout=subprocess.PIPE, env=env)
         print p.communicate()[0]
         break
     if a == 's':
@@ -59,7 +61,7 @@ while True:
         HEADER = "#!/bin/bash\n"
         f = file(name, "w+")
         f.write(HEADER)
-        f.write(cfg)
+        f.write(envString + ' ' + cfg)
         f.close()
         break
     if a == 'q':
