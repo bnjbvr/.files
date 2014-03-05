@@ -9,7 +9,8 @@ options = (
         ('opt mode', '--enable-optimize', '--disable-optimize'),
         ('ccache', '--with-ccache', ''),
         ('intl', '', '--without-intl-api'),
-        ('perf support', '--enable-perf', '')
+        ('perf support', '--enable-perf', ''),
+        ('trace logging', '--enable-trace-logging', ''),
 )
 
 initial_str = ''
