@@ -2,8 +2,6 @@ set nocompatible    " do not try to be vi-compatible
 
 set guifont=Inconsolata\ 11
 
-syntax on             " syntax coloring by default
-
 set textwidth=120
 set wrap            " auto wrap line view, but not text itself
 
@@ -44,7 +42,7 @@ set splitbelow
 " New vsplit placed right
 set splitright
 
-set foldmethod=syntax
+" set foldmethod=syntax " makes vim horribly slow, with syntax coloring
 set foldlevelstart=20 " buffer are always loaded with opened folds
 
 " always keep lines around the cursor
@@ -166,7 +164,13 @@ source ~/.bundles.vim
 "nmap <F9> :CoffeeCompile watch vert<CR>
 
 " older regexp engine, makes vim faster?
+syntax on             " syntax coloring by default
 set re=1
+
+" In case syntax coloring is slow, deactivate the next three options
+" set nocursorcolumn
+" set nocursorline
+" syntax sync minlines=256
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -185,6 +189,6 @@ inoremap <Right> <Nop>
 noremap <leader>p :CtrlP<CR>
 
 " Solarized
-syntax enable
 set background=dark
 colorscheme solarized
+
