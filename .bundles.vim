@@ -9,5 +9,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/powerline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'kchmck/vim-coffee-script'
 
 filetype plugin indent on
