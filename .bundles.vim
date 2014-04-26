@@ -11,4 +11,5 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'kchmck/vim-coffee-script'
 
+call vundle#end()
 filetype plugin indent on
