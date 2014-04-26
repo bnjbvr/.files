@@ -1,2 +1,2 @@
 #!/bin/bash
-vim -u ~/.bundles.vim +BundleInstall! +q
+vim -u ~/.bundles.vim +PluginInstall +qall
