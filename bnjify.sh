@@ -1,4 +1,4 @@
-sudo apt-get install -y vim-gnome zsh build-essential curl redshift git
+sudo apt-get install -y vim-gnome zsh build-essential curl redshift git python3-pygments
 
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
