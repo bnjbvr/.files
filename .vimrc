@@ -190,5 +190,8 @@ noremap <leader>p :CtrlP<CR>
 
 " Solarized
 set background=dark
-colorscheme solarized
+set rtp+=~/.vim/bundle/vim-colors-solarized/
+if has('gui_running')
+    colorscheme solarized
+endif
 
