@@ -5,8 +5,8 @@ progress=
 color=
 pager=
 graphlog=
-qbackout=~/bin/qbackout
-crecord=~/bin/crecord
+qbackout=~/.files/bin/version-control-tools/hgext/qbackout
+crecord=~/.files/bin/crecord/crecord
 
 [diff]
 git = 1
