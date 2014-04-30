@@ -69,3 +69,4 @@ export PATH="/home/ben/.files:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
 
 alias op='gnome-open'
 alias j='jump'
+alias m='m8ke'
