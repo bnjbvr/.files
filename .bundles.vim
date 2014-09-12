@@ -3,13 +3,19 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
-Plugin 'bitc/vim-bad-whitespace'
-Plugin 'scrooloose/syntastic'
-Plugin 'Lokaltog/powerline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'kchmck/vim-coffee-script'
+"Bundle 'scrooloose/syntastic'
+"Bundle 'Valloric/YouCompleteMe'
+
+Bundle 'gmarik/vundle'
+Bundle 'bitc/vim-bad-whitespace'
+Bundle 'Lokaltog/powerline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-surround'
+Bundle 'godlygeek/tabular'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'jlfwong/vim-mercenary'
 
 call vundle#end()
 filetype plugin indent on
+

@@ -2,7 +2,7 @@ set nocompatible    " do not try to be vi-compatible
 
 set guifont=Inconsolata\ 11
 
-set textwidth=120
+set textwidth=79
 set wrap            " auto wrap line view, but not text itself
 
 filetype indent on  " activates indenting for files
@@ -194,4 +194,6 @@ set rtp+=~/.vim/bundle/vim-colors-solarized/
 if has('gui_running')
     colorscheme solarized
 endif
+
+set ruler
 
