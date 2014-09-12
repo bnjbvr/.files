@@ -19,6 +19,7 @@ AVAILABLE_VARIANTS = [
 USE_CLANG = 'n'
 COMPILE_32_BITS = 'n'
 COMPILE_ARM_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to put it as 'y'
+COMPILE_MIPS_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to put it as 'y'
 ENABLE_GGC = 'y'
 ENABLE_DEBUG = 'y'
 ENABLE_OPTIMIZE = 'n'
@@ -35,6 +36,8 @@ AVAILABLE_ROOTS = [BASE_ROOTS + v + PATH_TO_JS_CONFIGURE for v in AVAILABLE_VARI
 
 if COMPILE_ARM_SIMULATOR != COMPILE_32_BITS:
     COMPILE_ARM_SIMULATOR = 'n'
+if COMPILE_MIPS_SIMULATOR != COMPILE_32_BITS:
+    COMPILE_MIPS_SIMULATOR = 'n'
 
 print 'Available roots:'
 i = 0
@@ -121,6 +124,8 @@ elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
     cfg += " --target=i686-pc-linux"
     if get_yesno_answer('arm simulator build?', COMPILE_ARM_SIMULATOR):
         cfg += ' --enable-arm-simulator'
+    elif get_yesno_answer('mips simulator build?', COMPILE_MIPS_SIMULATOR):
+        cfg += ' --enable-mips-simulator'
 
 envString = ' '.join(['%s=%s' % (k, newEnvOptions[k]) for k in newEnvOptions])
 print envString + ' ' + cfg
