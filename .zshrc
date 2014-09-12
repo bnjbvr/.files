@@ -37,7 +37,7 @@ ZSH_THEME="robbyrussell"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to  shown in the command execution time stamp 
+# Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/home/ben/.files:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/usr/bin"
+export PATH="/home/ben/.files:/home/ben/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/usr/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -69,4 +69,16 @@ export PATH="/home/ben/.files:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
 
 alias op='gnome-open'
 alias j='jump'
+
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Mozilla build shortcuts
 alias m='m8ke'
+alias b='./build.sh && m8ke'
+alias c='j mozsources && cd .. && autoconf2.13 && cd -2'
+alias mb='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && ./build.sh && m8ke'
+
+# PulseAudio workarounds
+alias skipe='PULSE_LATENCY_MSEC=30 skype'
+alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
+
