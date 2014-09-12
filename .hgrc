@@ -5,8 +5,14 @@ progress=
 color=
 pager=
 graphlog=
-qbackout=~/.files/bin/version-control-tools/hgext/qbackout
-crecord=~/.files/bin/crecord/crecord
+histedit =
+qbackout=~/.files/bin/qbackout
+crecord=~/.files/bin/crecord
+trychooser = ~/.files/bin/trychooser/trychooser
+bzexport = ~/.mozbuild/version-control-tools/hgext/bzexport
+mqext = ~/.mozbuild/mercurial/extensions/mqext
+qimportbz = ~/.mozbuild/version-control-tools/hgext/qimportbz
+#evolve = ~/bin/mutable-history/hgext/evolve.py #requires mercurial3.0
 
 [diff]
 git = 1
@@ -14,11 +20,14 @@ unified = 8
 showfunc = 1
 
 [ui]
-username=Benjamin Bouvier <benj@benj.me>
-editor=vim
+username = Benjamin Bouvier <benj@benj.me>
+editor = vim
 
 [paths]
 try = ssh://hg.mozilla.org/try
 
 [alias]
 try = push -f try
+
+[defaults]
+qnew = -U
