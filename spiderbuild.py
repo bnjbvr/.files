@@ -12,7 +12,7 @@ BASE_ROOTS = '/home/ben/code/moz/'
 
 # Base directories of hg clones
 AVAILABLE_VARIANTS = [
-  'inbound', 'aurora', 'beta', 'b2g-gecko'
+  'inbound', 'aurora', 'beta', 'b2g-gecko', 'simd128'
 ]
 
 # Default answers to questions (n for no, y for yes)
@@ -27,6 +27,7 @@ ENABLE_INTL = 'n'
 ENABLE_PERF = 'n'
 ENABLE_TRACELOGGING = 'n'
 ENABLE_THREAD_SAFETY = 'y'
+ENABLE_UNIFIED_BUILD = 'y'
 
 # Enjoy
 PATH_TO_JS_CONFIGURE= '/js/src/configure'
@@ -70,6 +71,7 @@ options = (
         ('perf support', '--enable-perf', '', ENABLE_PERF),
         ('trace logging', '--enable-trace-logging', '', ENABLE_TRACELOGGING),
         ('thread safety', '', '--disable-threadsafe', ENABLE_THREAD_SAFETY),
+        ('unified build', '', '--disable-unified-compilation', ENABLE_UNIFIED_BUILD),
 )
 
 cfg = JS_ROOT + ' '
