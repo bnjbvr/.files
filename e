@@ -9,5 +9,5 @@ if [ -z "$list" ]
 then
   /usr/bin/gvim $*
 else
-  /usr/bin/gvim --remote-silent $*
+  /usr/bin/gvim --remote-tab-silent $*
 fi
