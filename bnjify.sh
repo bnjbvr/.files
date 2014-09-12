@@ -9,11 +9,10 @@ ln -s ~/.files/.hgrc ~/.hgrc
 ln -s ~/.files/redshift.conf ~/.config/redshift.conf
 
 mkdir -p ~/.files/bin
-git clone https://github.com/nojhan/colout ~/.files/bin/colout
-ln -s ~/.files/bin/colout/colout/colout.py ~/.files/colout
+git clone https://github.com/nojhan/colout ~/.files/bin/colout-dir
+ln -s ~/.files/bin/colout-dir/colout/colout.py ~/.files/colout
 
-hg clone https://bitbucket.org/edgimar/crecord ~/.files/bin/crecord
-hg clone https://hg.mozilla.org/hgcustom/version-control-tools ~/.files/bin/version-control-tools
+git clone https://github.com/sstangl/iongraph.git ~/.files/bin/iongraph
 
 # install oh-my-zsh in the .files directory
 curl -L http://install.ohmyz.sh | ZSH=~/.files/zsh sh
