@@ -29,6 +29,7 @@ ENABLE_PERF = 'n'
 ENABLE_TRACELOGGING = 'n'
 ENABLE_THREAD_SAFETY = 'y'
 ENABLE_UNIFIED_BUILD = 'y'
+ENABLE_ASAN ='n'
 
 # Enjoy
 PATH_TO_JS_CONFIGURE= '/js/src/configure'
@@ -117,6 +118,10 @@ def add_env_option(key, val):
 if get_yesno_answer('use clang / clang++?', USE_CLANG):
     add_env_option('CC', '"clang"')
     add_env_option('CXX', '"clang++"')
+    if get_yesno_answer('enable ASAN?', ENABLE_ASAN):
+        add_env_option('CC', '"clang -fsanitize=address"')
+        add_env_option('CXX', '"clang++ -fsanitize=address"')
+        add_env_option('LDFLAGS', '"-fsanitize=address"')
 elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
     add_env_option('CC', '"gcc -m32 -march=pentiumpro"')
     add_env_option('CXX', '"g++ -m32 -march=pentiumpro"')
