@@ -122,6 +122,7 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
         add_env_option('CC', '"clang -fsanitize=address"')
         add_env_option('CXX', '"clang++ -fsanitize=address"')
         add_env_option('LDFLAGS', '"-fsanitize=address"')
+        cfg += " --enable-address-sanitizer"
 elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
     add_env_option('CC', '"gcc -m32 -march=pentiumpro"')
     add_env_option('CXX', '"g++ -m32 -march=pentiumpro"')
