@@ -209,3 +209,6 @@ endif
 
 set ruler
 
+" reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
