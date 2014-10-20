@@ -1,3 +1,6 @@
+"leader is ,
+let mapleader = ','
+
 set nocompatible    " do not try to be vi-compatible
 
 set guifont=Inconsolata\ 11
@@ -127,8 +130,6 @@ set ofu=syntaxcomplete#Complete
 "set tags+=~/.vim/tags/bmddsolver
 "set tags+=~/.vim/tags/dae
 "set tags+=~/.vim/tags/eodev
-" build tags of your own project with CTRL+F12
-"map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " OmniCppComplete
 "let OmniCpp_NamespaceSearch = 1
@@ -185,8 +186,19 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
-" Activate CtrlP with leader
+autocmd! BufWritePost .vimrc source /home/ben/.vimrc
+
+" Activate CtrlP with ,p
 noremap <leader>p :CtrlP<CR>
+
+" erases the highlight on search with ,<space>
+map <silent> <leader><Space> :noh<CR>
+
+" build tags of your own project with ,t
+map <leader>t :exec '!ctags --recurse --append --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q -f ~/.vim/tags/tags' GetRootDir() <CR>
+
+" open reject file with ,r
+map <silent> <leader>r :vsplit %.rej<CR>
 
 " Solarized
 set background=dark
