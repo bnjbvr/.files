@@ -82,3 +82,4 @@ alias mb='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./
 alias skipe='PULSE_LATENCY_MSEC=30 skype'
 alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
 
+export LC_ALL="en_US.UTF-8"
