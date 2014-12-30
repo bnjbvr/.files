@@ -149,7 +149,7 @@ set ofu=syntaxcomplete#Complete
 map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 set tags=./tags;/
 
-source ~/.bundles.vim
+source ~/.files/conf/bundles.vim
 
 " config da detectindent
 "let g:detectindent_preferred_expandtab = 1

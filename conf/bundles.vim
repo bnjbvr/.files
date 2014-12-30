@@ -1,6 +1,6 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.files/bin/Vundle.vim
 call vundle#begin()
 
 "Bundle 'scrooloose/syntastic'

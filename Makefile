@@ -12,9 +12,7 @@ gitdeps:
 	git submodule update
 
 vim:
-	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim || echo "Vundle already installed"
 	ln -s ~/.files/conf/vimrc ~/.vimrc || echo ".vimrc already present"
-	ln -s ~/.files/conf/bundles.vim ~/.bundles.vim || echo ".bundles.vim already present"
 
 hg:
 	ln -s ~/.files/conf/hgrc ~/.hgrc || echo ".hgrc already present"
