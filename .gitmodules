@@ -1,3 +1,6 @@
 [submodule "bin/colout-dir"]
 	path = bin/colout-dir
 	url = https://github.com/nojhan/colout
+[submodule "bin/iongraph"]
+	path = bin/iongraph
+	url = https://github.com/sstangl/iongraph

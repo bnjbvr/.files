@@ -8,8 +8,6 @@ ln -s ~/.files/conf/bundles.vim ~/.bundles.vim
 ln -s ~/.files/conf/hgrc ~/.hgrc
 ln -s ~/.files/conf/redshift.conf ~/.config/redshift.conf
 
-git clone https://github.com/sstangl/iongraph.git ~/.files/bin/iongraph
-
 # install oh-my-zsh in the .files directory
 curl -L http://install.ohmyz.sh | ZSH=~/.files/zsh sh
 sudo chsh -s /bin/zsh
