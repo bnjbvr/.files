@@ -5,9 +5,16 @@
 
 list=$(vim --serverlist)
 
+if [ -z "$SSH_CONNECTION" ]
+then
+    prog="gvim"
+else
+    prog="vim"
+fi
+
 if [ -z "$list" ]
 then
-  /usr/bin/gvim $*
+  $prog $*
 else
-  /usr/bin/gvim --remote-tab-silent $*
+  $prog --remote-tab-silent $*
 fi
