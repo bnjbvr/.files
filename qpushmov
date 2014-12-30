@@ -1,2 +1,0 @@
-#!/bin/bash
-hg qpush --move $1 2>&1 | colout ".* saving rejects to file (.*)"

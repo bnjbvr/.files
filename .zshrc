@@ -10,7 +10,7 @@ source $ZSH/oh-my-zsh.sh
 source /home/ben/.nix-profile/etc/profile.d/nix.sh
 
 # Path
-export PATH="/home/ben/.files:/home/ben/.files/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/usr/bin:$PATH"
+export PATH="/home/ben/.files/bin:/home/ben/.files/bin-private:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/usr/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Aliases

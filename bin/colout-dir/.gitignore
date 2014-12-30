@@ -1,0 +1,4 @@
+*.pyc
+build/
+dist/
+colout.egg-info/
