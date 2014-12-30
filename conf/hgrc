@@ -7,14 +7,11 @@ pager =
 graphlog = 
 histedit = 
 bzexport = /home/ben/.mozbuild/version-control-tools/hgext/bzexport
-crecord = ~/.files/hgplugins/crecord
 #evolve = ~/bin/mutable-history/hgext/evolve.py #requires mercurial3.0
 firefoxtree = /home/ben/.mozbuild/version-control-tools/hgext/firefoxtree
 mqext = /home/ben/.mozbuild/mercurial/extensions/mqext
-qbackout = ~/.files/hgplugins/qbackout
 qimportbz = /home/ben/.mozbuild/version-control-tools/hgext/qimportbz
 reviewboard = /home/ben/.mozbuild/version-control-tools/hgext/reviewboard/client.py
-trychooser = ~/.files/hgplugins/trychooser/trychooser
 
 [diff]
 git = 1
