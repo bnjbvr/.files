@@ -2,7 +2,7 @@
 ZSH_THEME="robbyrussell"
 
 # Normal plugins are in $ZSH/plugins/, custom plugins are in $ZSH/custom/plugins/
-plugins=(git mercurial debian battery npm jump sudo)
+plugins=(git mercurial debian battery jump sudo)
 
 # Programs to activate
 ZSH=$HOME/.files/zsh
