@@ -21,9 +21,7 @@ hg:
 
 zsh:
 	ln -s ~/.files/conf/zshrc ~/.zshrc || echo ".zshrc already present"
-	curl -L http://install.ohmyz.sh | ZSH=~/.files/zsh sh
-	sudo chsh -s /bin/zsh
 
 clean:
-	rm -f ~/.config/redshift.conf ~/.vimrc ~/.bundles.vim ~/.hgrc ~/.zshrc 
+	rm -f ~/.config/redshift.conf ~/.vimrc ~/.bundles.vim ~/.hgrc ~/.zshrc
 	rm -rf ~/.vim/bundle/Vundle.vim

@@ -5,7 +5,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git mercurial debian battery jump sudo)
 
 # Programs to activate
-ZSH=$HOME/.files/zsh
+ZSH=$HOME/.files/bin/ohmyzsh
 source $ZSH/oh-my-zsh.sh
 source /home/ben/.nix-profile/etc/profile.d/nix.sh
 

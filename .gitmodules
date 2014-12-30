@@ -4,3 +4,6 @@
 [submodule "bin/iongraph"]
 	path = bin/iongraph
 	url = https://github.com/sstangl/iongraph
+[submodule "bin/ohmyzsh"]
+	path = bin/ohmyzsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
