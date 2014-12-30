@@ -7,7 +7,10 @@ plugins=(git mercurial debian battery jump sudo)
 # Programs to activate
 ZSH=$HOME/.files/bin/ohmyzsh
 source $ZSH/oh-my-zsh.sh
-source /home/ben/.nix-profile/etc/profile.d/nix.sh
+
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+    source ~/.nix-profile/etc/profile.d/nix.sh
+fi
 
 # Path
 export PATH="/home/ben/.files/bin:/home/ben/.files/bin-private:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/usr/bin:$PATH"
@@ -21,7 +24,7 @@ alias psg='ps aux | grep $1'
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias upvim='vim -u ~/.bundles.vim +PluginInstall +qall'
+alias upvim='vim -u ~/.files/conf/bundles.vim +PluginInstall +qall'
 
 # Mozilla build shortcuts
 alias m1ke='make -s 2>&1 | colout -t g++'
