@@ -16,10 +16,17 @@ export MANPATH="/usr/local/man:$MANPATH"
 # Aliases
 alias op='gnome-open'
 alias j='jump'
+alias fbn='find ./ -name $1'
+alias psg='ps aux | grep $1'
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+alias upvim='vim -u ~/.bundles.vim +PluginInstall +qall'
+
 # Mozilla build shortcuts
+alias m1ke='make -s 2>&1 | colout -t g++'
+alias m4ke='make -s -j4 2>&1 | colout -t g++'
+alias m8ke='make -s -j8 2>&1 | colout -t g++'
 alias m='m8ke'
 alias b='./build.sh && m8ke'
 alias c='j mozsources && cd .. && autoconf2.13 && cd -2'

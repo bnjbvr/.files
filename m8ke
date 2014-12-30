@@ -1,2 +1,0 @@
-#!/bin/bash
-make -s -j8 2>&1 | colout -t g++

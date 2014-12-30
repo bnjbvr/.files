@@ -1,3 +1,0 @@
-#!/bin/zsh
-# Find by name
-find ./ -name $1
