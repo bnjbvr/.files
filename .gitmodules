@@ -10,3 +10,6 @@
 [submodule "bin/Vundle.vim"]
 	path = bin/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "bin/watchman-dir"]
+	path = bin/watchman-dir
+	url = https://github.com/facebook/watchman

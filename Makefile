@@ -1,7 +1,7 @@
-all: deps gitdeps vim hg zsh
+all: deps gitdeps vim hg zsh watchman
 	@echo "Everything has been setup!"
 
-.PHONY: deps gitdeps vim hg zsh clean
+.PHONY: deps gitdeps vim hg zsh clean watchman
 
 deps:
 	sudo apt-get install -y vim-gnome zsh build-essential curl redshift git python3-pygments mercurial
@@ -19,6 +19,10 @@ hg:
 
 zsh:
 	ln -s ~/.files/conf/zshrc ~/.zshrc || echo ".zshrc already present"
+
+watchman:
+	(cd ~/.files/bin/watchman-dir && ./autogen.sh && ./configure && make -j8)
+	(cd ~/.files/bin/ && hg clone https://bitbucket.org/facebook/hgwatchman && cd hgwatchman && make local)
 
 clean:
 	rm -f ~/.config/redshift.conf ~/.vimrc ~/.bundles.vim ~/.hgrc ~/.zshrc

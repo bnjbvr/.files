@@ -12,6 +12,7 @@ firefoxtree = /home/ben/.mozbuild/version-control-tools/hgext/firefoxtree
 mqext = /home/ben/.mozbuild/mercurial/extensions/mqext
 qimportbz = /home/ben/.mozbuild/version-control-tools/hgext/qimportbz
 reviewboard = /home/ben/.mozbuild/version-control-tools/hgext/reviewboard/client.py
+hgwatchman = /home/ben/.files/bin/hgwatchman/hgwatchman
 
 [diff]
 git = 1

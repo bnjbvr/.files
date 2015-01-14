@@ -1,2 +1,3 @@
 bin-private/*
+bin/hgwatchman/*
 *.pyc
