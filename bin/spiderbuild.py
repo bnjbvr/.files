@@ -12,7 +12,7 @@ BASE_ROOTS = '/home/ben/code/moz/'
 
 # Base directories of hg clones
 AVAILABLE_VARIANTS = [
-  'inbound', 'aurora', 'beta', 'b2g-gecko', 'simd128'
+  'repo', 'inbound', 'aurora', 'beta', 'b2g-gecko', 'simd128'
 ]
 
 # Default answers to questions (n for no, y for yes)
