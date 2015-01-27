@@ -6,6 +6,7 @@ color =
 pager = 
 graphlog = 
 histedit = 
+record = 
 bzexport = /home/ben/.mozbuild/version-control-tools/hgext/bzexport
 #evolve = ~/bin/mutable-history/hgext/evolve.py #requires mercurial3.0
 firefoxtree = /home/ben/.mozbuild/version-control-tools/hgext/firefoxtree
