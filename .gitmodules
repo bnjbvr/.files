@@ -1,9 +1,6 @@
 [submodule "bin/colout-dir"]
 	path = bin/colout-dir
 	url = https://github.com/nojhan/colout
-[submodule "bin/iongraph"]
-	path = bin/iongraph
-	url = https://github.com/sstangl/iongraph
 [submodule "bin/ohmyzsh"]
 	path = bin/ohmyzsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
@@ -13,3 +10,6 @@
 [submodule "bin/watchman-dir"]
 	path = bin/watchman-dir
 	url = https://github.com/facebook/watchman
+[submodule "myiongraph"]
+	path = bin/iongraph
+	url = https://github.com/bnjbvr/iongraph
