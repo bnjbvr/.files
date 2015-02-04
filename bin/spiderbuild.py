@@ -30,6 +30,7 @@ ENABLE_TRACELOGGING = 'n'
 ENABLE_THREAD_SAFETY = 'y'
 ENABLE_UNIFIED_BUILD = 'y'
 ENABLE_ASAN ='n'
+ENABLE_VALGRIND = 'n'
 
 # Enjoy
 PATH_TO_JS_CONFIGURE= '/js/src/configure'
@@ -76,6 +77,7 @@ options = (
         ('trace logging', '--enable-trace-logging', '', ENABLE_TRACELOGGING),
         ('thread safety', '', '--disable-threadsafe', ENABLE_THREAD_SAFETY),
         ('unified build', '', '--disable-unified-compilation', ENABLE_UNIFIED_BUILD),
+        ('valgrind', '--enable-valgrind', '', ENABLE_VALGRIND),
 )
 
 cfg = JS_ROOT + ' '
