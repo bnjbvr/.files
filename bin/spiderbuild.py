@@ -31,6 +31,9 @@ ENABLE_THREAD_SAFETY = 'y'
 ENABLE_UNIFIED_BUILD = 'y'
 ENABLE_ASAN ='n'
 ENABLE_VALGRIND = 'n'
+ENABLE_ION = 'y'
+
+DEFAULT_BUILD_SCRIPT_NAME = 'build.sh'
 
 # Enjoy
 PATH_TO_JS_CONFIGURE= '/js/src/configure'
@@ -78,6 +81,7 @@ options = (
         ('thread safety', '', '--disable-threadsafe', ENABLE_THREAD_SAFETY),
         ('unified build', '', '--disable-unified-compilation', ENABLE_UNIFIED_BUILD),
         ('valgrind', '--enable-valgrind', '', ENABLE_VALGRIND),
+        ('ion', '', '--disable-ion', ENABLE_ION),
 )
 
 cfg = JS_ROOT + ' '
@@ -146,10 +150,9 @@ while True:
         break
     if a == 's':
 
-        while True:
-            name = raw_input("Give it a name:")
-            if len(name) > 0:
-                break
+        name = raw_input("Give it a name: (default: " + DEFAULT_BUILD_SCRIPT_NAME + ")")
+        if len(name) == 0:
+            name = DEFAULT_BUILD_SCRIPT_NAME
 
         HEADER = "#!/bin/bash\n"
         f = file(name, "w+")
