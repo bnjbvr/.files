@@ -15,6 +15,9 @@ Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'jlfwong/vim-mercenary'
+Bundle 'scrooloose/nerdtree'
+Bundle 'rstacruz/sparkup'
+Bundle 'vim-scripts/TaskList.vim'
 
 call vundle#end()
 filetype plugin indent on

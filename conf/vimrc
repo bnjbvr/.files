@@ -1,6 +1,3 @@
-"leader is ,
-let mapleader = ','
-
 set nocompatible    " do not try to be vi-compatible
 
 set guifont=Inconsolata\ 11
@@ -57,12 +54,6 @@ nnoremap yp yygccp
 " When jumping to a given line, center the screen
 nnoremap G Gzz
 
-" activate rainbow parenthesis
-" nnoremap <leader>R :RainbowParenthesesToggle<CR>
-
-" activate gundo
-" nnoremap <leader>u :GundoToggle<CR>
-
 " print tabs with a special character (add ",eol:·" for end of lines)
 set listchars=trail:·,nbsp:·,tab:▸\ ,extends:»,precedes:«,
 set list
@@ -100,36 +91,6 @@ set ofu=syntaxcomplete#Complete
 "   endfunction
 
 " inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-
-" Append modeline after last line in buffer.
-" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-" files.
-"function! AppendModeline()
-"  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d :",
-"        \ &tabstop, &shiftwidth, &textwidth)
-"  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-"  call append(line("$"), l:modeline)
-"endfunction
-"nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
-
-" search the file for FIXME, TODO and put them in a handy list
-" map <F10> <Plug>TaskList
-
-" side pane of class and functions
-"map <F11> :TlistToggle<cr>
-"nmap <F11> :TagbarToggle<CR>
-"nnoremap <leader>b :TagbarToggle<CR>
-
-" side pane of files
-"map <F12> :NERDTreeToggle<cr>
-"nnoremap <leader>t :NERDTreeToggle<cr>
-
-" configure tags - add additional tags here or comment out not-used ones
-"set tags+=~/.vim/tags/cpp
-"set tags+=~/.vim/tags/bmdd
-"set tags+=~/.vim/tags/bmddsolver
-"set tags+=~/.vim/tags/dae
-"set tags+=~/.vim/tags/eodev
 
 " OmniCppComplete
 "let OmniCpp_NamespaceSearch = 1
@@ -188,17 +149,28 @@ inoremap <Right> <Nop>
 
 autocmd! BufWritePost .vimrc source /home/ben/.vimrc
 
-" Activate CtrlP with ,p
+" Define leader
+let mapleader = ' '
+
+" Activate CtrlP with <leader>p
 noremap <leader>p :CtrlP<CR>
 
-" erases the highlight on search with ,<space>
+" erases the highlight on search with <leader><space>
 map <silent> <leader><Space> :noh<CR>
 
-" build tags of your own project with ,t
-map <leader>t :exec '!ctags --recurse --append --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q -f ~/.vim/tags/tags' GetRootDir() <CR>
+" build tags of your own project with <leader>T (T is for tags)
+map <leader>T :exec '!ctags --recurse --append --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q'<CR>
 
-" open reject file with ,r
-map <silent> <leader>r :vsplit %.rej<CR>
+" open reject file <leader>R (R is for rejects)
+map <silent> <leader>R :vsplit %.rej<CR>
+
+" side pane of files (n is for nerdtree)
+nnoremap <leader>n :NERDTreeToggle<cr>
+
+" side pane of class and functions
+"map <F11> :TlistToggle<cr>
+"nmap <F11> :TagbarToggle<CR>
+"nnoremap <leader>b :TagbarToggle<CR>
 
 " Solarized
 set background=dark
