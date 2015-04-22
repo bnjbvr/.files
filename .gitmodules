@@ -13,3 +13,6 @@
 [submodule "myiongraph"]
 	path = bin/iongraph
 	url = https://github.com/bnjbvr/iongraph
+[submodule "bin/z"]
+	path = bin/z
+	url = https://github.com/rupa/z

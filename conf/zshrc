@@ -43,3 +43,4 @@ alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
 
 export LC_ALL="en_US.UTF-8"
 
+. ~/.files/bin/z/z.sh
