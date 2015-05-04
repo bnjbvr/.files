@@ -13,6 +13,8 @@ gitdeps:
 
 vim:
 	ln -s ~/.files/conf/vimrc ~/.vimrc || echo ".vimrc already present"
+	ln -s ~/.files/conf/vimrc ~/.nvimrc || echo ".nvimrc already present"
+	ln -s ~/.vim ~/.nvim || echo ".nvim dir already present"
 
 hg:
 	ln -s ~/.files/conf/hgrc ~/.hgrc || echo ".hgrc already present"

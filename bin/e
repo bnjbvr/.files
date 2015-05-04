@@ -5,9 +5,9 @@
 
 list=$(vim --serverlist)
 
-if [ -z "$SSH_CONNECTION" ]
+if [ -e /usr/bin/nvim ]
 then
-    prog="gvim"
+    prog="nvim"
 else
     prog="vim"
 fi

@@ -178,9 +178,8 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 " Solarized
 set background=dark
 set rtp+=~/.vim/bundle/vim-colors-solarized/
-if has('gui_running')
-    colorscheme solarized
-endif
+let g:solarized_termcolors=256
+colorscheme solarized
 
 set ruler
 
