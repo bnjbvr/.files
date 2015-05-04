@@ -155,14 +155,17 @@ let mapleader = ' '
 " Activate CtrlP with <leader>p
 noremap <leader>p :CtrlP<CR>
 
-" erases the highlight on search with <leader><space>
-map <silent> <leader><Space> :noh<CR>
+" erases the highlight on search
+map <silent> <leader><CR> :noh<CR>
 
 " build tags of your own project with <leader>T (T is for tags)
 map <leader>T :exec '!ctags --recurse --append --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q'<CR>
 
+" show next tag match
+map <leader><Space> :tn<CR>
+
 " open reject file <leader>R (R is for rejects)
-map <silent> <leader>R :vsplit %.rej<CR>
+map <silent> <leader>R :vs %.rej<CR>
 
 " side pane of files (n is for nerdtree)
 nnoremap <leader>n :NERDTreeToggle<cr>
