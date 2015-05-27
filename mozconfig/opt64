@@ -1,0 +1,23 @@
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../builds/browser-r64
+
+# If not set use the system default clang
+# if [ -z "$CC" ]; then
+#     export CC=clang
+#     export CFLAGS="-fcolor-diagnostics"
+# fi
+
+# If not set use the system default clang++
+# if [ -z "$CXX" ]; then
+#     export CXX=clang++
+#     export CXXFLAGS="-fcolor-diagnostics"
+# fi
+
+#export CC="clang"
+#export CXX="clang++"
+
+ac_add_options --disable-debug
+ac_add_options --disable-accessibility
+ac_add_options --enable-optimize
+ac_add_options --without-intl-api
+ac_add_options --with-ccache=/usr/bin/ccache
+mk_add_options MOZ_MAKE_FLAGS=-j8
