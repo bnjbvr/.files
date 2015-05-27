@@ -1,0 +1,13 @@
+enable_real_transparency = True
+force_no_bell = True
+titlebars = False
+handle_size = 1
+maximise = True
+#borderless = True
+
+[keybindings]
+full_screen = <Ctrl><Shift>F11
+
+## Décomenter si vous utilisez un autre shell comme zsh
+use_custom_command = true
+custom_command = /bin/zsh
