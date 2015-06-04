@@ -27,6 +27,7 @@ editor = vim
 
 [paths]
 try = ssh://hg.mozilla.org/try
+review = ssh://reviewboard-hg.mozilla.org/gecko
 
 [alias]
 try = push -f try
