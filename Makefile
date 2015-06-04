@@ -1,7 +1,7 @@
-all: deps gitdeps vim hg zsh watchman
+all: deps gitdeps vim hg zsh watchman crecord
 	@echo "Everything has been setup!"
 
-.PHONY: deps gitdeps vim hg npm zsh clean watchman
+.PHONY: deps gitdeps vim hg npm zsh clean watchman crecord
 
 deps:
 	sudo apt-get install -y vim-gnome zsh build-essential curl redshift git python3-pygments mercurial
@@ -28,6 +28,9 @@ npm:
 watchman:
 	(cd ~/.files/bin/watchman-dir && ./autogen.sh && ./configure && make -j8)
 	(cd ~/.files/bin/ && hg clone https://bitbucket.org/facebook/hgwatchman && cd hgwatchman && make local)
+
+crecord:
+	(cd ~/.files/bin && hg clone https://bitbucket.org/edgimar/crecord)
 
 clean:
 	rm -f ~/.config/redshift.conf ~/.vimrc ~/.bundles.vim ~/.hgrc ~/.zshrc ~/.npmrc
