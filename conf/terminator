@@ -1,7 +1,6 @@
 enable_real_transparency = True
 force_no_bell = True
 titlebars = False
-handle_size = 1
 maximise = True
 #borderless = True
 
