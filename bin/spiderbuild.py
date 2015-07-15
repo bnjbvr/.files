@@ -135,9 +135,9 @@ elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
     add_env_option('AR', '"ar"')
     cfg += " --target=i686-pc-linux"
     if get_yesno_answer('arm simulator build?', COMPILE_ARM_SIMULATOR):
-        cfg += ' --enable-arm-simulator'
+        cfg += ' --enable-simulator=arm'
     elif get_yesno_answer('mips simulator build?', COMPILE_MIPS_SIMULATOR):
-        cfg += ' --enable-mips-simulator'
+        cfg += ' --enable-simulator=mips'
 
 envString = ' '.join(['%s=%s' % (k, newEnvOptions[k]) for k in newEnvOptions])
 print envString + ' ' + cfg
