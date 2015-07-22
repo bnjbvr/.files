@@ -11,11 +11,13 @@ purge =
 bzexport = /home/ben/.mozbuild/version-control-tools/hgext/bzexport
 #evolve = ~/bin/mutable-history/hgext/evolve.py #requires mercurial3.0
 firefoxtree = /home/ben/.mozbuild/version-control-tools/hgext/firefoxtree
-mqext = /home/ben/.mozbuild/mercurial/extensions/mqext
+mqext = /home/ben/.mozbuild/version-control-tools/hgext/mqext
 qimportbz = /home/ben/.mozbuild/version-control-tools/hgext/qimportbz
 reviewboard = /home/ben/.mozbuild/version-control-tools/hgext/reviewboard/client.py
 hgwatchman = /home/ben/.files/bin/hgwatchman/hgwatchman
 crecord = /home/ben/.files/bin/crecord/crecord
+bundleclone = /home/ben/.mozbuild/version-control-tools/hgext/bundleclone
+push-to-try = /home/ben/.mozbuild/version-control-tools/hgext/push-to-try
 
 [diff]
 git = 1
