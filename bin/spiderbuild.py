@@ -62,10 +62,12 @@ while True:
         root = int(root)
         if root < len(AVAILABLE_ROOTS):
             root = AVAILABLE_ROOTS[root]
-            break
+            if root is not None:
+                break
         print 'there is no such available root'
     except Exception as e:
-        break
+        print 'not a valid root name'
+        root = ''
 
 JS_ROOT = root
 print 'The chosen root is', JS_ROOT
