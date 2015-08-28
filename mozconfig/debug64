@@ -1,4 +1,5 @@
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../builds/browser-d64
+mk_add_options AUTOCLOBBER=1
 
 export CC="clang"
 export CXX="clang++"

@@ -1,4 +1,5 @@
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../builds/browser-r64
+mk_add_options AUTOCLOBBER=1
 
 # If not set use the system default clang
 # if [ -z "$CC" ]; then
