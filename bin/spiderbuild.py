@@ -32,6 +32,7 @@ ENABLE_UNIFIED_BUILD = 'y'
 ENABLE_ASAN ='n'
 ENABLE_VALGRIND = 'n'
 ENABLE_ION = 'y'
+ENABLE_STATIC_ANALYSIS = 'n'
 
 DEFAULT_BUILD_SCRIPT_NAME = 'build.sh'
 
@@ -131,6 +132,8 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
         add_env_option('CXX', '"clang++ -fsanitize=address"')
         add_env_option('LDFLAGS', '"-fsanitize=address"')
         cfg += " --enable-address-sanitizer"
+    if get_yesno_answer('enable static analysis?', ENABLE_STATIC_ANALYSIS):
+        cfg += " --enable-clang-plugin "
 elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
     add_env_option('CC', '"gcc -m32 -march=pentiumpro"')
     add_env_option('CXX', '"g++ -m32 -march=pentiumpro"')
@@ -150,8 +153,8 @@ while True:
         p = subprocess.Popen(run_args, stdout=subprocess.PIPE, env=env)
         print p.communicate()[0]
         break
-    if a == 's':
 
+    if a == 's':
         name = raw_input("Give it a name: (default: " + DEFAULT_BUILD_SCRIPT_NAME + ")")
         if len(name) == 0:
             name = DEFAULT_BUILD_SCRIPT_NAME
