@@ -35,7 +35,7 @@ alias ms='m1ke | less'
 alias b='./build.sh && m8ke'
 alias c='j mozsources && autoconf2.13 && cd -1 && b'
 alias mb='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && ./build.sh && m8ke'
-alias jt='/home/ben/code/moz/repo/js/src/jit-test/jit_test.py'
+alias jit='/home/ben/code/moz/repo/js/src/jit-test/jit_test.py'
 alias jst='/home/ben/code/moz/repo/js/src/tests/jstests.py'
 
 # PulseAudio workarounds
