@@ -131,12 +131,12 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
         add_env_option('CXX', '"clang++ -fsanitize=address"')
         add_env_option('LDFLAGS', '"-fsanitize=address"')
         cfg += " --enable-address-sanitizer"
-    else if get_yesno_answer('enable TSAN?', ENABLE_TSAN):
+    elif get_yesno_answer('enable TSAN?', ENABLE_TSAN):
         add_env_option('CC', '"clang -fsanitize=thread -fPIC -pie"')
         add_env_option('CXX', '"clang++ -fsanitize=thread -fPIC -pie"')
         add_env_option('LDFLAGS', '"-fsanitize=thread -fPIC -pie"')
         cfg + "--enable-llvm-hacks --disable-jemalloc --disable-crashreporter --disable-elf-hack"
-    else if get_yesno_answer('enable static analysis?', ENABLE_STATIC_ANALYSIS):
+    elif get_yesno_answer('enable static analysis?', ENABLE_STATIC_ANALYSIS):
         cfg += " --enable-clang-plugin "
 elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
     add_env_option('CC', '"gcc -m32 -march=pentiumpro"')
