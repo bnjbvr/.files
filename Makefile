@@ -12,9 +12,8 @@ gitdeps:
 	git submodule update
 
 vim:
-	ln -s ~/.files/conf/vimrc ~/.vimrc || echo ".vimrc already present"
-	ln -s ~/.files/conf/vimrc ~/.nvimrc || echo ".nvimrc already present"
-	ln -s ~/.vim ~/.nvim || echo ".nvim dir already present"
+	mkdir -p ~/.config/nvim
+	ln -s ~/.files/conf/vimrc ~/.config/nvim/init.vim || echo "init.vim already present"
 
 hg:
 	ln -s ~/.files/conf/hgrc ~/.hgrc || echo ".hgrc already present"
