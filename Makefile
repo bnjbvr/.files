@@ -13,6 +13,7 @@ gitdeps:
 
 vim:
 	mkdir -p ~/.config/nvim
+	mkdir -p ~/.local/share/nvim/backup
 	ln -s ~/.files/conf/vimrc ~/.config/nvim/init.vim || echo "init.vim already present"
 
 hg:
