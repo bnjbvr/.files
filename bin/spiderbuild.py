@@ -18,8 +18,9 @@ AVAILABLE_VARIANTS = [
 # Default answers to questions (n for no, y for yes)
 USE_CLANG = 'n'
 COMPILE_32_BITS = 'n'
-COMPILE_ARM_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to put it as 'y'
-COMPILE_MIPS_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to put it as 'y'
+COMPILE_ARM_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to set as 'y'
+COMPILE_ARM64_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'n' if you want to set as 'y'
+COMPILE_MIPS_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to set as 'y'
 ENABLE_GGC = 'y'
 ENABLE_DEBUG = 'y'
 ENABLE_OPTIMIZE = 'n'
@@ -44,6 +45,8 @@ if COMPILE_ARM_SIMULATOR != COMPILE_32_BITS:
     COMPILE_ARM_SIMULATOR = 'n'
 if COMPILE_MIPS_SIMULATOR != COMPILE_32_BITS:
     COMPILE_MIPS_SIMULATOR = 'n'
+if COMPILE_ARM64_SIMULATOR == COMPILE_32_BITS:
+    COMPILE_ARM64_SIMULATOR = 'n'
 
 print 'Available roots:'
 i = 0
@@ -147,6 +150,9 @@ elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
         cfg += ' --enable-simulator=arm'
     elif get_yesno_answer('mips simulator build?', COMPILE_MIPS_SIMULATOR):
         cfg += ' --enable-simulator=mips'
+else:
+    if get_yesno_answer('arm64 simulator build?', COMPILE_ARM64_SIMULATOR):
+        cfg += ' --enable-simulator=arm64'
 
 envString = ' '.join(['%s=%s' % (k, newEnvOptions[k]) for k in newEnvOptions])
 print envString + ' ' + cfg
