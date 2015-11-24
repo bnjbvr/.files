@@ -152,8 +152,8 @@ autocmd! BufWritePost .vimrc source /home/ben/.vimrc
 " Define leader
 let mapleader = ' '
 
-" Activate CtrlP with <leader>p
-noremap <leader>p :CtrlP<CR>
+" Activate CtrlP with <leader>f (find)
+noremap <leader>f :CtrlP<CR>
 
 " erases the highlight on search
 map <silent> <leader><CR> :noh<CR>
@@ -190,3 +190,10 @@ vnoremap > >gv
 " magic for backspace and delete issues in terminal mode
 set backspace=indent,eol,start
 
+nmap <leader>p <Plug>yankstack_substitute_newer_paste
+nmap <leader>P <Plug>yankstack_substitute_older_paste
+
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-m>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_quit_key='<esc>'

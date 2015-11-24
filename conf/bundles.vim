@@ -6,6 +6,9 @@ call vundle#begin()
 "Bundle 'scrooloose/syntastic'
 "Bundle 'Valloric/YouCompleteMe'
 
+Bundle "terryma/vim-multiple-cursors"
+Bundle "maxbrunsfeld/vim-yankstack"
+Bundle 'bling/vim-airline'
 Bundle 'gmarik/vundle'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'Lokaltog/powerline'
@@ -16,6 +19,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'jlfwong/vim-mercenary'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'rstacruz/sparkup'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'Townk/vim-autoclose'
