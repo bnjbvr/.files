@@ -1,0 +1,4 @@
+#!/bin/bash
+
+scp $1 ben@benj.me:/home/ben/www/pub/
+echo https://pub.benj.me/$1
