@@ -16,3 +16,6 @@
 [submodule "bin/z"]
 	path = bin/z
 	url = https://github.com/rupa/z
+[submodule "bin/fzf-dir"]
+	path = bin/fzf-dir
+	url = https://github.com/junegunn/fzf.git

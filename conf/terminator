@@ -1,12 +1,18 @@
-enable_real_transparency = True
-force_no_bell = True
-titlebars = False
-maximise = True
-#borderless = True
-
+[global_config]
 [keybindings]
-full_screen = <Ctrl><Shift>F11
-
-## Décomenter si vous utilisez un autre shell comme zsh
-use_custom_command = true
-custom_command = /bin/zsh
+  full_screen = <Ctrl><Shift>F11
+[profiles]
+  [[default]]
+    background_darkness = 0.7
+    background_image = None
+    background_type = transparent
+[layouts]
+  [[default]]
+    [[[child1]]]
+      profile = default
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]

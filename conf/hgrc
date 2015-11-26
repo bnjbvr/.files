@@ -1,7 +1,6 @@
 [extensions]
 mq = 
 rebase = 
-progress = 
 color = 
 pager = 
 graphlog = 
@@ -9,10 +8,8 @@ histedit =
 record = 
 purge = 
 bzexport = /home/ben/.mozbuild/version-control-tools/hgext/bzexport
-#evolve = ~/bin/mutable-history/hgext/evolve.py #requires mercurial3.0
 firefoxtree = /home/ben/.mozbuild/version-control-tools/hgext/firefoxtree
 mqext = /home/ben/.mozbuild/version-control-tools/hgext/mqext
-qimportbz = /home/ben/.mozbuild/version-control-tools/hgext/qimportbz
 reviewboard = /home/ben/.mozbuild/version-control-tools/hgext/reviewboard/client.py
 hgwatchman = /home/ben/.files/bin/hgwatchman/hgwatchman
 crecord = /home/ben/.files/bin/crecord/crecord
@@ -34,6 +31,7 @@ review = ssh://reviewboard-hg.mozilla.org/gecko
 
 [alias]
 try = push -f try
+wip = log --graph --rev=wip --template=wip
 
 [defaults]
 qnew = -U
@@ -48,3 +46,32 @@ ircnick = bbouvier
 bugzilla.mozilla.org = f9:7e:62:42:4e:38:79:96:ca:87:71:2a:f8:51:38:c8:16:92:5c:a7
 hg.mozilla.org = af:27:b9:34:47:4e:e5:98:01:f6:83:2b:51:c9:aa:d8:df:fb:1a:27
 bitbucket.org = 46:de:34:e7:9b:18:cd:7f:ae:fd:8b:e3:bc:f4:1a:5e:38:d7:ac:24
+
+[revsetalias]
+wip = (parents(not public()) or not public() or . or (head() and branch(default))) and (not obsolete() or unstable()^) and not closed()
+
+[templates]
+wip = '{label("log.branch", ifeq(branch, "default", "", branch))} {label("changeset.{phase}", rev)} {label("grep.user", author|user)}{label("log.tag", if(tags," {tags}"))} {bookmarks % "{ifeq(bookmark, currentbookmark, label('log.activebookmark', bookmark), label('log.bookmark', bookmark))} "}\n{label(ifcontains(rev, revset('parents()'), 'desc.here'),desc|firstline)}'
+
+[color]
+mode=terminfo
+
+#Custom colours
+color.orange=202
+color.lightyellow=191
+color.darkorange=220
+color.brightyellow=226
+
+#Colours for each label
+log.branch=cyan
+log.summary=lightyellow
+log.description=lightyellow
+log.bookmark=green
+log.tag=darkorange
+log.activebookmark = green bold underline
+
+changeset.public=orange bold
+changeset.secret=blue bold
+changeset.draft=brightyellow bold
+
+desc.here=bold blue_background

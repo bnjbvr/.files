@@ -13,7 +13,7 @@ if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
 fi
 
 # Path
-export PATH="/home/ben/.files/bin:/home/ben/.files/private/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/usr/bin:$PATH"
+export PATH="/home/ben/code/llvm/bin:/home/ben/.files/bin:/home/ben/.files/private/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/usr/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Aliases
