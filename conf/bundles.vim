@@ -19,6 +19,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'rstacruz/sparkup'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'Townk/vim-autoclose'
+Bundle 'isRuslan/vim-es6'
 
 call vundle#end()
 filetype plugin indent on
