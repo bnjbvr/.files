@@ -9,7 +9,7 @@ then
 fi
 
 scrot -s -q 100 /tmp/$filename
-up /tmp/$filename
+cd /tmp/ && up $filename
 
 if [ $? = "0" ]
 then
