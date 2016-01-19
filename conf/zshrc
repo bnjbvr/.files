@@ -1,6 +1,10 @@
 # Themes are in ~/.oh-my-zsh/themes/
 ZSH_THEME="robbyrussell"
 
+DOTFILES_DIR="/home/ben/.files"
+MOZ_SM_SRC_DIR="/home/ben/mozilla/repo/js/src"
+MOZ_BUILDS_DIR="/home/ben/mozilla/builds"
+
 # Normal plugins are in $ZSH/plugins/, custom plugins are in $ZSH/custom/plugins/
 plugins=(git mercurial debian battery jump sudo)
 
@@ -13,12 +17,11 @@ if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
 fi
 
 # Path
-export PATH="/home/ben/code/llvm/bin:/home/ben/.files/bin:/home/ben/.files/private/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/usr/bin:$PATH"
+export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Aliases
 alias op='gnome-open'
-alias j='jump'
 alias fbn='find ./ -name $1'
 alias psg='ps aux | grep $1'
 
@@ -33,10 +36,11 @@ alias m8ke='make -s -j8 2>&1 | colout -t g++'
 alias m='m8ke'
 alias ms='m1ke | less'
 alias b='./build.sh && m8ke'
-alias c='j mozsources && autoconf2.13 && cd -1 && b'
-alias mb='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && ./build.sh && m8ke'
-alias jit='/home/ben/code/moz/repo/js/src/jit-test/jit_test.py'
-alias jst='/home/ben/code/moz/repo/js/src/tests/jstests.py'
+alias c='cd $MOZ_SM_SRC_DIR && autoconf2.13 && cd -1 && b'
+alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && ./build.sh && m8ke'
+
+alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
+alias jst='$MOZ_SM_SRC_DIR/tests/jstests.py'
 
 # PulseAudio workarounds
 alias skipe='PULSE_LATENCY_MSEC=30 skype'
