@@ -75,3 +75,6 @@ changeset.secret=blue bold
 changeset.draft=brightyellow bold
 
 desc.here=bold blue_background
+
+[experimental]
+clonebundles = true
