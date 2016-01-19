@@ -1,4 +1,4 @@
-all: deps gitdeps vim hg zsh watchman crecord
+all: deps gitdeps vim hg zsh npm watchman crecord
 	@echo "Everything has been setup!"
 
 .PHONY: deps gitdeps vim hg npm zsh clean watchman crecord
