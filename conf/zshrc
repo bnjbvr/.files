@@ -17,7 +17,7 @@ if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
 fi
 
 # Path
-export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
+export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Aliases
@@ -43,7 +43,6 @@ alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
 alias jst='$MOZ_SM_SRC_DIR/tests/jstests.py'
 
 # PulseAudio workarounds
-alias skipe='PULSE_LATENCY_MSEC=30 skype'
 alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
 
 export LC_ALL="en_US.UTF-8"

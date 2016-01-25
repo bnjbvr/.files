@@ -7,7 +7,7 @@ call vundle#begin()
 "Bundle 'Valloric/YouCompleteMe'
 
 Bundle "terryma/vim-multiple-cursors"
-Bundle "maxbrunsfeld/vim-yankstack"
+"Bundle "maxbrunsfeld/vim-yankstack"
 Bundle 'bling/vim-airline'
 Bundle 'gmarik/vundle'
 Bundle 'bitc/vim-bad-whitespace'
