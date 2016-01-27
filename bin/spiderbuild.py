@@ -2,18 +2,25 @@
 import subprocess
 import os
 import stat
+import json
 
 ################
 # Configure here
 ################
 
-# Path to the directory containing all mozilla hg clones
-BASE_ROOTS = '/home/ben/code/moz/'
-
-# Base directories of hg clones
-AVAILABLE_VARIANTS = [
-  'repo', 'inbound', 'aurora', 'beta', 'b2g-gecko', 'simd128'
-]
+if os.path.exists(os.path.expanduser('~/.spiderbuild.conf')):
+    f = file(os.path.expanduser('~/.spiderbuild.conf'), 'r')
+    config = json.load(f)
+    f.close()
+    BASE_ROOTS = config.get('base_root', None)
+    AVAILABLE_VARIANTS = config.get('variants', [''])
+else:
+    as_dict = dict()
+    BASE_ROOTS = as_dict['base_root'] = raw_input('Where is your mozilla base dir repo?')
+    AVAILABLE_VARIANTS = as_dict['variants'] = [''] # TODO
+    f = file(os.path.expanduser('~/.spiderbuild.conf'), 'a+')
+    json.dump(as_dict, f)
+    f.close()
 
 # Default answers to questions (n for no, y for yes)
 USE_CLANG = 'n'
@@ -55,23 +62,27 @@ for r in AVAILABLE_ROOTS:
     i += 1
 
 root = ''
-while True:
-    root = raw_input('Choose your root: ')
+if len(AVAILABLE_ROOTS) == 1:
+    print "Choosing first root, no other choice."
+    root = AVAILABLE_ROOTS[0]
+else:
+    while True:
+        root = raw_input('Choose your root: ')
 
-    if len(root) == 0:
-        print "Don't be lazy, write something."
-        continue
+        if len(root) == 0:
+            print "Don't be lazy, write something."
+            continue
 
-    try:
-        root = int(root)
-        if root < len(AVAILABLE_ROOTS):
-            root = AVAILABLE_ROOTS[root]
-            if root is not None:
-                break
-        print 'there is no such available root'
-    except Exception as e:
-        print 'not a valid root name'
-        root = ''
+        try:
+            root = int(root)
+            if root < len(AVAILABLE_ROOTS):
+                root = AVAILABLE_ROOTS[root]
+                if root is not None:
+                    break
+            print 'there is no such available root'
+        except Exception as e:
+            print 'not a valid root name'
+            root = ''
 
 JS_ROOT = root
 print 'The chosen root is', JS_ROOT
