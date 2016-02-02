@@ -5,11 +5,11 @@ call vundle#begin()
 
 "Bundle 'scrooloose/syntastic'
 "Bundle 'Valloric/YouCompleteMe'
+"Bundle 'maxbrunsfeld/vim-yankstack'
 
 Bundle "terryma/vim-multiple-cursors"
-"Bundle "maxbrunsfeld/vim-yankstack"
 Bundle 'bling/vim-airline'
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 Bundle 'bitc/vim-bad-whitespace'
 Bundle 'Lokaltog/powerline'
 Bundle 'kien/ctrlp.vim'
@@ -24,6 +24,7 @@ Bundle 'rstacruz/sparkup'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'Townk/vim-autoclose'
 Bundle 'isRuslan/vim-es6'
+Bundle 'kien/rainbow_parentheses.vim'
 
 call vundle#end()
 filetype plugin indent on
