@@ -4,7 +4,7 @@ all: deps gitdeps vim hg zsh npm watchman crecord
 .PHONY: deps gitdeps vim hg npm zsh clean watchman crecord
 
 deps:
-	sudo apt-get install -y vim-gnome zsh build-essential curl redshift git python3-pygments mercurial
+	sudo apt-get install -y vim-gnome zsh build-essential autoconf2.13 curl redshift git python3-pygments mercurial
 	ln -s ~/.files/conf/redshift.conf ~/.config/redshift.conf || echo "redshift.conf already present"
 
 gitdeps:
