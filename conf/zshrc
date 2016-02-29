@@ -42,6 +42,8 @@ alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build
 alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
 alias jst='$MOZ_SM_SRC_DIR/tests/jstests.py'
 
+alias meteo='curl -4 wttr.in/Lyon'
+
 # PulseAudio workarounds
 alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
 
