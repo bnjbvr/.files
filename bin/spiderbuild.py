@@ -28,7 +28,6 @@ COMPILE_32_BITS = 'n'
 COMPILE_ARM_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to set as 'y'
 COMPILE_ARM64_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'n' if you want to set as 'y'
 COMPILE_MIPS_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to set as 'y'
-ENABLE_GGC = 'y'
 ENABLE_DEBUG = 'y'
 ENABLE_OPTIMIZE = 'n'
 ENABLE_CCACHE = 'y'
@@ -88,7 +87,6 @@ JS_ROOT = root
 print 'The chosen root is', JS_ROOT
 
 options = (
-        ('GGC', '--enable-gcgenerational --enable-exact-rooting', '', ENABLE_GGC),
         ('debug mode', '--enable-debug', '--disable-debug', ENABLE_DEBUG),
         ('opt mode', '--enable-optimize', '--disable-optimize', ENABLE_OPTIMIZE),
         ('ccache', '--with-ccache', '', ENABLE_CCACHE),
