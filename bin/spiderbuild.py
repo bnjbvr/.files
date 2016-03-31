@@ -147,9 +147,10 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
         add_env_option('CC', '"clang -fsanitize=thread -fPIC -pie"')
         add_env_option('CXX', '"clang++ -fsanitize=thread -fPIC -pie"')
         add_env_option('LDFLAGS', '"-fsanitize=thread -fPIC -pie"')
-        cfg + "--enable-llvm-hacks --disable-jemalloc --disable-crashreporter --disable-elf-hack"
+        cfg + " --enable-llvm-hacks --disable-jemalloc --disable-crashreporter --disable-elf-hack"
     elif get_yesno_answer('enable static analysis?', ENABLE_STATIC_ANALYSIS):
-        cfg += " --enable-clang-plugin "
+        print "Make sure to have installed libclang-dev and libedit-dev."
+        cfg += " --enable-clang-plugin"
 elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
     add_env_option('CC', '"gcc -m32 -march=pentiumpro"')
     add_env_option('CXX', '"g++ -m32 -march=pentiumpro"')
