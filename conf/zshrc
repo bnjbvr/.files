@@ -30,6 +30,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias upvim='vim -u ~/.files/conf/bundles.vim +PluginInstall +qall'
 
 # Mozilla build shortcuts
+
+export BUILD_VERBOSE_LOG=1
+
 alias m1ke='make -s 2>&1 | colout -t g++'
 alias m4ke='make -s -j4 2>&1 | colout -t g++'
 alias m8ke='make -s -j8 2>&1 | colout -t g++'
@@ -50,3 +53,6 @@ alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
 export LC_ALL="en_US.UTF-8"
 
 . ~/.files/bin/z/z.sh
+
+# common typos
+alias gh='hg'
