@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+    echo "usage: $0 [VIDEOFILE] [DURATION?] [WIDTH?] [FPS?]"
+    exit
+fi
+
+duration=$2
+if [ -z "$duration" ]
+then
+    duration=10
+fi
+
+width=$3
+if [ -z "$width" ]
+then
+    width=800
+fi
+
+fps=$4
+if [ -z "$fps" ]
+then
+    fps=10
+fi
+
+ffmpeg -y -t $duration -i $1 -vf fps=$fps,scale=$width:-1:flags=lanczos,palettegen /tmp/palette.png
+ffmpeg -t $duration -i $1 -i /tmp/palette.png -filter_complex "fps=$fps,scale=$width:-1:flags=lanczos[x];[x][1:v]paletteuse" output.gif
