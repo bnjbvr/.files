@@ -25,6 +25,7 @@ Bundle 'vim-scripts/TaskList.vim'
 Bundle 'Townk/vim-autoclose'
 Bundle 'isRuslan/vim-es6'
 Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
