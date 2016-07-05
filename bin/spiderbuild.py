@@ -24,10 +24,13 @@ else:
 
 # Default answers to questions (n for no, y for yes)
 USE_CLANG = 'n'
+CROSS_COMPILE_ARM = 'n'
+CROSS_COMPILE_ARM_HF = 'y'
 COMPILE_32_BITS = 'n'
 COMPILE_ARM_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to set as 'y'
 COMPILE_ARM64_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'n' if you want to set as 'y'
-COMPILE_MIPS_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to set as 'y'
+COMPILE_MIPS32_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to set as 'y'
+COMPILE_MIPS64_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'n' if you want to set as 'y'
 ENABLE_DEBUG = 'y'
 ENABLE_OPTIMIZE = 'n'
 ENABLE_CCACHE = 'y'
@@ -49,10 +52,12 @@ AVAILABLE_ROOTS = [BASE_ROOTS + v + PATH_TO_JS_CONFIGURE for v in AVAILABLE_VARI
 
 if COMPILE_ARM_SIMULATOR != COMPILE_32_BITS:
     COMPILE_ARM_SIMULATOR = 'n'
-if COMPILE_MIPS_SIMULATOR != COMPILE_32_BITS:
-    COMPILE_MIPS_SIMULATOR = 'n'
+if COMPILE_MIPS32_SIMULATOR != COMPILE_32_BITS:
+    COMPILE_MIPS32_SIMULATOR = 'n'
 if COMPILE_ARM64_SIMULATOR == COMPILE_32_BITS:
     COMPILE_ARM64_SIMULATOR = 'n'
+if COMPILE_MIPS64_SIMULATOR == COMPILE_32_BITS:
+    COMPILE_MIPS64_SIMULATOR = 'n'
 
 print 'Available roots:'
 i = 0
@@ -158,11 +163,29 @@ elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
     cfg += " --target=i686-pc-linux"
     if get_yesno_answer('arm simulator build?', COMPILE_ARM_SIMULATOR):
         cfg += ' --enable-simulator=arm'
-    elif get_yesno_answer('mips simulator build?', COMPILE_MIPS_SIMULATOR):
-        cfg += ' --enable-simulator=mips'
+    elif get_yesno_answer('mips simulator build?', COMPILE_MIPS32_SIMULATOR):
+        cfg += ' --enable-simulator=mips32'
+elif get_yesno_answer('ARM cross compilation?', CROSS_COMPILE_ARM):
+    print "Make sure to have installed gcc-arm-linux-gnueabi{,hf} g++-arm-linux-gnueabi{,hf} binutils-arm-linux-gnueabi{,hf}"
+    if get_yesno_answer('hard float ABI?', CROSS_COMPILE_ARM_HF):
+        cc = '"arm-linux-gnueabihf-gcc"'
+        cxx = '"arm-linux-gnueabihf-g++"'
+        ar = '"arm-linux-gnueabihf-ar"'
+        target = ' --target=arm-linux-gnueabihf'
+    else:
+        cc = '"arm-linux-gnueabi-gcc"'
+        cxx = '"arm-linux-gnueabi-g++"'
+        ar = '"arm-linux-gnueabi-ar"'
+        target = ' --target=arm-linux-gnueabi'
+    add_env_option('CC', cc)
+    add_env_option('CXX', cxx)
+    add_env_option('AR', ar)
+    cfg += target
 else:
     if get_yesno_answer('arm64 simulator build?', COMPILE_ARM64_SIMULATOR):
         cfg += ' --enable-simulator=arm64'
+    elif get_yesno_answer('mips64 simulator build?', COMPILE_MIPS64_SIMULATOR):
+        cfg += ' --enable-simulator=mips64'
 
 overridenEnvString = ' '.join(['%s=%s' % (k, overridenEnv[k]) for k in overridenEnv])
 print overridenEnvString + ' ' + cfg
