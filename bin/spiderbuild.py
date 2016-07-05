@@ -129,11 +129,11 @@ for name, yes, no, default in options:
             cfg += ' ' + no
 
 env = os.environ
-newEnvOptions = {}
+overridenEnv = {}
 
 def add_env_option(key, val):
     env[key] = val
-    newEnvOptions[key] = val
+    overridenEnv[key] = val
 
 if get_yesno_answer('use clang / clang++?', USE_CLANG):
     add_env_option('CC', '"clang"')
@@ -164,12 +164,13 @@ else:
     if get_yesno_answer('arm64 simulator build?', COMPILE_ARM64_SIMULATOR):
         cfg += ' --enable-simulator=arm64'
 
-envString = ' '.join(['%s=%s' % (k, newEnvOptions[k]) for k in newEnvOptions])
-print envString + ' ' + cfg
+overridenEnvString = ' '.join(['%s=%s' % (k, overridenEnv[k]) for k in overridenEnv])
+print overridenEnvString + ' ' + cfg
 while True:
     a = raw_input("Would you like to run it (r), save it (s), or quit (q) ?")
     if a == 'r':
         run_args = [arg for arg in cfg.split(' ') if len(arg) > 0]
+        print "Passing env=%s" % str(env)
         p = subprocess.Popen(run_args, stdout=subprocess.PIPE, env=env)
         print p.communicate()[0]
         break
@@ -182,7 +183,7 @@ while True:
         HEADER = "#!/bin/bash\n"
         f = file(name, "w+")
         f.write(HEADER)
-        f.write(envString + ' ' + cfg)
+        f.write(overridenEnvString + ' ' + cfg)
         os.chmod('./' + name, 0755)
         f.close()
         break
