@@ -147,7 +147,7 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
         add_env_option('CC', '"clang -fsanitize=address"')
         add_env_option('CXX', '"clang++ -fsanitize=address"')
         add_env_option('LDFLAGS', '"-fsanitize=address"')
-        cfg += " --enable-address-sanitizer"
+        cfg += " --enable-address-sanitizer --disable-jemalloc"
     elif get_yesno_answer('enable TSAN?', ENABLE_TSAN):
         add_env_option('CC', '"clang -fsanitize=thread -fPIC -pie"')
         add_env_option('CXX', '"clang++ -fsanitize=thread -fPIC -pie"')
