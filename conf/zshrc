@@ -56,3 +56,6 @@ export LC_ALL="en_US.UTF-8"
 
 # common typos
 alias gh='hg'
+
+# run tmux in 256 colors mode by default
+alias tmux='TERM=screen-256color-bce tmux'

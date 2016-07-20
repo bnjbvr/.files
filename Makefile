@@ -1,7 +1,7 @@
-all: deps gitdeps vim hg zsh npm watchman crecord
+all: deps gitdeps vim hg zsh npm watchman crecord tmux
 	@echo "Everything has been setup!"
 
-.PHONY: deps gitdeps vim hg npm zsh clean watchman crecord
+.PHONY: deps gitdeps vim hg npm zsh tmux clean watchman crecord
 
 deps:
 	sudo apt-get install -y vim-gnome zsh build-essential autoconf2.13 curl redshift git python3-pygments mercurial
@@ -21,6 +21,9 @@ hg:
 
 zsh:
 	ln -s ~/.files/conf/zshrc ~/.zshrc || echo ".zshrc already present"
+
+tmux:
+	ln -s ~/.files/conf/tmux.conf ~/.tmux.conf || echo ".tmux.conf already present"
 
 npm:
 	ln -s ~/.files/conf/npmrc ~/.npmrc || echo ".npmrc already present"
