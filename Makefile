@@ -26,7 +26,7 @@ tmux:
 	ln -s ~/.files/conf/tmux.conf ~/.tmux.conf || echo ".tmux.conf already present"
 
 npm:
-	ln -s ~/.files/conf/npmrc ~/.npmrc || echo ".npmrc already present"
+	ln -s ~/.files/private/conf/npmrc ~/.npmrc || echo ".npmrc already present"
 
 watchman:
 	(cd ~/.files/bin/watchman-dir && ./autogen.sh && ./configure && make -j8)
