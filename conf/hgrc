@@ -24,6 +24,7 @@ showfunc = 1
 [ui]
 username = Benjamin Bouvier <benj@benj.me>
 editor = vim
+interface = curses
 
 [paths]
 try = ssh://hg.mozilla.org/try
@@ -43,38 +44,40 @@ log = --graph
 ircnick = bbouvier
 
 [hostfingerprints]
-bugzilla.mozilla.org = f9:7e:62:42:4e:38:79:96:ca:87:71:2a:f8:51:38:c8:16:92:5c:a7
+bugzilla.mozilla.org = 7c:7a:c4:6c:91:3b:6b:89:cf:f2:8c:13:b8:02:c4:25:bd:1e:25:17
 hg.mozilla.org = af:27:b9:34:47:4e:e5:98:01:f6:83:2b:51:c9:aa:d8:df:fb:1a:27
-bitbucket.org = 46:de:34:e7:9b:18:cd:7f:ae:fd:8b:e3:bc:f4:1a:5e:38:d7:ac:24
+bitbucket.org = 3f:d3:c5:17:23:3c:cd:f5:2d:17:76:06:93:7e:ee:97:42:21:14:aa
 
 [revsetalias]
 wip = (parents(not public()) or not public() or . or (head() and branch(default))) and (not obsolete() or unstable()^) and not closed()
 
 [templates]
-wip = '{label("log.branch", ifeq(branch, "default", "", branch))} {label("changeset.{phase}", rev)} {label("grep.user", author|user)}{label("log.tag", if(tags," {tags}"))} {bookmarks % "{ifeq(bookmark, currentbookmark, label('log.activebookmark', bookmark), label('log.bookmark', bookmark))} "}\n{label(ifcontains(rev, revset('parents()'), 'desc.here'),desc|firstline)}'
+wip = '{label("log.branch", branches)} {label("changeset.{phase}", rev)}{label("changeset.{phase}", ":")}{label("changeset.{phase}", short(node))} {label("grep.user", author|user)}{label("log.tag", if(tags," {tags}"))}{label("log.tag", if(fxheads," {fxheads}"))} {label("log.bookmark", if(bookmarks," {bookmarks}"))}\n{label(ifcontains(rev, revset("."), "desc.here"),desc|firstline)}'
 
 [color]
-mode=terminfo
+mode = terminfo
 
 #Custom colours
-color.orange=202
-color.lightyellow=191
-color.darkorange=220
-color.brightyellow=226
+color.orange = 202
+color.lightyellow = 191
+color.darkorange = 220
+color.brightyellow = 226
 
 #Colours for each label
-log.branch=cyan
-log.summary=lightyellow
-log.description=lightyellow
-log.bookmark=green
-log.tag=darkorange
+log.branch = cyan
+log.summary = lightyellow
+log.description = lightyellow
+log.bookmark = green
+log.tag = darkorange
 log.activebookmark = green bold underline
 
-changeset.public=orange bold
-changeset.secret=blue bold
-changeset.draft=brightyellow bold
+changeset.public = orange bold
+changeset.secret = blue bold
+changeset.draft = brightyellow bold
 
-desc.here=bold blue_background
+desc.here = bold blue_background
 
 [experimental]
 clonebundles = true
+[pager]
+attend-wip = true
