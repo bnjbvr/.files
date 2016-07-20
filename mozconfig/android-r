@@ -1,0 +1,32 @@
+mk_add_options MOZ_OBJDIR=/home/ben/mozilla/builds/android-r
+mk_add_options AUTOCLOBBER=1
+
+# Build Firefox for Android:
+ac_add_options --enable-application=mobile/android
+ac_add_options --target=arm-linux-androideabi
+
+# With the following Android SDK and NDK:
+ac_add_options --with-android-sdk="/home/ben/.mozbuild/android-sdk-linux"
+ac_add_options --with-android-ndk="/home/ben/.mozbuild/android-ndk-r11b"
+
+# If not set use the system default clang
+# if [ -z "$CC" ]; then
+#     export CC=clang
+#     export CFLAGS="-fcolor-diagnostics"
+# fi
+
+# If not set use the system default clang++
+# if [ -z "$CXX" ]; then
+#     export CXX=clang++
+#     export CXXFLAGS="-fcolor-diagnostics"
+# fi
+
+#export CC="clang"
+#export CXX="clang++"
+
+ac_add_options --disable-debug
+ac_add_options --disable-accessibility
+ac_add_options --enable-optimize
+ac_add_options --without-intl-api
+ac_add_options --with-ccache=/usr/bin/ccache
+mk_add_options MOZ_MAKE_FLAGS=-j8
