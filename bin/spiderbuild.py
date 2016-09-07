@@ -23,7 +23,7 @@ else:
     f.close()
 
 # Default answers to questions (n for no, y for yes)
-USE_CLANG = 'n'
+USE_CLANG = 'y'
 CROSS_COMPILE_ARM = 'n'
 CROSS_COMPILE_ARM_HF = 'y'
 COMPILE_32_BITS = 'n'
