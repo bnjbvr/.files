@@ -2,6 +2,7 @@
 ZSH_THEME="robbyrussell"
 
 DOTFILES_DIR="/home/ben/.files"
+
 MOZ_SM_SRC_DIR="/home/ben/mozilla/repo/js/src"
 MOZ_BUILDS_DIR="/home/ben/mozilla/builds"
 
@@ -19,6 +20,15 @@ fi
 # Path
 export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
+
+if [ -d "/home/ben/.files/private/perl5" ]
+then
+    PATH="/home/ben/.files/private/perl5/bin${PATH:+:${PATH}}"; export PATH;
+    PERL5LIB="/home/ben/.files/private/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+    PERL_LOCAL_LIB_ROOT="/home/ben/.files/private/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+    PERL_MB_OPT="--install_base \"/home/ben/.files/private/perl5\""; export PERL_MB_OPT;
+    PERL_MM_OPT="INSTALL_BASE=/home/ben/.files/private/perl5"; export PERL_MM_OPT;
+fi
 
 # Aliases
 alias op='gnome-open'
