@@ -39,6 +39,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias upvim='vim -u ~/.files/conf/bundles.vim +PluginInstall +qall'
 
+alias d='docker'
+alias dc='docker-compose'
+
 # Mozilla build shortcuts
 
 export BUILD_VERBOSE_LOG=1
