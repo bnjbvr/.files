@@ -1,5 +1,4 @@
 private/*
 bin/hgwatchman/*
-bin/crecord/*
 *.pyc
 conf/npmrc
