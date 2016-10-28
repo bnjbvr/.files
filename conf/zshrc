@@ -18,7 +18,7 @@ if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
 fi
 
 # Path
-export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
+export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.cargo/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 if [ -d "/home/ben/.files/private/perl5" ]
