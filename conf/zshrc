@@ -55,6 +55,8 @@ alias b='./build.sh && m8ke'
 alias c='cd $MOZ_SM_SRC_DIR && autoconf2.13 && cd -1 && b'
 alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && ./build.sh && m8ke'
 
+alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftest,jittests -t none'
+
 alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
 alias jst='$MOZ_SM_SRC_DIR/tests/jstests.py'
 
