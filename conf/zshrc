@@ -21,6 +21,7 @@ fi
 export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.cargo/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
+### perl5
 if [ -d "/home/ben/.files/private/perl5" ]
 then
     PATH="/home/ben/.files/private/perl5/bin${PATH:+:${PATH}}"; export PATH;
@@ -28,6 +29,12 @@ then
     PERL_LOCAL_LIB_ROOT="/home/ben/.files/private/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
     PERL_MB_OPT="--install_base \"/home/ben/.files/private/perl5\""; export PERL_MB_OPT;
     PERL_MM_OPT="INSTALL_BASE=/home/ben/.files/private/perl5"; export PERL_MM_OPT;
+fi
+
+### ocaml/OPAM
+if [ -d "/home/ben/.opam/opam-init/" ]
+then
+    . /home/ben/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
 
 # Aliases
@@ -59,6 +66,8 @@ alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftes
 
 alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
 alias jst='$MOZ_SM_SRC_DIR/tests/jstests.py'
+alias jitz='$MOZ_SM_SRC_DIR/jit-test/jit_test.py ./dist/bin/js'
+alias jstz='$MOZ_SM_SRC_DIR/tests/jstests.py ./dist/bin.js'
 
 alias meteo='curl -4 wttr.in/Lyon'
 
