@@ -13,6 +13,8 @@ plugins=(git mercurial debian battery jump sudo)
 ZSH=$HOME/.files/bin/ohmyzsh
 source $ZSH/oh-my-zsh.sh
 
+source ~/.files/bin/z/z.sh
+
 # Path
 export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.cargo/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
@@ -45,7 +47,7 @@ alias psg='ps aux | grep $1'
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias upvim='vim -u ~/.files/conf/bundles.vim +PluginInstall +qall'
+alias upvim='nvim -u ~/.config/nvim/autoload/plug.vim -u ~/.files/conf/bundles.vim +PlugInstall'
 
 alias d='docker'
 alias dc='docker-compose'
@@ -76,8 +78,6 @@ alias meteo='curl -4 wttr.in/Lyon'
 alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
 
 export LC_ALL="en_US.UTF-8"
-
-. ~/.files/bin/z/z.sh
 
 # common typos
 alias gh='hg'
