@@ -52,6 +52,8 @@ alias upvim='nvim -u ~/.config/nvim/autoload/plug.vim -u ~/.files/conf/bundles.v
 alias d='docker'
 alias dc='docker-compose'
 
+alias py='python3'
+
 # Mozilla build shortcuts
 
 export BUILD_VERBOSE_LOG=1
