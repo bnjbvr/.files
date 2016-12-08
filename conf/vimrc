@@ -127,9 +127,6 @@ source ~/.files/conf/bundles.vim
 "nmap <F8> :TagbarToggle<CR>
 "let g:tagbar_autofocus = 1
 
-" config de CoffeeCompile
-"nmap <F9> :CoffeeCompile watch vert<CR>
-
 " older regexp engine, makes vim faster?
 syntax on             " syntax coloring by default
 set re=1
@@ -139,6 +136,7 @@ set re=1
 " set nocursorline
 " syntax sync minlines=256
 
+" Deactivate the arrow keys.
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>

@@ -7,20 +7,34 @@ filetype off
 
 call plug#begin(expand('~/.local/share/nvim/bundle'))
 
+" *****************************************************************************
+" Interface *******************************************************************
+" *****************************************************************************
+
 " Solarized theme.
 Plug 'altercation/vim-colors-solarized'
 
-" Sublime-like multiple cursors.
-Plug 'terryma/vim-multiple-cursors'
-
+" Better status line.
 Plug 'bling/vim-airline'
 
 " Show trailing whitespaces in red.
 Plug 'bitc/vim-bad-whitespace'
 
-Plug 'Lokaltog/powerline'
-
+" File opener using MRU caches.
 Plug 'kien/ctrlp.vim'
+
+" File explorer.
+Plug 'scrooloose/nerdtree'
+
+" Creates a list of TODO/FIXME/etc.
+Plug 'vim-scripts/TaskList.vim'
+
+" *****************************************************************************
+" Behavior ********************************************************************
+" *****************************************************************************
+
+" Sublime-like multiple cursors.
+Plug 'terryma/vim-multiple-cursors'
 
 " Add surround operator for text objects.
 Plug 'tpope/vim-surround'
@@ -28,21 +42,24 @@ Plug 'tpope/vim-surround'
 " Vertical alignment with Tabularize.
 Plug 'godlygeek/tabular'
 
+" Mercurial information from within vim.
 Plug 'jlfwong/vim-mercenary'
-
-" File explorer.
-Plug 'scrooloose/nerdtree'
 
 " Easy comment code blocks in/out.
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'rstacruz/sparkup'
-
-Plug 'vim-scripts/TaskList.vim'
-
+" Automatically inserts closing chars for pairs of open/close chars (e.g. parens).
 Plug 'Townk/vim-autoclose'
 
+" Colors pairs of matching parentheses.
 Plug 'kien/rainbow_parentheses.vim'
+
+" *****************************************************************************
+" Language specific ***********************************************************
+" *****************************************************************************
+
+" HTML expander with <C-E>.
+Plug 'rstacruz/sparkup'
 
 " Syntax highlighting for ES6.
 Plug 'isRuslan/vim-es6'
