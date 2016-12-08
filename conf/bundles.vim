@@ -50,6 +50,9 @@ Plug 'isRuslan/vim-es6'
 " Syntax highlighting and detection of rust files.
 Plug 'rust-lang/rust.vim'
 
+" Code completion and navigation in rust.
+Plug 'racer-rust/vim-racer'
+
 " call vundle#end()
 call plug#end()
 

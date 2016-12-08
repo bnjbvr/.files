@@ -40,6 +40,13 @@ then
     . /home/ben/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
 
+### Rust source code path.
+if [ -d "/home/ben/mozilla/rustc/" ]
+then
+    RUST_SRC_PATH="/home/ben/mozilla/rustc/src"
+    export RUST_SRC_PATH
+fi
+
 # Aliases
 alias op='gnome-open'
 alias fbn='find ./ -name $1'

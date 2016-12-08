@@ -110,6 +110,11 @@ set ofu=syntaxcomplete#Complete
 map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 set tags=./tags;/
 
+" vim-racer plugin configuration.
+set hidden
+let g:racer_cmd = "/home/ben/.cargo/bin/racer"
+let $RUST_SRC_PATH = "/home/ben/mozilla/rustc/src/"
+
 source ~/.files/conf/bundles.vim
 
 " config da detectindent
