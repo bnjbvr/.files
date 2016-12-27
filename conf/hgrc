@@ -76,7 +76,7 @@ clonebundles = true
 
 [pager]
 attend-wip = true
-pager = LESS=FRSXQ less
+pager = LESS=FrSQX less
 attend-help = true
 attend-incoming = true
 attend-outgoing = true
