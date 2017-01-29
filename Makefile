@@ -16,7 +16,7 @@ vim:
 	mkdir -p ~/.local/share/nvim/backup
 	curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	mkdir -p ~/.vim
-	ln -s ~/.config/nvim/autoload ~/.vim/autoload
+	ln -s ~/.config/nvim/autoload ~/.vim/autoload || echo "autoload already present"
 	ln -s ~/.files/conf/vimrc ~/.config/nvim/init.vim || echo "init.vim already present"
 	sudo apt install software-properties-common
 	sudo add-apt-repository ppa:neovim-ppa/unstable
