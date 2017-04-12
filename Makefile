@@ -25,14 +25,15 @@ vim:
 
 hg:
 	(cd ~/.files/private/bin && \
-	 wget https://www.mercurial-scm.org/release/mercurial-3.9.2.tar.gz && \
-	 tar xvzf mercurial*.tar.gz && \
-	 mv mercurial*/ mercurial-dir && \
-	 cd mercurial-dir && \
-	 rm ../mercurial*.tar.gz && \
-	 make local && \
-	 cd ../ && \
-	 ln -s ./mercurial-dir/hg ./)
+	wget https://www.mercurial-scm.org/release/mercurial-4.1.2.tar.gz && \
+	tar xvzf mercurial*.tar.gz && \
+	rm -rf mercurial-dir/ && \
+	mv mercurial*/ mercurial-dir && \
+	cd mercurial-dir && \
+	rm ../mercurial*.tar.gz && \
+	make local && \
+	cd ../ && \
+	ln -s ./mercurial-dir/hg ./)
 	ln -s ~/.files/conf/hgrc ~/.hgrc || echo ".hgrc already present"
 
 zsh:
