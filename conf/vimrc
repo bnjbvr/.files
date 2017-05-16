@@ -110,11 +110,6 @@ set ofu=syntaxcomplete#Complete
 map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 set tags=./tags;/
 
-" vim-racer plugin configuration.
-set hidden
-let g:racer_cmd = "/home/ben/.cargo/bin/racer"
-let $RUST_SRC_PATH = "/home/ben/mozilla/rustc/src/"
-
 source ~/.files/conf/bundles.vim
 
 " config da detectindent
@@ -200,6 +195,24 @@ let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_quit_key='<esc>'
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
+" LANGAGE SERVER CONFIG
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> Kh :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> Kr :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> KR :call LanguageClient_textDocument_rename()<CR>"
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+
+" END OF LANGAGE SERVER CONFIG
 
 " Half indent for switch cases
 set cino=:0.5s,=0.5s

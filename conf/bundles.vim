@@ -29,6 +29,10 @@ Plug 'scrooloose/nerdtree'
 " Creates a list of TODO/FIXME/etc.
 Plug 'vim-scripts/TaskList.vim'
 
+" Multi-selection UI
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+
 " *****************************************************************************
 " Behavior ********************************************************************
 " *****************************************************************************
@@ -67,8 +71,14 @@ Plug 'isRuslan/vim-es6'
 " Syntax highlighting and detection of rust files.
 Plug 'rust-lang/rust.vim'
 
-" Code completion and navigation in rust.
-Plug 'racer-rust/vim-racer'
+" LangServer protocol.
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+
+" Integration with deoplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Showing function signature and inline doc
+Plug 'Shougo/echodoc.vim'
 
 " call vundle#end()
 call plug#end()
