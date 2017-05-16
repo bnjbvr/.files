@@ -200,6 +200,8 @@ let g:multi_cursor_quit_key='<esc>'
 let g:deoplete#enable_at_startup = 1
 
 " LANGAGE SERVER CONFIG
+set hidden
+
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
