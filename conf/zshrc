@@ -98,3 +98,5 @@ alias gh='hg'
 
 # run tmux in 256 colors mode by default
 alias tmux='TERM=screen-256color-bce tmux'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
