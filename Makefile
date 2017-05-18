@@ -4,7 +4,7 @@ all: deps gitdeps vim hg zsh npm watchman crecord tmux
 .PHONY: deps gitdeps vim hg npm zsh tmux clean watchman crecord
 
 deps:
-	sudo apt-get install -y zsh build-essential autoconf2.13 curl redshift git python3-pygments automake python-dev libnotify-bin
+	sudo apt-get install -y zsh build-essential autoconf2.13 curl redshift git python3-pygments automake python-dev libnotify-bin pinta
 	ln -s ~/.files/conf/redshift.conf ~/.config/redshift.conf || echo "redshift.conf already present"
 
 gitdeps:

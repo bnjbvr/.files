@@ -66,6 +66,8 @@ alias dc='docker-compose'
 alias py='python3'
 alias serve='python -m SimpleHTTPServer'
 
+alias paint='pinta'
+
 # Mozilla build shortcuts
 
 export BUILD_VERBOSE_LOG=1
@@ -95,6 +97,7 @@ export LC_ALL="en_US.UTF-8"
 
 # common typos
 alias gh='hg'
+alias sl='ls'
 
 # run tmux in 256 colors mode by default
 alias tmux='TERM=screen-256color-bce tmux'
