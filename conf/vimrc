@@ -150,8 +150,11 @@ autocmd! BufWritePost .vimrc source /home/ben/.vimrc
 " Define leader
 let mapleader = ' '
 
-" Activate CtrlP with <leader>f (find)
-noremap <leader>f :CtrlP<CR>
+" Activate fzf :Files with <leader>f (files)
+noremap <leader>f :Files<CR>
+
+" Activate fzf :Buffers with <leader>b (buffers)
+map <leader>b : Buffers<CR>
 
 " erases the highlight on search
 map <silent> <leader><CR> :noh<CR>

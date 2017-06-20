@@ -3,7 +3,6 @@ filetype off
 
 "Bundle 'scrooloose/syntastic'
 "Bundle 'Valloric/YouCompleteMe'
-"Bundle 'maxbrunsfeld/vim-yankstack'
 
 call plug#begin(expand('~/.local/share/nvim/bundle'))
 
@@ -19,9 +18,6 @@ Plug 'bling/vim-airline'
 
 " Show trailing whitespaces in red.
 Plug 'bitc/vim-bad-whitespace'
-
-" File opener using MRU caches.
-Plug 'kien/ctrlp.vim'
 
 " File explorer.
 Plug 'scrooloose/nerdtree'
@@ -57,6 +53,9 @@ Plug 'Townk/vim-autoclose'
 
 " Colors pairs of matching parentheses.
 Plug 'kien/rainbow_parentheses.vim'
+
+" Emacs yank schemes
+Plug 'maxbrunsfeld/vim-yankstack'
 
 " *****************************************************************************
 " Language specific ***********************************************************
