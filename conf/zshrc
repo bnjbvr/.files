@@ -7,7 +7,7 @@ MOZ_SM_SRC_DIR="/home/ben/mozilla/repo/js/src"
 MOZ_BUILDS_DIR="/home/ben/mozilla/builds"
 
 # Normal plugins are in $ZSH/plugins/, custom plugins are in $ZSH/custom/plugins/
-plugins=(git mercurial debian battery jump sudo)
+plugins=(git mercurial debian battery jump sudo command-not-found)
 
 # Programs to activate
 ZSH=$HOME/.files/bin/ohmyzsh
