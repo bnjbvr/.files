@@ -11,7 +11,6 @@ bzexport = /home/ben/.mozbuild/version-control-tools/hgext/bzexport
 firefoxtree = /home/ben/.mozbuild/version-control-tools/hgext/firefoxtree
 mqext = /home/ben/.mozbuild/version-control-tools/hgext/mqext
 reviewboard = /home/ben/.mozbuild/version-control-tools/hgext/reviewboard/client.py
-bundleclone = /home/ben/.mozbuild/version-control-tools/hgext/bundleclone
 push-to-try = /home/ben/.mozbuild/version-control-tools/hgext/push-to-try
 fsmonitor = 
 
