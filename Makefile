@@ -26,7 +26,7 @@ vim:
 hg:
 	(mkdir -p ~/.files/private/bin && \
 	cd ~/.files/private/bin && \
-	wget https://www.mercurial-scm.org/release/mercurial-4.2.1.tar.gz && \
+	wget https://www.mercurial-scm.org/release/mercurial-4.3.1.tar.gz && \
 	tar xvzf mercurial*.tar.gz && \
 	rm -rf mercurial-dir/ && \
 	mv mercurial*/ mercurial-dir && \
@@ -34,6 +34,7 @@ hg:
 	rm ../mercurial*.tar.gz && \
 	make local -j8 && \
 	cd ../ && \
+	rm -rf ./hg && \
 	ln -s ./mercurial-dir/hg ./)
 	ln -s ~/.files/conf/hgrc ~/.hgrc || echo ".hgrc already present"
 
