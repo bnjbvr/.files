@@ -157,8 +157,8 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
         print "Make sure to have installed libclang-dev and libedit-dev."
         cfg += " --enable-clang-plugin"
 elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
-    add_env_option('CC', '"gcc -m32 -march=pentiumpro"')
-    add_env_option('CXX', '"g++ -m32 -march=pentiumpro"')
+    add_env_option('CC', '"gcc -m32 -msse -msse2 -mfpmath=sse"')
+    add_env_option('CXX', '"g++ -m32  -msse -msse2 -mfpmath=sse"')
     add_env_option('AR', '"ar"')
     cfg += " --target=i686-pc-linux"
     if get_yesno_answer('arm simulator build?', COMPILE_ARM_SIMULATOR):
