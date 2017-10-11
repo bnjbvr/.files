@@ -23,6 +23,9 @@ vim:
 	sudo apt update
 	sudo apt install neovim
 
+git:
+	ln -s ~/.files/conf/gitconfig ~/.gitconfig || echo ".gitconfig already present"
+
 hg:
 	(mkdir -p ~/.files/private/bin && \
 	cd ~/.files/private/bin && \

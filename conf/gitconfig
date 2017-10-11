@@ -1,0 +1,8 @@
+[user]
+	email = public@benj.me
+	name = Benjamin Bouvier
+
+[alias]
+    st = status
+    br = branch
+    co = checkout
