@@ -21,6 +21,8 @@ set wildmenu        " command-line completion shows a list of matches
 set wildmode=longest,list:longest,full " Bash-vim completion behavior
 set autochdir       " use current working directory of a file as base path
 
+set icm=split       " show preview of search/replace.
+
 set encoding=utf-8
 
 set nu              " show line numbers
