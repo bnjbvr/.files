@@ -21,7 +21,7 @@ showfunc = 1
 
 [ui]
 username = Benjamin Bouvier <benj@benj.me>
-editor = vim
+editor = nvim
 interface = curses
 
 [paths]

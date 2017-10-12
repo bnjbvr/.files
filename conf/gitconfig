@@ -1,3 +1,6 @@
+[core]
+    editor = nvim
+
 [user]
 	email = public@benj.me
 	name = Benjamin Bouvier
