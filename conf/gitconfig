@@ -6,3 +6,4 @@
     st = status
     br = branch
     co = checkout
+    fix = commit --no-edit --amend
