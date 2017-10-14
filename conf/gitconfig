@@ -1,12 +1,16 @@
 [core]
     editor = nvim
 
+[push]
+    default = simple
+
 [user]
-	email = public@benj.me
-	name = Benjamin Bouvier
+    email = public@benj.me
+    name = Benjamin Bouvier
 
 [alias]
     st = status
     br = branch
     co = checkout
+    ci = commit
     fix = commit --no-edit --amend
