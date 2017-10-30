@@ -143,6 +143,7 @@ def add_env_option(key, val):
 if get_yesno_answer('use clang / clang++?', USE_CLANG):
     add_env_option('CC', '"clang"')
     add_env_option('CXX', '"clang++"')
+    cfg += " --enable-linker=lld"
     if get_yesno_answer('enable ASAN?', ENABLE_ASAN):
         add_env_option('CC', '"clang -fsanitize=address"')
         add_env_option('CXX', '"clang++ -fsanitize=address"')
