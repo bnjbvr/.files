@@ -71,20 +71,20 @@ if len(AVAILABLE_ROOTS) == 1:
     root = AVAILABLE_ROOTS[0]
 else:
     while True:
-        root = raw_input('Choose your root: ')
-
-        if len(root) == 0:
-            print "Don't be lazy, write something."
-            continue
-
         try:
+            root = raw_input('Choose your root: (default=0)')
+            if len(root) == 0:
+                root = 0
             root = int(root)
             if root < len(AVAILABLE_ROOTS):
                 root = AVAILABLE_ROOTS[root]
                 if root is not None:
                     break
             print 'there is no such available root'
-        except Exception as e:
+        except KeyboardInterrupt:
+            print("Aborting, bye!")
+            exit(0)
+        except:
             print 'not a valid root name'
             root = ''
 
@@ -115,13 +115,14 @@ def get_yesno_answer(question, default=None):
             rep = raw_input(question_with_default)
             if rep == 'y' or rep == 'Y':
                 return True
-            elif rep == 'n' or rep == 'N':
+            if rep == 'n' or rep == 'N':
                 return False
-            elif len(rep) == 0 and default is not None:
+            if len(rep) == 0 and default is not None:
                 return default == 'y' or default == 'Y'
-            else:
-                raise Exception
-            break
+            raise Exception
+        except KeyboardInterrupt:
+            print("Aborting, bye!")
+            exit(0)
         except:
             print('Only possible answers are y or n')
 
@@ -191,25 +192,36 @@ else:
 overridenEnvString = ' '.join(['%s=%s' % (k, overridenEnv[k]) for k in overridenEnv])
 print overridenEnvString + ' ' + cfg
 while True:
-    a = raw_input("Would you like to run it (r), save it (s), or quit (q) ?")
-    if a == 'r':
-        run_args = [arg for arg in cfg.split(' ') if len(arg) > 0]
-        print "Passing env=%s" % str(env)
-        p = subprocess.Popen(run_args, stdout=subprocess.PIPE, env=env)
-        print p.communicate()[0]
-        break
+    try:
+        a = raw_input("Would you like to run it (r), save it (s), or quit (q) ?")
 
-    if a == 's':
-        name = raw_input("Give it a name: (default: " + DEFAULT_BUILD_SCRIPT_NAME + ")")
-        if len(name) == 0:
-            name = DEFAULT_BUILD_SCRIPT_NAME
+        if a == 'r':
+            run_args = [arg for arg in cfg.split(' ') if len(arg) > 0]
+            p = subprocess.Popen(run_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env)
+            stdout, stderr = p.communicate()
+            print "STDOUT=", stdout
+            print "STDERR=", stderr
+            break
 
-        HEADER = "#!/bin/bash\n"
-        f = file(name, "w+")
-        f.write(HEADER)
-        f.write(overridenEnvString + ' ' + cfg)
-        os.chmod('./' + name, 0755)
-        f.close()
-        break
-    if a == 'q':
-        break
+        if a == 's':
+            name = raw_input("Give it a name: (default: " + DEFAULT_BUILD_SCRIPT_NAME + ")")
+            if len(name) == 0:
+                name = DEFAULT_BUILD_SCRIPT_NAME
+
+            content = "#!/bin/bash\n"
+            content += ' \\\n'.join(['%s=%s' % (k, overridenEnv[k]) for k in overridenEnv])
+            content += ' \\\n'
+            content += ' \\\n    '.join([x for x in cfg.split(' ') if len(x) > 0])
+
+            with file(name, "w+") as f:
+                f.write(content)
+            os.chmod('./' + name, 0755)
+            break
+
+        if a == 'q':
+            break
+
+        print("Only valid options are r/s/q, please retry.")
+    except KeyboardInterrupt:
+        print("Aborting, bye!")
+        exit(0)
