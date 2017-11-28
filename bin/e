@@ -3,8 +3,6 @@
 
 # Connect to an existing gvim instance, or run a gvim if none is available
 
-list=$(vim --serverlist)
-
 if [ -e /usr/bin/nvim ]
 then
     prog="nvim"
@@ -12,9 +10,4 @@ else
     prog="vim"
 fi
 
-if [ -z "$list" ]
-then
-  $prog $*
-else
-  $prog --remote-tab-silent $*
-fi
+$prog $*
