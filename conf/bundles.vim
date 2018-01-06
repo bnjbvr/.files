@@ -67,6 +67,9 @@ Plug 'rstacruz/sparkup'
 " Syntax highlighting for ES6.
 Plug 'isRuslan/vim-es6'
 
+" Syntax highlighting for TypeScript.
+Plug 'leafgarland/typescript-vim'
+
 " Syntax highlighting and detection of rust files.
 Plug 'rust-lang/rust.vim'
 
