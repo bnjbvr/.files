@@ -16,14 +16,8 @@ Plug 'altercation/vim-colors-solarized'
 " Better status line.
 Plug 'bling/vim-airline'
 
-" Show trailing whitespaces in red.
-Plug 'bitc/vim-bad-whitespace'
-
 " File explorer.
 Plug 'scrooloose/nerdtree'
-
-" Creates a list of TODO/FIXME/etc.
-Plug 'vim-scripts/TaskList.vim'
 
 " Multi-selection UI
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -51,9 +45,6 @@ Plug 'scrooloose/nerdcommenter'
 " Automatically inserts closing chars for pairs of open/close chars (e.g. parens).
 Plug 'Townk/vim-autoclose'
 
-" Colors pairs of matching parentheses.
-Plug 'kien/rainbow_parentheses.vim'
-
 " Emacs yank schemes
 Plug 'maxbrunsfeld/vim-yankstack'
 
@@ -63,9 +54,6 @@ Plug 'maxbrunsfeld/vim-yankstack'
 
 " HTML expander with <C-E>.
 Plug 'rstacruz/sparkup'
-
-" Syntax highlighting for ES6.
-Plug 'isRuslan/vim-es6'
 
 " Syntax highlighting for Vue.
 Plug 'posva/vim-vue'

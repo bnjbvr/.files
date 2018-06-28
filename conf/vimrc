@@ -31,9 +31,10 @@ set showcmd         " show informations about selection while in visual mode
 
 set guioptions-=T   "remove toolbar
 
-set colorcolumn=80,100  " highligth the 80th and 120th column
+set colorcolumn=80,100  " highlight the 80th and 100th column
 
-"set cursorline " highlight current line
+set cursorline " highlight current line
+set cursorcolumn " and column too
 
 " all operations such as yy, D, and P work with the clipboard.
 " No need to prefix them with "* or "+
@@ -60,15 +61,10 @@ nnoremap G Gzz
 set listchars=trail:·,nbsp:·,tab:▸\ ,extends:»,precedes:«,
 set list
 
-set laststatus=2    " always show the statusline, even when there is only one file edited
+" also mark trailing whitespaces as error so they show up in red.
+match ErrorMsg '\s\+$'
 
-" move the current line up or down with the Ctrl-arrow keys
-nmap <C-Down> :<C-u>move .+1<CR>
-nmap <C-Up>   :<C-u>move .-2<CR>
-imap <C-Down> <C-o>:<C-u>move .+1<CR>
-imap <C-Up>   <C-o>:<C-u>move .-2<CR>
-vmap <C-Down> :move '>+1<CR>gv
-vmap <C-Up> :move '<-2<CR>gv
+set laststatus=2 " always show the statusline, even when there is only one file edited
 
 filetype plugin on
 set ofu=syntaxcomplete#Complete
@@ -114,24 +110,9 @@ set tags=./tags;/
 
 source ~/.files/conf/bundles.vim
 
-" config da detectindent
-"let g:detectindent_preferred_expandtab = 1
-"let g:detectindent_preferred_indent = 4
-"autocmd BufNewFile,BufReadPost * :DetectIndent
-"autocmd FileType make setlocal noexpandtab
-
-" config da Tagbar
-"nmap <F8> :TagbarToggle<CR>
-"let g:tagbar_autofocus = 1
-
 " older regexp engine, makes vim faster?
 syntax on             " syntax coloring by default
 set re=1
-
-" In case syntax coloring is slow, deactivate the next three options
-" set nocursorcolumn
-" set nocursorline
-" syntax sync minlines=256
 
 " Deactivate the arrow keys.
 noremap <Up> <Nop>
@@ -148,6 +129,8 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 autocmd! BufWritePost .vimrc source /home/ben/.vimrc
+autocmd! BufWritePost init.vim source /home/ben/.config/nvim/init.vim
+autocmd! BufWritePost vimrc source /home/ben/.config/nvim/init.vim
 
 " Define leader
 let mapleader = ' '
@@ -156,7 +139,7 @@ let mapleader = ' '
 noremap <leader>f :Files<CR>
 
 " Activate fzf :Buffers with <leader>b (buffers)
-map <leader>b : Buffers<CR>
+map <leader>b :Buffers<CR>
 
 " erases the highlight on search
 map <silent> <leader><CR> :noh<CR>
@@ -193,33 +176,39 @@ vnoremap > >gv
 " magic for backspace and delete issues in terminal mode
 set backspace=indent,eol,start
 
-nmap <leader>p <Plug>yankstack_substitute_newer_paste
-nmap <leader>P <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+nmap <leader>p <Plug>yankstack_substitute_older_paste
 
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_quit_key='<esc>'
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
+let g:AutoClosePreserveDotReg = 0
 
 " LANGAGE SERVER CONFIG
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
-nnoremap <silent> Kh :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> Kr :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> KR :call LanguageClient_textDocument_rename()<CR>"
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+autocmd FileType rust nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
+autocmd FileType rust nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
+autocmd FileType rust nnoremap <silent> <C-\> :vsp<CR>:call LanguageClient_textDocument_definition()<CR>
+autocmd FileType rust nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
+autocmd FileType rust nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
+let g:deoplete#enable_at_startup = 1
 
 " END OF LANGAGE SERVER CONFIG
 
 " Half indent for switch cases
 set cino=:0.5s,=0.5s
+
+" Have JJ command erase supplementary spaces.
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j
+endif
