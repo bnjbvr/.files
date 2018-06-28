@@ -1,8 +1,6 @@
 [extensions]
 mq = 
 rebase = 
-color = 
-pager = 
 graphlog = 
 histedit = 
 record = 
@@ -13,6 +11,7 @@ mqext = /home/ben/.mozbuild/version-control-tools/hgext/mqext
 reviewboard = /home/ben/.mozbuild/version-control-tools/hgext/reviewboard/client.py
 push-to-try = /home/ben/.mozbuild/version-control-tools/hgext/push-to-try
 fsmonitor = 
+blackbox = 
 
 [diff]
 git = 1
@@ -22,7 +21,13 @@ showfunc = 1
 [ui]
 username = Benjamin Bouvier <benj@benj.me>
 editor = nvim
+merge = vimdiff
 interface = curses
+tweakdefaults = true
+
+[merge-tools]
+vimdiff.executable = nvim
+vimdiff.args = -d $base $local $output $other +close +close
 
 [paths]
 try = ssh://hg.mozilla.org/try
@@ -31,6 +36,7 @@ review = ssh://reviewboard-hg.mozilla.org/gecko
 [alias]
 try = push -f try
 wip = log --graph --rev=wip --template=wip
+lsb = log -r 'bookmark() and not public()' -T '{pad("{bookmarks}", 30)} {desc|firstline}\n'
 
 [defaults]
 qnew = -U
@@ -83,12 +89,7 @@ clonebundles = true
 graphshorten = true
 
 [pager]
-attend-wip = true
 pager = LESS=FrSQX less
-attend-help = true
-attend-incoming = true
-attend-outgoing = true
-attend-status = true
 
 [hostsecurity]
 bitbucket.org:fingerprints = sha256:4e:65:3e:76:0f:81:59:85:5b:50:06:0c:c2:4d:3c:56:53:8b:83:3e:9b:fa:55:26:98:9a:ca:e2:25:03:92:47
