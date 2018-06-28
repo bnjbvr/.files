@@ -67,6 +67,9 @@ Plug 'rstacruz/sparkup'
 " Syntax highlighting for ES6.
 Plug 'isRuslan/vim-es6'
 
+" Syntax highlighting for Vue.
+Plug 'posva/vim-vue'
+
 " Syntax highlighting for TypeScript.
 Plug 'leafgarland/typescript-vim'
 
