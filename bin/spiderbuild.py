@@ -40,6 +40,7 @@ ENABLE_TRACELOGGING = 'n'
 ENABLE_THREAD_SAFETY = 'y'
 ENABLE_ASAN = 'n'
 ENABLE_TSAN = 'n'
+ENABLE_MSAN = 'n'
 ENABLE_VALGRIND = 'n'
 ENABLE_ION = 'y'
 ENABLE_STATIC_ANALYSIS = 'n'
@@ -155,6 +156,11 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
         add_env_option('CXX', '"clang++ -fsanitize=thread -fPIC -pie"')
         add_env_option('LDFLAGS', '"-fsanitize=thread -fPIC -pie"')
         cfg + " --enable-llvm-hacks --disable-jemalloc --disable-crashreporter --disable-elf-hack"
+    if get_yesno_answer('enable MSAN?', ENABLE_MSAN):
+        add_env_option('CC', '"clang -fsanitize=memory"')
+        add_env_option('CXX', '"clang++ -fsanitize=memory"')
+        add_env_option('LDFLAGS', '"-fsanitize=memory"')
+        cfg += " --enable-memory-sanitizer --disable-jemalloc"
     elif get_yesno_answer('enable static analysis?', ENABLE_STATIC_ANALYSIS):
         print "Make sure to have installed libclang-dev and libedit-dev."
         cfg += " --enable-clang-plugin"
