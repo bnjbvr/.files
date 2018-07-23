@@ -1,0 +1,29 @@
+# Use at least -O1 for optimization to avoid stack space
+# exhaustions caused by Clang function inlining.
+mk_add_options MOZ_OBJDIR=/home/ben/mozilla/builds/browser-asan-d64
+mk_add_options AUTOCLOBBER=1
+mk_add_options MOZ_MAKE_FLAGS=-j8
+
+export CC="clang"
+export CXX="clang++"
+export LLVM_SYMBOLIZER="llvm-symbolizer"
+
+ac_add_options --enable-debug
+ac_add_options --enable-optimize="-O1"
+
+# ASan specific options on Linux
+ac_add_options --enable-valgrind
+
+ac_add_options --enable-address-sanitizer
+ac_add_options --disable-elf-hack
+
+# Mandatory options required for ASan builds (both on Linux and Mac)
+export MOZ_DEBUG_SYMBOLS=1
+ac_add_options --enable-debug-symbols
+ac_add_options --disable-install-strip
+ac_add_options --disable-jemalloc
+ac_add_options --disable-crashreporter
+ac_add_options --disable-profiling
+
+# Need this to prevent name conflicts with the normal nightly build packages
+export MOZ_PKG_SPECIAL=asan
