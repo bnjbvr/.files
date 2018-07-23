@@ -65,10 +65,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
 
 " LangServer protocol.
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-
-" Integration with deoplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+\ }
 
 " Showing function signature and inline doc
 Plug 'Shougo/echodoc.vim'
