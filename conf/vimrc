@@ -190,12 +190,15 @@ let g:AutoClosePreserveDotReg = 0
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
 
 let g:LanguageClient_autoStart=1
 let g:LanguageClient_selectionUI="fzf"
 let g:LanguageClient_settingsPath="/home/ben/.files/conf/language-client-settings.json"
+" Disable these to get language client logging.
+"let g:LanguageClient_loggingFile="/tmp/neovim-lang-client.log"
+"let g:LanguageClient_loggingLevel="INFO"
 
 autocmd FileType rust nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
 autocmd FileType rust nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
@@ -204,6 +207,14 @@ autocmd FileType rust nnoremap <silent> <C-]> :call LanguageClient_textDocument_
 autocmd FileType rust nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
 
 " END OF LANGAGE SERVER CONFIG
+
+" Airline configuration.
+let g:airline_solarized_bg='dark'
+set t_Co=256 " use 256 colors
+
+" Display the LSP message in the bottom left.
+call airline#parts#define_function('show_lsp_status', 'LanguageClient#statusLine')
+let g:airline_section_b = airline#section#create_right(['show_lsp_status'])
 
 " Half indent for switch cases
 set cino=:0.5s,=0.5s

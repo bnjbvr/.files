@@ -1,9 +1,6 @@
 set nocompatible
 filetype off
 
-"Bundle 'scrooloose/syntastic'
-"Bundle 'Valloric/YouCompleteMe'
-
 call plug#begin(expand('~/.local/share/nvim/bundle'))
 
 " *****************************************************************************
@@ -14,7 +11,8 @@ call plug#begin(expand('~/.local/share/nvim/bundle'))
 Plug 'altercation/vim-colors-solarized'
 
 " Better status line.
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " File explorer.
 Plug 'scrooloose/nerdtree'
