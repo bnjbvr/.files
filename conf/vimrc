@@ -193,11 +193,13 @@ set hidden
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio']
     \ }
 
 let g:LanguageClient_autoStart=1
 let g:LanguageClient_selectionUI="fzf"
 let g:LanguageClient_settingsPath="/home/ben/.files/conf/language-client-settings.json"
+
 " Disable these to get language client logging.
 "let g:LanguageClient_loggingFile="/tmp/neovim-lang-client.log"
 "let g:LanguageClient_loggingLevel="INFO"
@@ -207,6 +209,13 @@ autocmd FileType rust nnoremap <silent> <leader>r :call LanguageClient_textDocum
 autocmd FileType rust nnoremap <silent> <C-\> :call LanguageClient_textDocument_definition({'gotoCmd': 'vsplit'})<CR>
 autocmd FileType rust nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
 autocmd FileType rust nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
+
+" TODO find a better way to set the shortcuts in general;
+autocmd FileType javascript nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
+autocmd FileType javascript nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
+autocmd FileType javascript nnoremap <silent> <C-\> :call LanguageClient_textDocument_definition({'gotoCmd': 'vsplit'})<CR>
+autocmd FileType javascript nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
+autocmd FileType javascript nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
 
 " END OF LANGAGE SERVER CONFIG
 
