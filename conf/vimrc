@@ -36,6 +36,8 @@ set colorcolumn=80,100  " highlight the 80th and 100th column
 set cursorline " highlight current line
 set cursorcolumn " and column too
 
+set signcolumn=yes " always draw the signcolumn.
+
 " all operations such as yy, D, and P work with the clipboard.
 " No need to prefix them with "* or "+
 set clipboard=unnamed
@@ -202,7 +204,7 @@ let g:LanguageClient_settingsPath="/home/ben/.files/conf/language-client-setting
 
 autocmd FileType rust nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
 autocmd FileType rust nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
-autocmd FileType rust nnoremap <silent> <C-\> :vsp<CR>:call LanguageClient_textDocument_definition()<CR>
+autocmd FileType rust nnoremap <silent> <C-\> :call LanguageClient_textDocument_definition({'gotoCmd': 'vsplit'})<CR>
 autocmd FileType rust nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
 autocmd FileType rust nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
 
