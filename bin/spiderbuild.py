@@ -94,15 +94,15 @@ JS_ROOT = root
 print 'The chosen root is', JS_ROOT
 
 options = (
-        ('debug mode', '--enable-debug', '--disable-debug', ENABLE_DEBUG),
-        ('opt mode', '--enable-optimize', '--disable-optimize', ENABLE_OPTIMIZE),
-        ('ccache', '--with-ccache', '', ENABLE_CCACHE),
-        ('intl', '', '--without-intl-api', ENABLE_INTL),
-        ('perf support', '--enable-perf', '', ENABLE_PERF),
-        ('trace logging', '--enable-trace-logging', '', ENABLE_TRACELOGGING),
-        ('thread safety', '', '--disable-threadsafe', ENABLE_THREAD_SAFETY),
-        ('valgrind', '--enable-valgrind', '', ENABLE_VALGRIND),
-        ('ion', '', '--disable-ion', ENABLE_ION),
+    ('debug mode', '--enable-debug', '--disable-debug', ENABLE_DEBUG),
+    ('opt mode', '--enable-optimize', '--disable-optimize', ENABLE_OPTIMIZE),
+    ('ccache', '--with-ccache', '', ENABLE_CCACHE),
+    ('intl', '', '--without-intl-api', ENABLE_INTL),
+    ('perf support', '--enable-perf', '', ENABLE_PERF),
+    ('trace logging', '--enable-trace-logging', '', ENABLE_TRACELOGGING),
+    ('thread safety', '', '--disable-threadsafe', ENABLE_THREAD_SAFETY),
+    ('valgrind', '--enable-valgrind', '', ENABLE_VALGRIND),
+    ('ion', '', '--disable-ion', ENABLE_ION),
 )
 
 cfg = JS_ROOT + ' '
@@ -138,9 +138,11 @@ for name, yes, no, default in options:
 
 env = os.environ
 overridenEnv = {}
+did_cross_compile = False
 
 def add_env_option(key, val):
     env[key] = val
+    assert key not in overridenEnv
     overridenEnv[key] = val
 
 if get_yesno_answer('use clang / clang++?', USE_CLANG):
@@ -171,16 +173,6 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
     if get_yesno_answer('emit compile_commands.json at compilation?', ENABLE_COMPILEDB):
         cfg += " --enable-build-backends=CompileDB,RecursiveMake "
 
-elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
-    add_env_option('CC', '"gcc -m32 -msse -msse2 -mfpmath=sse"')
-    add_env_option('CXX', '"g++ -m32  -msse -msse2 -mfpmath=sse"')
-    add_env_option('AR', '"ar"')
-    cfg += " --target=i686-pc-linux"
-    if get_yesno_answer('arm simulator build?', COMPILE_ARM_SIMULATOR):
-        cfg += ' --enable-simulator=arm'
-    elif get_yesno_answer('mips simulator build?', COMPILE_MIPS32_SIMULATOR):
-        cfg += ' --enable-simulator=mips32'
-
 elif get_yesno_answer('ARM cross compilation?', CROSS_COMPILE_ARM):
     print "Make sure to have installed gcc-arm-linux-gnueabi{,hf} g++-arm-linux-gnueabi{,hf} binutils-arm-linux-gnueabi{,hf}"
     if get_yesno_answer('hard float ABI?', CROSS_COMPILE_ARM_HF):
@@ -198,8 +190,22 @@ elif get_yesno_answer('ARM cross compilation?', CROSS_COMPILE_ARM):
     add_env_option('CXX', cxx)
     add_env_option('AR', ar)
     cfg += target
-else:
-    if get_yesno_answer('arm64 simulator build?', COMPILE_ARM64_SIMULATOR):
+
+    did_cross_compile = True
+
+# Fantastic simulators, and where to find them!
+if not did_cross_compile:
+    if get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
+        add_env_option('CCFLAGS', '"-m32 -msse -msse2 -mfpmath=sse"')
+        add_env_option('CXXFLAGS', '"-m32  -msse -msse2 -mfpmath=sse"')
+        add_env_option('AR', '"ar"')
+        cfg += " --target=i686-pc-linux"
+        cfg += " --host=i686-pc-linux"
+        if get_yesno_answer('arm simulator build?', COMPILE_ARM_SIMULATOR):
+            cfg += ' --enable-simulator=arm'
+        elif get_yesno_answer('mips simulator build?', COMPILE_MIPS32_SIMULATOR):
+            cfg += ' --enable-simulator=mips32'
+    elif get_yesno_answer('arm64 simulator build?', COMPILE_ARM64_SIMULATOR):
         cfg += ' --enable-simulator=arm64'
     elif get_yesno_answer('mips64 simulator build?', COMPILE_MIPS64_SIMULATOR):
         cfg += ' --enable-simulator=mips64'
@@ -227,6 +233,7 @@ while True:
             content += ' \\\n'.join(['%s=%s' % (k, overridenEnv[k]) for k in overridenEnv])
             content += ' \\\n'
             content += ' \\\n    '.join([x for x in cfg.split(' ') if len(x) > 0])
+            content += '\n'
 
             with file(name, "w+") as f:
                 f.write(content)
