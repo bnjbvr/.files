@@ -152,8 +152,8 @@ map <leader>T :exec '!ctags --recurse --append --sort=yes --c++-kinds=+p --field
 " show next tag match
 map <leader><Space> :tn<CR>
 
-" open reject file <leader>R (R is for rejects)
-map <silent> <leader>R :vs %.rej<CR>
+" open reject file (j is for reJects)
+map <silent> <leader>j :vs %.rej<CR>
 
 " side pane of files (n is for nerdtree)
 nnoremap <leader>n :NERDTreeToggle<cr>
@@ -191,11 +191,6 @@ let g:AutoClosePreserveDotReg = 0
 " LANGAGE SERVER CONFIG
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio']
-    \ }
-
 let g:LanguageClient_autoStart=1
 let g:LanguageClient_selectionUI="fzf"
 let g:LanguageClient_settingsPath="/home/ben/.files/conf/language-client-settings.json"
@@ -204,18 +199,29 @@ let g:LanguageClient_settingsPath="/home/ben/.files/conf/language-client-setting
 "let g:LanguageClient_loggingFile="/tmp/neovim-lang-client.log"
 "let g:LanguageClient_loggingLevel="INFO"
 
-autocmd FileType rust nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
-autocmd FileType rust nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
-autocmd FileType rust nnoremap <silent> <C-\> :call LanguageClient_textDocument_definition({'gotoCmd': 'vsplit'})<CR>
-autocmd FileType rust nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
-autocmd FileType rust nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
+let g:LanguageClient_serverCommands = {}
 
-" TODO find a better way to set the shortcuts in general;
-autocmd FileType javascript nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
-autocmd FileType javascript nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
-autocmd FileType javascript nnoremap <silent> <C-\> :call LanguageClient_textDocument_definition({'gotoCmd': 'vsplit'})<CR>
-autocmd FileType javascript nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
-autocmd FileType javascript nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
+if executable('rustup')
+    let g:LanguageClient_serverCommands['rust'] = ['rustup', 'run', 'nightly', 'rls']
+endif
+
+if executable('javascript-typescript-stdio')
+    let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-stdio']
+endif
+
+if executable('cquery')
+    let g:LanguageClient_serverCommands['cpp'] = [
+        \ 'cquery',
+        \  '--log-file=/tmp/cq.log',
+        \  '--init={"cacheDirectory":"/tmp/cquery"}'
+    \ ]
+endif
+
+nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
+nnoremap <silent> <leader>D :call LanguageClient_textDocument_definition({'gotoCmd': 'vsplit'})<CR>
+nnoremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
 
 " END OF LANGAGE SERVER CONFIG
 

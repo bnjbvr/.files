@@ -44,6 +44,7 @@ ENABLE_MSAN = 'n'
 ENABLE_VALGRIND = 'n'
 ENABLE_ION = 'y'
 ENABLE_STATIC_ANALYSIS = 'n'
+ENABLE_COMPILEDB = 'y'
 
 DEFAULT_BUILD_SCRIPT_NAME = 'build.sh'
 
@@ -146,6 +147,7 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
     add_env_option('CC', '"clang"')
     add_env_option('CXX', '"clang++"')
     cfg += " --enable-linker=lld"
+
     if get_yesno_answer('enable ASAN?', ENABLE_ASAN):
         add_env_option('CC', '"clang -fsanitize=address"')
         add_env_option('CXX', '"clang++ -fsanitize=address"')
@@ -156,6 +158,7 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
         add_env_option('CXX', '"clang++ -fsanitize=thread -fPIC -pie"')
         add_env_option('LDFLAGS', '"-fsanitize=thread -fPIC -pie"')
         cfg + " --enable-llvm-hacks --disable-jemalloc --disable-crashreporter --disable-elf-hack"
+
     if get_yesno_answer('enable MSAN?', ENABLE_MSAN):
         add_env_option('CC', '"clang -fsanitize=memory"')
         add_env_option('CXX', '"clang++ -fsanitize=memory"')
@@ -164,6 +167,10 @@ if get_yesno_answer('use clang / clang++?', USE_CLANG):
     elif get_yesno_answer('enable static analysis?', ENABLE_STATIC_ANALYSIS):
         print "Make sure to have installed libclang-dev and libedit-dev."
         cfg += " --enable-clang-plugin"
+
+    if get_yesno_answer('emit compile_commands.json at compilation?', ENABLE_COMPILEDB):
+        cfg += " --enable-build-backends=CompileDB,RecursiveMake "
+
 elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
     add_env_option('CC', '"gcc -m32 -msse -msse2 -mfpmath=sse"')
     add_env_option('CXX', '"g++ -m32  -msse -msse2 -mfpmath=sse"')
@@ -173,6 +180,7 @@ elif get_yesno_answer('32 bits builds?', COMPILE_32_BITS):
         cfg += ' --enable-simulator=arm'
     elif get_yesno_answer('mips simulator build?', COMPILE_MIPS32_SIMULATOR):
         cfg += ' --enable-simulator=mips32'
+
 elif get_yesno_answer('ARM cross compilation?', CROSS_COMPILE_ARM):
     print "Make sure to have installed gcc-arm-linux-gnueabi{,hf} g++-arm-linux-gnueabi{,hf} binutils-arm-linux-gnueabi{,hf}"
     if get_yesno_answer('hard float ABI?', CROSS_COMPILE_ARM_HF):
@@ -185,6 +193,7 @@ elif get_yesno_answer('ARM cross compilation?', CROSS_COMPILE_ARM):
         cxx = '"arm-linux-gnueabi-g++"'
         ar = '"arm-linux-gnueabi-ar"'
         target = ' --target=arm-linux-gnueabi'
+
     add_env_option('CC', cc)
     add_env_option('CXX', cxx)
     add_env_option('AR', ar)
