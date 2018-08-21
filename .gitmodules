@@ -13,3 +13,6 @@
 [submodule "bin/z"]
 	path = bin/z
 	url = https://github.com/rupa/z
+[submodule "bin/cquery"]
+	path = bin/cquery
+	url = https://github.com/cquery-project/cquery.git
