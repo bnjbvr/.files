@@ -93,3 +93,12 @@ pager = LESS=FrSQX less
 
 [hostsecurity]
 bugzilla.mozilla.org:fingerprints = sha256:10:95:a8:c1:e1:c3:18:fa:e4:95:40:99:11:07:6d:e3:79:ab:e5:b0:29:50:ff:40:e8:e8:63:c4:fd:f3:9f:cb
+
+[phabricator]
+url = https://phabricator.services.mozilla.com/
+callsign = MOZILLACENTRAL
+
+[auth]
+mozilla.schemes = https
+mozilla.prefix = phabricator.services.mozilla.com
+# Keep that mozilla.phabtoken out of sight!
