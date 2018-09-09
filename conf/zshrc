@@ -92,6 +92,13 @@ alias jstz='$MOZ_SM_SRC_DIR/tests/jstests.py ./dist/bin.js'
 
 alias meteo='curl -4 wttr.in/Lyon'
 
+# Better CLI tools.
+
+[ -f /usr/bin/ncdu ] && alias du="ncdu -rr -x --exclude .git --exclude node_modules"
+which bat >/dev/null 2>&1 && alias cat=bat
+which fd >/dev/null 2>&1 && alias find=fd
+which tldr >/dev/null 2>&1 && alias help=tldr
+
 # PulseAudio workarounds
 alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
 
