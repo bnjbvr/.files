@@ -45,6 +45,7 @@ ENABLE_VALGRIND = 'n'
 ENABLE_ION = 'y'
 ENABLE_STATIC_ANALYSIS = 'n'
 ENABLE_COMPILEDB = 'y'
+ENABLE_WARNINGS_AS_ERRORS = 'y'
 
 DEFAULT_BUILD_SCRIPT_NAME = 'build.sh'
 
@@ -103,6 +104,7 @@ options = (
     ('thread safety', '', '--disable-threadsafe', ENABLE_THREAD_SAFETY),
     ('valgrind', '--enable-valgrind', '', ENABLE_VALGRIND),
     ('ion', '', '--disable-ion', ENABLE_ION),
+    ('warnings as errors', '--enable-warnings-as-errors', ENABLE_WARNINGS_AS_ERRORS)
 )
 
 cfg = JS_ROOT + ' '
