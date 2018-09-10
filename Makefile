@@ -8,10 +8,10 @@ deps:
 	ln -s ~/.files/conf/redshift.conf ~/.config/redshift.conf || echo "redshift.conf already present"
 
 rustdeps:
-	cargo install bat
-	cargo install rg
-	cargo install fd-find
-	cargo install tealdeer
+	@(cargo install bat > /dev/null 2>&1 || (cargo install bat 2>&1 | grep "already" > /dev/null || echo "error when installing bat"))
+	@(cargo install ripgrep > /dev/null 2>&1 || (cargo install ripgrep 2>&1 | grep "already" > /dev/null || echo "error when installing ripgrep"))
+	@(cargo install fd-find > /dev/null 2>&1 || (cargo install fd-find 2>&1 | grep "already" > /dev/null || echo "error when installing fd-find"))
+	@(cargo install tealdeer > /dev/null 2>&1 || (cargo install 2>&1 | grep "already"> /dev/null || echo "error when installing tealdeer"))
 
 gitdeps:
 	git submodule init
