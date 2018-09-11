@@ -8,7 +8,6 @@ purge =
 bzexport = /home/ben/.mozbuild/version-control-tools/hgext/bzexport
 firefoxtree = /home/ben/.mozbuild/version-control-tools/hgext/firefoxtree
 mqext = /home/ben/.mozbuild/version-control-tools/hgext/mqext
-reviewboard = /home/ben/.mozbuild/version-control-tools/hgext/reviewboard/client.py
 push-to-try = /home/ben/.mozbuild/version-control-tools/hgext/push-to-try
 fsmonitor = 
 blackbox = 
@@ -31,7 +30,6 @@ vimdiff.args = -d $base $local $output $other +close +close
 
 [paths]
 try = ssh://hg.mozilla.org/try
-review = ssh://reviewboard-hg.mozilla.org/gecko
 
 [alias]
 try = push -f try
