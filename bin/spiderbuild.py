@@ -104,7 +104,7 @@ options = (
     ('thread safety', '', '--disable-threadsafe', ENABLE_THREAD_SAFETY),
     ('valgrind', '--enable-valgrind', '', ENABLE_VALGRIND),
     ('ion', '', '--disable-ion', ENABLE_ION),
-    ('warnings as errors', '--enable-warnings-as-errors', ENABLE_WARNINGS_AS_ERRORS)
+    ('warnings as errors', '--enable-warnings-as-errors', '', ENABLE_WARNINGS_AS_ERRORS)
 )
 
 cfg = JS_ROOT + ' '
