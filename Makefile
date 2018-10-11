@@ -4,7 +4,9 @@ all: deps gitdeps vim hg zsh npm watchman crecord tmux
 .PHONY: deps gitdeps vim hg npm zsh tmux clean watchman crecord
 
 deps:
-	sudo apt-get install -y zsh build-essential autoconf2.13 curl redshift git python3-pygments automake python-dev libnotify-bin pinta ncdu
+	sudo apt-get install -y zsh build-essential autoconf2.13 curl redshift git python3-pygments automake python-dev libnotify-bin pinta ncdu libtool libssl-dev
+	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	python get-pip.py --user && rm get-pip.py
 	ln -s ~/.files/conf/redshift.conf ~/.config/redshift.conf || echo "redshift.conf already present"
 
 rustdeps:
@@ -33,18 +35,7 @@ git:
 	ln -s ~/.files/conf/gitconfig ~/.gitconfig || echo ".gitconfig already present"
 
 hg:
-	(mkdir -p ~/.files/private/bin && \
-	cd ~/.files/private/bin && \
-	wget https://www.mercurial-scm.org/release/mercurial-4.3.1.tar.gz && \
-	tar xvzf mercurial*.tar.gz && \
-	rm -rf mercurial-dir/ && \
-	mv mercurial*/ mercurial-dir && \
-	cd mercurial-dir && \
-	rm ../mercurial*.tar.gz && \
-	make local -j8 && \
-	cd ../ && \
-	rm -rf ./hg && \
-	ln -s ./mercurial-dir/hg ./)
+	pip install --user mercurial
 	ln -s ~/.files/conf/hgrc ~/.hgrc || echo ".hgrc already present"
 
 zsh:
