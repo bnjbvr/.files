@@ -13,13 +13,12 @@ mk_add_options AUTOCLOBBER=1
 #     export CXXFLAGS="-fcolor-diagnostics"
 # fi
 
-#export CC="clang"
-#export CXX="clang++"
+export CC="clang"
+export CXX="clang++"
 
 ac_add_options --disable-debug
 ac_add_options --disable-accessibility
 ac_add_options --enable-optimize
-ac_add_options --without-intl-api
 ac_add_options --with-ccache=/usr/bin/ccache
 ac_add_options --enable-linker=lld
-mk_add_options MOZ_MAKE_FLAGS=-j8
+mk_add_options MOZ_MAKE_FLAGS=-j$(nproc)
