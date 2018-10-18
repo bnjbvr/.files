@@ -74,14 +74,13 @@ alias paint='pinta'
 
 export BUILD_VERBOSE_LOG=1
 
-alias m1ke='make -s 2>&1 | colout -t g++'
-alias m4ke='make -s -j4 2>&1 | colout -t g++'
-alias m8ke='make -s -j8 2>&1 | colout -t g++'
-alias m='m8ke'
-alias ms='m1ke | less'
-alias b='./build.sh && m8ke'
+NUM_CPUS=`nproc`
+
+alias m="make -sj$NUM_CPUS"
+alias ms='make -s 2>&1 | less'
+alias b='./build.sh && m'
 alias c='cd $MOZ_SM_SRC_DIR && autoconf2.13 && cd -1 && b'
-alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && ./build.sh && m8ke'
+alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && b'
 
 alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftest,jittests -t none'
 
