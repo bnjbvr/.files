@@ -16,3 +16,6 @@
 [submodule "bin/cquery"]
 	path = bin/cquery
 	url = https://github.com/cquery-project/cquery.git
+[submodule "bin/fzf"]
+	path = bin/fzf
+	url = https://github.com/junegunn/fzf.git
