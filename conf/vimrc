@@ -219,6 +219,10 @@ if executable('cquery')
     \ ]
 endif
 
+if executable('pyls')
+    let g:LanguageClient_serverCommands['python'] = ['pyls']
+endif
+
 nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
