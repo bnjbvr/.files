@@ -50,6 +50,9 @@ Plug 'maxbrunsfeld/vim-yankstack'
 " Language specific ***********************************************************
 " *****************************************************************************
 
+" Cranelift IR.
+Plug 'CraneStation/cranelift.vim'
+
 " HTML expander with <C-E>.
 Plug 'rstacruz/sparkup'
 
