@@ -204,7 +204,7 @@ let g:LanguageClient_settingsPath="/home/ben/.files/conf/language-client-setting
 let g:LanguageClient_serverCommands = {}
 
 if executable('rustup')
-    let g:LanguageClient_serverCommands['rust'] = ['rustup', 'run', 'nightly', 'rls']
+    let g:LanguageClient_serverCommands['rust'] = ['rustup', 'run', 'stable', 'rls']
 endif
 
 if executable('javascript-typescript-stdio')
