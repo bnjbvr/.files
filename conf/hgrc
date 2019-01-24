@@ -12,6 +12,8 @@ push-to-try = /home/ben/.mozbuild/version-control-tools/hgext/push-to-try
 format-source = /home/ben/.mozbuild/version-control-tools/hgext/format-source
 fsmonitor = 
 blackbox = 
+absorb = 
+evolve = /home/ben/.mozbuild/evolve/hgext3rd/evolve
 
 [diff]
 git = 1
