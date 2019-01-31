@@ -35,6 +35,7 @@ vimdiff.args = -d $base $local $output $other +close +close
 try = ssh://hg.mozilla.org/try
 
 [alias]
+e = export
 try = push -f try
 wip = log --graph --rev=wip --template=wip
 lsb = log -r 'bookmark() and not public()' -T '{pad("{bookmarks}", 30)} {desc|firstline}\n'
