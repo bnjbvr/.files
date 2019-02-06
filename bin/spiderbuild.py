@@ -202,7 +202,6 @@ if not did_cross_compile:
         add_env_option('CXXFLAGS', '"-m32  -msse -msse2 -mfpmath=sse"')
         add_env_option('AR', '"ar"')
         cfg += " --target=i686-pc-linux"
-        cfg += " --host=i686-pc-linux"
         if get_yesno_answer('arm simulator build?', COMPILE_ARM_SIMULATOR):
             cfg += ' --enable-simulator=arm'
         elif get_yesno_answer('mips simulator build?', COMPILE_MIPS32_SIMULATOR):
