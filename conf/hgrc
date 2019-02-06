@@ -108,9 +108,9 @@ mozilla.prefix = phabricator.services.mozilla.com
 # Keep that mozilla.phabtoken out of sight!
 
 [format-source]
-clang-format = /home/ben/code/mozilla-unified/mach clang-format -asume-filename=$HG_FILENAME -p
-clang-format:configpaths = .clang-format, .clang-format-ignore
-clang-format:fileext = .cpp, .c, .h
+#clang-format = /home/ben/code/mozilla-unified/mach clang-format -asume-filename=$HG_FILENAME -p
+#clang-format:configpaths = .clang-format, .clang-format-ignore
+#clang-format:fileext = .cpp, .c, .h
 
 [extdata]
 get_ignored_changesets = shell:cat `hg root`/.hg-annotate-ignore-revs 2> /dev/null || true
