@@ -207,3 +207,9 @@ set cino=:0.5s,=0.5s
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j
 endif
+
+" UltiSnips snippets engine.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsSnippetDirectories=["/home/ben/.files/vim-snips/"]

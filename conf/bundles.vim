@@ -46,6 +46,9 @@ Plug 'Townk/vim-autoclose'
 " Emacs yank schemes
 Plug 'maxbrunsfeld/vim-yankstack'
 
+" Snippets engine (requires Python support).
+Plug 'SirVer/ultisnips'
+
 " *****************************************************************************
 " Language specific ***********************************************************
 " *****************************************************************************

@@ -1,0 +1,64 @@
+#######################################################################
+#                            Rust Snippets                            #
+#######################################################################
+
+priority -50
+
+snippet !fn "pub fn name(?) -> ? {}"
+fn ${1:function_name}($2)${3/..*/ -> /}$3 {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet !pfn "pub fn name(?) -> ? {}"
+pub fn ${1:function_name}($2)${3/..*/ -> /}$3 {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet !ctor "constructor"
+pub fn new($1) -> Self {
+	Self {
+	}
+}
+endsnippet
+
+snippet !s "struct"
+struct $1 {
+	$2
+}
+endsnippet
+
+snippet !i "impl"
+impl $1${2/..*/ for /}$2 {
+	$3
+}
+endsnippet
+
+snippet !si "struct and impl"
+struct $1 {
+	$2
+}
+
+impl $1 {
+	fn new($2) -> Self {
+		Self {
+			$3
+		}
+	}
+}
+endsnippet
+
+snippet !pln "println!(..)" b
+println!("$1"${2/..*/, /}$2);
+endsnippet
+
+snippet !fmt "format!(..)"
+format!("$1"${2/..*/, /}$2);
+endsnippet
+
+snippet !fln
+fmtln!(fmt, "$1"${2/..*/, /}$2);
+endsnippet
+
+# vim:ft=snippets:
