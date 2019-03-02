@@ -1,13 +1,13 @@
-all: deps gitdeps vim hg zsh npm watchman crecord tmux
-	@echo "Everything has been setup!"
+all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla
+	@echo "Everything has been set up!"
 
-.PHONY: deps gitdeps vim hg npm zsh tmux clean watchman crecord
+.PHONY: clean deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla
 
 deps:
-	sudo apt-get install -y zsh build-essential autoconf2.13 curl redshift git python3-pygments automake python-dev libnotify-bin pinta ncdu libtool libssl-dev xsel
-	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-	python get-pip.py --user && rm get-pip.py
-	ln -s ~/.files/conf/redshift.conf ~/.config/redshift.conf || echo "redshift.conf already present"
+	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop
+
+python:
+	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && rm get-pip.py
 
 rustdeps:
 	@(cargo install bat > /dev/null 2>&1 || (cargo install bat 2>&1 | grep "already" > /dev/null || echo "error when installing bat"))
@@ -28,21 +28,26 @@ vim:
 	ln -s ~/.files/conf/vimrc ~/.config/nvim/init.vim || echo "init.vim already present"
 	sudo apt install software-properties-common
 	sudo add-apt-repository ppa:neovim-ppa/unstable
-	sudo apt update
-	sudo apt install neovim
+	sudo apt -y install neovim xsel
 
 git:
+	sudo apt install -y git
 	ln -s ~/.files/conf/gitconfig ~/.gitconfig || echo ".gitconfig already present"
 
 hg:
 	pip install --user mercurial
 	ln -s ~/.files/conf/hgrc ~/.hgrc || echo ".hgrc already present"
 
+mozilla: python hg vim
+	sudo apt install -y autoconf2.13 automake libnotify-bin ccache cmake
+
 zsh:
+	sudo apt install -y zsh
 	ln -s ~/.files/conf/zshrc ~/.zshrc || echo ".zshrc already present"
 	sudo chsh -s /bin/zsh ben
 
 tmux:
+	sudo apt install -y tmux
 	ln -s ~/.files/conf/tmux.conf ~/.tmux.conf || echo ".tmux.conf already present"
 
 npm:
@@ -57,3 +62,7 @@ crecord:
 clean:
 	rm -f ~/.config/redshift.conf ~/.vimrc ~/.bundles.vim ~/.hgrc ~/.zshrc ~/.npmrc
 	rm -rf ~/.vim/bundle/Vundle.vim
+
+redshift:
+	sudo apt install -y redshift
+	ln -s ~/.files/conf/redshift.conf ~/.config/redshift.conf || echo "redshift.conf already present"
