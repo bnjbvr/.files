@@ -156,6 +156,7 @@ set hidden
 let g:LanguageClient_autoStart=1
 let g:LanguageClient_selectionUI="fzf"
 let g:LanguageClient_settingsPath="/home/ben/.files/conf/language-client-settings.json"
+let g:LanguageClient_useVirtualText = 0
 
 " Disable these to get language client logging.
 "let g:LanguageClient_loggingFile="/tmp/neovim-lang-client.log"
