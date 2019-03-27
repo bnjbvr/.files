@@ -52,44 +52,55 @@ then
 fi
 
 # Aliases
-alias op='gnome-open'
-alias fbn='find ./ -name $1'
-alias psg='ps aux | grep $1'
+NUM_CPUS=`nproc`
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias upvim='nvim +PlugInstall +UpdateRemotePlugins +qa'
+alias b='./build.sh && m'
 
-alias h='hg'
+alias c='cd $MOZ_SM_SRC_DIR && autoconf2.13 && cd -1 && b'
+alias cb="cargo build"
 
 alias d='docker'
 alias dc='docker-compose'
 
-alias py='python3'
-alias serve='python -m SimpleHTTPServer'
+alias fbn='find ./ -name $1'
+
+alias h='hg'
+
+alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
+alias jitz='$MOZ_SM_SRC_DIR/jit-test/jit_test.py ./dist/bin/js'
+
+alias m="make -sj$NUM_CPUS"
+alias meteo='curl -4 wttr.in/Lyon'
+alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && b'
+alias ms='make -s 2>&1 | less'
+
+alias op='gnome-open'
 
 alias paint='pinta'
+alias psg='ps aux | grep $1'
+alias py='python3'
+
+alias serve='python -m SimpleHTTPServer'
+
+alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftest,jittests -t none'
+
+alias upvim='nvim +PlugInstall +UpdateRemotePlugins +qa'
+
+# PulseAudio workarounds
+alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
+
+# common typos
+alias gh='hg'
+alias sl='ls'
+
+# run tmux in 256 colors mode by default
+alias tmux='TERM=screen-256color-bce tmux'
 
 # Mozilla build shortcuts
 
 export BUILD_VERBOSE_LOG=1
-
-NUM_CPUS=`nproc`
-
-alias m="make -sj$NUM_CPUS"
-alias ms='make -s 2>&1 | less'
-alias b='./build.sh && m'
-alias c='cd $MOZ_SM_SRC_DIR && autoconf2.13 && cd -1 && b'
-alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && b'
-
-alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftest,jittests -t none'
-
-alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
-alias jst='$MOZ_SM_SRC_DIR/tests/jstests.py'
-alias jitz='$MOZ_SM_SRC_DIR/jit-test/jit_test.py ./dist/bin/js'
-alias jstz='$MOZ_SM_SRC_DIR/tests/jstests.py ./dist/bin.js'
-
-alias meteo='curl -4 wttr.in/Lyon'
 
 # Better CLI tools.
 
@@ -98,16 +109,6 @@ which bat >/dev/null 2>&1 && alias cat=bat
 which fd >/dev/null 2>&1 && alias find=fd
 which tldr >/dev/null 2>&1 && alias help=tldr
 
-# PulseAudio workarounds
-alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
-
 export LC_ALL="en_US.UTF-8"
-
-# common typos
-alias gh='hg'
-alias sl='ls'
-
-# run tmux in 256 colors mode by default
-alias tmux='TERM=screen-256color-bce tmux'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
