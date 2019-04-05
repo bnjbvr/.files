@@ -1,7 +1,7 @@
 all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla
 	@echo "Everything has been set up!"
 
-.PHONY: clean deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla
+.PHONY: clean deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla increase-notify
 
 deps:
 	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop
@@ -53,8 +53,14 @@ tmux:
 npm:
 	ln -s ~/.files/private/conf/npmrc ~/.npmrc || echo ".npmrc already present"
 
-watchman:
-	(cd ~/.files/bin/watchman-dir && ./autogen.sh && ./configure && make -j8)
+increase-inotify:
+	sudo cp ~/.files/conf/sysctl_10_inotify.conf /etc/sysctl.d/10-inotify.conf
+	sudo sysctl -p --system
+
+watchman: increase-inotify
+	(cd ~/.files/bin/watchman-dir && ./autogen.sh && ./configure --enable-lenient && make -j8)
+	sudo mkdir -p /usr/local/var/run/watchman/ben-state
+	sudo chown ben:ben /usr/local/var/run/watchman/ben-state
 
 crecord:
 	(cd ~/.files/bin && hg clone https://bitbucket.org/edgimar/crecord)
