@@ -1,0 +1,17 @@
+#######################################################################
+#                            JavaScript Snippets                      #
+#######################################################################
+
+priority -50
+
+snippet !wasm
+let { exports } = new WebAssembly.Instance(
+	new WebAssembly.Module(wasmTextToBinary(\`
+	(module
+		(func (export "f")
+			$1
+		)
+	)
+	\`))
+);
+endsnippet
