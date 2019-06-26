@@ -3,8 +3,8 @@ ZSH_THEME="robbyrussell"
 
 DOTFILES_DIR="/home/ben/.files"
 
-MOZ_SM_SRC_DIR="/home/ben/mozilla/repo/js/src"
-MOZ_BUILDS_DIR="/home/ben/mozilla/builds"
+MOZ_SM_SRC_DIR="/home/ben/code/mozilla-inbound/js/src"
+MOZ_BUILDS_DIR="/home/ben/code/mozbuilds"
 
 # Normal plugins are in $ZSH/plugins/, custom plugins are in $ZSH/custom/plugins/
 plugins=(git mercurial debian battery jump sudo command-not-found)
