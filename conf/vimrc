@@ -166,6 +166,7 @@ let g:LanguageClient_serverCommands = {}
 
 if executable('rustup')
     let g:LanguageClient_serverCommands['rust'] = ['rustup', 'run', 'stable', 'rls']
+    nnoremap <silent> <leader>f :RustFmt<CR>
 endif
 
 if executable('javascript-typescript-stdio')
