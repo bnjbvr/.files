@@ -37,6 +37,9 @@ Plug 'godlygeek/tabular'
 " Mercurial information from within vim.
 Plug 'jlfwong/vim-mercenary'
 
+" Git information from within vim.
+Plug 'tpope/vim-fugitive'
+
 " Easy comment code blocks in/out.
 Plug 'scrooloose/nerdcommenter'
 
