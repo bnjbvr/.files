@@ -142,35 +142,34 @@ env = os.environ
 overridenEnv = {}
 did_cross_compile = False
 
+
 def add_env_option(key, val):
     env[key] = val
     assert key not in overridenEnv
     overridenEnv[key] = val
 
+
 if get_yesno_answer('use clang / clang++?', USE_CLANG):
-    add_env_option('CC', '"clang"')
-    add_env_option('CXX', '"clang++"')
     cfg += " --enable-linker=lld"
 
+    flags = ""
     if get_yesno_answer('enable ASAN?', ENABLE_ASAN):
-        add_env_option('CC', '"clang -fsanitize=address"')
-        add_env_option('CXX', '"clang++ -fsanitize=address"')
-        add_env_option('LDFLAGS', '"-fsanitize=address"')
+        flags = "-fsanitize=address"
         cfg += " --enable-address-sanitizer --disable-jemalloc"
     elif get_yesno_answer('enable TSAN?', ENABLE_TSAN):
-        add_env_option('CC', '"clang -fsanitize=thread -fPIC -pie"')
-        add_env_option('CXX', '"clang++ -fsanitize=thread -fPIC -pie"')
-        add_env_option('LDFLAGS', '"-fsanitize=thread -fPIC -pie"')
+        flags = "--fsanitize=thread -fPIC -pie"
         cfg + " --enable-llvm-hacks --disable-jemalloc --disable-crashreporter --disable-elf-hack"
-
-    if get_yesno_answer('enable MSAN?', ENABLE_MSAN):
-        add_env_option('CC', '"clang -fsanitize=memory"')
-        add_env_option('CXX', '"clang++ -fsanitize=memory"')
-        add_env_option('LDFLAGS', '"-fsanitize=memory"')
+    elif get_yesno_answer('enable MSAN?', ENABLE_MSAN):
+        flags = "-fsanitize=memory"
         cfg += " --enable-memory-sanitizer --disable-jemalloc"
     elif get_yesno_answer('enable static analysis?', ENABLE_STATIC_ANALYSIS):
         print "Make sure to have installed libclang-dev and libedit-dev."
         cfg += " --enable-clang-plugin"
+
+    add_env_option('CC', '"clang {}"'.format(flags))
+    add_env_option('CXX', '"clang++ {}"'.format(flags))
+    if len(flags):
+        add_env_option('LDFLAGS', '"{}"'.format(flags))
 
     if get_yesno_answer('emit compile_commands.json at compilation?', ENABLE_COMPILEDB):
         cfg += " --enable-build-backends=CompileDB,RecursiveMake "
