@@ -15,8 +15,14 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.files/bin/z/z.sh
 
-# Path
+# Binary paths.
 export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.cargo/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
+
+if [ -e ~/bin ]
+then
+    export PATH=${PATH}:$(find ~/bin -type d | tr '\n' ':' | sed 's/:$//')
+fi
+
 export MANPATH="/usr/local/man:$MANPATH"
 
 ### nix
@@ -106,7 +112,6 @@ export BUILD_VERBOSE_LOG=1
 
 [ -f /usr/bin/ncdu ] && alias du="ncdu -rr -x --exclude .git --exclude node_modules"
 which bat >/dev/null 2>&1 && alias cat=bat
-which fd >/dev/null 2>&1 && alias find=fd
 which tldr >/dev/null 2>&1 && alias help=tldr
 
 export LC_ALL="en_US.UTF-8"
