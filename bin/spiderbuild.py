@@ -33,6 +33,7 @@ COMPILE_MIPS32_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'y' if you want to 
 COMPILE_MIPS64_SIMULATOR = 'n' # needs COMPILE_32_BITS to be 'n' if you want to set as 'y'
 ENABLE_DEBUG = 'y'
 ENABLE_OPTIMIZE = 'n'
+ENABLE_RELEASE = 'n'
 ENABLE_CCACHE = 'y'
 ENABLE_INTL = 'n'
 ENABLE_PERF = 'n'
@@ -97,6 +98,7 @@ print 'The chosen root is', JS_ROOT
 options = (
     ('debug mode', '--enable-debug', '--disable-debug', ENABLE_DEBUG),
     ('opt mode', '--enable-optimize', '--disable-optimize', ENABLE_OPTIMIZE),
+    ('release mode', '--enable-release', '', ENABLE_RELEASE),
     ('ccache', '--with-ccache', '', ENABLE_CCACHE),
     ('intl', '', '--without-intl-api', ENABLE_INTL),
     ('perf support', '--enable-perf', '', ENABLE_PERF),
