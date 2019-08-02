@@ -1,10 +1,15 @@
-all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla
+all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla i3
 	@echo "Everything has been set up!"
 
-.PHONY: clean deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla increase-notify
+.PHONY: clean deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla increase-notify i3
 
 deps:
 	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop
+
+i3:
+	sudo apt-get install -y i3
+	mkdir -p ~/.config/i3/
+	ln -s ~/.files/conf/i3 ~/.config/i3/config
 
 python:
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && rm get-pip.py
