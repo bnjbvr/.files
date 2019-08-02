@@ -1,7 +1,7 @@
-all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla i3
+all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla i3 kalamine
 	@echo "Everything has been set up!"
 
-.PHONY: clean deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla increase-notify i3
+.PHONY: clean deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla increase-notify i3 kalamine
 
 deps:
 	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop
@@ -10,6 +10,12 @@ i3:
 	sudo apt-get install -y i3 lxappearance
 	mkdir -p ~/.config/i3/
 	ln -s ~/.files/conf/i3 ~/.config/i3/config
+
+kalamine:
+	git clone https://github.com/fabi1cazenave/kalamine /tmp/kalamine
+	sudo pip3 install -e /tmp/kalamine
+	sudo xkalamine install ./conf/qwerty-ben.yaml
+	setxkbmap us -variant benjamin
 
 python:
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && rm get-pip.py
