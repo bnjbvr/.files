@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if [ "$(hostname)" == "XPS-Linux" ]; then
+if [ "$(hostname)" == "xps-linux" ]; then
     # XPS-Linux.
     xrandr --output eDP-1 --mode 1920x1080
+    which udiskie && udiskie -ans &
 else
     notify-send "i3specific.sh: I don't know this machine!"
 fi
