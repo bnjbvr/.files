@@ -11,5 +11,11 @@ fi
 # On every restart, try to set a favorite keyboard layout.
 setxkbmap us -variant benjamin || setxkbmap us -variant altgr-intl
 
+# Nextcloud sync client.
+nextcloud &
+
+# Network-manager applet.
 nm-applet &
+
+# Notes editor.
 /home/ben/.joplin/Joplin.AppImage &
