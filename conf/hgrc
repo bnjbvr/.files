@@ -7,7 +7,6 @@ record =
 purge = 
 bzexport = /home/ben/.mozbuild/version-control-tools/hgext/bzexport
 firefoxtree = /home/ben/.mozbuild/version-control-tools/hgext/firefoxtree
-mqext = /home/ben/.mozbuild/version-control-tools/hgext/mqext
 push-to-try = /home/ben/.mozbuild/version-control-tools/hgext/push-to-try
 fsmonitor = 
 blackbox = 
