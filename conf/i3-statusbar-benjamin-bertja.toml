@@ -6,16 +6,16 @@ block = "music"
 player = "spotify"
 buttons = ["play", "next"]
 
-[[block]]
-block = "net"
-device = "wlp59s0"
-ssid = true
-signal_strength = true
-ip = true
-speed_up = false
-speed_down = true
-graph_up = false
-interval = 1
+#[[block]]
+#block = "net"
+#device = "wlp59s0"
+#ssid = true
+#signal_strength = true
+#ip = true
+#speed_up = false
+#speed_down = true
+#graph_up = false
+#interval = 1
 
 [[block]]
 block = "memory"
@@ -37,15 +37,6 @@ format = "{utilization}% {frequency}GHz"
 [[block]]
 block = "sound"
 step_width = 3
-
-[[block]]
-block = "backlight"
-device = "intel_backlight"
-
-[[block]]
-block = "battery"
-interval = 10
-format = "{percentage}% {time}"
 
 [[block]]
 block = "weather"
