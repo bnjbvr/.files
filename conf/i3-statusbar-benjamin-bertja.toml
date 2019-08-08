@@ -6,16 +6,16 @@ block = "music"
 player = "spotify"
 buttons = ["play", "next"]
 
-#[[block]]
-#block = "net"
-#device = "wlp59s0"
-#ssid = true
-#signal_strength = true
-#ip = true
-#speed_up = false
-#speed_down = true
-#graph_up = false
-#interval = 1
+[[block]]
+block = "net"
+device = "wlxc8d719c560ae"
+ssid = true
+signal_strength = true
+ip = true
+speed_up = false
+speed_down = true
+graph_up = false
+interval = 1
 
 [[block]]
 block = "memory"
