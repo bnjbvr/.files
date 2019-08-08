@@ -3,7 +3,12 @@
 if [ "$(hostname)" == "xps-linux" ]; then
     # XPS-Linux.
     xrandr --output eDP1 --mode 1920x1080
-    which udiskie && udiskie -ans &
+
+    # Disk tray icon.
+    udiskie -ans &
+
+    # Compton (compositor).
+    compton &
 else
     notify-send "i3specific.sh: I don't know this machine!"
 fi
