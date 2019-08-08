@@ -1,21 +1,28 @@
+# -----------------------------------------------------------------------------
+# initialization
+# -----------------------------------------------------------------------------
+
 # Themes are in ~/.oh-my-zsh/themes/
 ZSH_THEME="robbyrussell"
 
 DOTFILES_DIR="/home/ben/.files"
 
 MOZ_SM_SRC_DIR="/home/ben/code/mozilla-inbound/js/src"
-MOZ_BUILDS_DIR="/home/ben/code/mozbuilds"
 
 # Normal plugins are in $ZSH/plugins/, custom plugins are in $ZSH/custom/plugins/
-plugins=(git mercurial debian battery jump sudo command-not-found)
+plugins=(git sudo command-not-found)
 
 # Programs to activate
 ZSH=$HOME/.files/bin/ohmyzsh
 source $ZSH/oh-my-zsh.sh
 
 source ~/.files/bin/z/z.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Binary paths.
+# -----------------------------------------------------------------------------
+# global variables
+# -----------------------------------------------------------------------------
+
 export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.cargo/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 
 if [ -e ~/bin ]
@@ -24,47 +31,29 @@ then
 fi
 
 export MANPATH="/usr/local/man:$MANPATH"
+export LC_ALL="en_US.UTF-8"
 
-### nix
-if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
-    source ~/.nix-profile/etc/profile.d/nix.sh
-fi
-
-### perl5
-if [ -d "/home/ben/.files/private/perl5" ]
+# Rust source code path.
+if [ -d "/home/ben/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]
 then
-    PATH="/home/ben/.files/private/perl5/bin${PATH:+:${PATH}}"; export PATH;
-    PERL5LIB="/home/ben/.files/private/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-    PERL_LOCAL_LIB_ROOT="/home/ben/.files/private/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-    PERL_MB_OPT="--install_base \"/home/ben/.files/private/perl5\""; export PERL_MB_OPT;
-    PERL_MM_OPT="INSTALL_BASE=/home/ben/.files/private/perl5"; export PERL_MM_OPT;
-fi
-
-### ocaml/OPAM
-if [ -d "/home/ben/.opam/opam-init/" ]
-then
-    . /home/ben/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-fi
-
-### Rust source code path.
-if [ -d "/home/ben/mozilla/rustc/" ]
-then
-    RUST_SRC_PATH="/home/ben/mozilla/rustc/src"
-    export RUST_SRC_PATH
-elif [ -d "/home/ben/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]
-then
-    RUST_SRC_PATH="/home/ben/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+    RUST_SRC_PATH="/home/ben/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
     export RUST_SRC_PATH
 fi
 
-# Aliases
+# mozilla build shortcuts
+export BUILD_VERBOSE_LOG=1
+
+# -----------------------------------------------------------------------------
+# aliases
+# -----------------------------------------------------------------------------
+
 NUM_CPUS=`nproc`
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias b='./build.sh && m'
 
-alias c='cd $MOZ_SM_SRC_DIR && autoconf2.13 && cd -1 && b'
+alias c="cb"
 alias cb="cargo build"
 
 alias d='docker'
@@ -90,30 +79,22 @@ alias py='python3'
 
 alias serve='python -m SimpleHTTPServer'
 
+alias tmux='TERM=screen-256color-bce tmux' # 256 colors mode by default.
 alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftest,jittests -t none'
 
 alias upvim='nvim +PlugInstall +UpdateRemotePlugins +qa'
 
-# PulseAudio workarounds
-alias vidyo='PULSE_LATENCY_MSEC=30 VidyoDesktop'
-
+# -----------------------------------------------------------------------------
 # common typos
+# -----------------------------------------------------------------------------
+
 alias gh='hg'
 alias sl='ls'
 
-# run tmux in 256 colors mode by default
-alias tmux='TERM=screen-256color-bce tmux'
-
-# Mozilla build shortcuts
-
-export BUILD_VERBOSE_LOG=1
-
-# Better CLI tools.
+# -----------------------------------------------------------------------------
+# better cli tools
+# -----------------------------------------------------------------------------
 
 [ -f /usr/bin/ncdu ] && alias du="ncdu -rr -x --exclude .git --exclude node_modules"
 which bat >/dev/null 2>&1 && alias cat=bat
 which tldr >/dev/null 2>&1 && alias help=tldr
-
-export LC_ALL="en_US.UTF-8"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
