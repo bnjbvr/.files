@@ -8,7 +8,7 @@ buttons = ["play", "next"]
 
 [[block]]
 block = "net"
-device = "wlxc8d719c560ae"
+device = "wlx04d4c462af85"
 ssid = true
 signal_strength = true
 ip = true
