@@ -7,7 +7,7 @@ deps:
 	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop
 
 i3:
-	sudo apt-get install -y i3 lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline
+	sudo apt-get install -y i3 lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline udiskie
 	mkdir -p ~/.config/i3/
 	ln -s ~/.files/conf/i3 ~/.config/i3/config || true
 	ln -s ~/.files/conf/compton.conf ~/.config/compton.conf || true
