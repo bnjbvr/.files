@@ -1,4 +1,4 @@
 #!/bin/bash
 
-scp $1 ben@perso:/home/ben/www/html/pub/
+scp $1 ben@delire:/home/ben/www/benj.me/pub/
 echo https://benj.me/pub/$1
