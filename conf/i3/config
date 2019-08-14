@@ -158,7 +158,7 @@ bindsym $mod+Escape mode "$mode_system"
 
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 12
-    status_command /home/ben/.files/conf/i3-status.sh
+    status_command /home/ben/.files/conf/i3/status.sh
     tray_output primary
 
     colors {
@@ -175,7 +175,7 @@ bar {
 # Switching to a workspace twice makes us go back to it.
 workspace_auto_back_and_forth yes
 
-exec /home/ben/.files/conf/i3-startup.sh
+exec /home/ben/.files/conf/i3/startup.sh
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
