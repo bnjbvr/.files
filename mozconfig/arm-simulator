@@ -8,7 +8,7 @@ CC="gcc"
 CXX="g++"
 AR=ar
 
-mk_add_options MOZ_OBJDIR=/home/ben/mozilla/builds/browser-x86-arm
+mk_add_options MOZ_OBJDIR=/home/ben/code/mozbuilds/browser-x86-arm
 mk_add_options MOZ_MAKE_FLAGS="-j8 -s"
 mk_add_options AUTOCLOBBER=1
 

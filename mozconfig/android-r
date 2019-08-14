@@ -1,4 +1,4 @@
-mk_add_options MOZ_OBJDIR=/home/ben/mozilla/builds/android-r
+mk_add_options MOZ_OBJDIR=/home/ben/code/mozbuilds/android-r
 mk_add_options AUTOCLOBBER=1
 
 # Build Firefox for Android:
