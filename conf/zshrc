@@ -2,15 +2,12 @@
 # initialization
 # -----------------------------------------------------------------------------
 
-# Themes are in ~/.oh-my-zsh/themes/
-ZSH_THEME="robbyrussell"
-
 DOTFILES_DIR="/home/ben/.files"
 
 MOZ_SM_SRC_DIR="/home/ben/code/mozilla-inbound/js/src"
 
-# Normal plugins are in $ZSH/plugins/, custom plugins are in $ZSH/custom/plugins/
-plugins=(git sudo command-not-found)
+# Support for command not found on Ubuntu machines.
+[[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
 # Programs to activate
 ZSH=$HOME/.files/bin/ohmyzsh
@@ -23,7 +20,14 @@ source ~/.files/bin/z/z.sh
 # global variables
 # -----------------------------------------------------------------------------
 
-export PROMPT='%{$fg[red]%}%n%{$fg[magenta]%}@%{$fg[yellow]%}%m %{$fg[cyan]%}[%~%\]
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+
+export ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:%{$fg[red]%}"
+export ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+export ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%} %{$fg[yellow]%}✗"
+export ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}"
+
+export PROMPT='%{$fg[red]%}%n%{$fg[magenta]%}@%{$fg[yellow]%}%m %{$fg[cyan]%}[%~%\] $(git_prompt_info)
 ${ret_status}%{$reset_color%}'
 
 export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.cargo/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
@@ -64,6 +68,7 @@ alias dc='docker-compose'
 
 alias fbn='find ./ -name $1'
 
+alias g='git'
 alias h='hg'
 
 alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
