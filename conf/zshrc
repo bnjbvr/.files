@@ -23,7 +23,7 @@ source ~/.files/bin/z/z.sh
 # global variables
 # -----------------------------------------------------------------------------
 
-export PROMPT='%{$fg[red]%}%n%{$fg[magenta]%}@%{$fg[yellow]%}%m %{$fg[cyan]%}[%c%\]
+export PROMPT='%{$fg[red]%}%n%{$fg[magenta]%}@%{$fg[yellow]%}%m %{$fg[cyan]%}[%~%\]
 ${ret_status}%{$reset_color%}'
 
 export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.cargo/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
