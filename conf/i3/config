@@ -192,3 +192,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym $mod+plus exec xbacklight -inc 10
 bindsym $mod+minus exec xbacklight -dec 10
+
+# Specific window rules.
+for_window [class="Joplin"] move to workspace 9
+for_window [class="Spotify"] move to workspace 10
