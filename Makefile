@@ -9,8 +9,10 @@ deps:
 i3:
 	sudo apt-get install -y i3 lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline udiskie feh
 	mkdir -p ~/.config/i3/
+	mkdir -p ~/.config/udiskie
 	ln -s ~/.files/conf/i3/config ~/.config/i3/config || true
 	ln -s ~/.files/conf/compton.conf ~/.config/compton.conf || true
+	ln -s ~/.files/conf/udiskie.yml ~/.config/udiskie/config.yml || true
 
 kalamine:
 	git clone https://github.com/fabi1cazenave/kalamine /tmp/kalamine
