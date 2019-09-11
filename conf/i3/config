@@ -178,8 +178,9 @@ workspace_auto_back_and_forth yes
 exec /home/ben/.files/conf/i3/startup.sh
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+set $volume ~/.files/conf/i3/volume.sh
+bindsym XF86AudioRaiseVolume exec --no-startup-id $volume +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id $volume -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Media player controls: p for play, left-of-p for previous, right-of-p for next.
@@ -188,10 +189,11 @@ bindsym $mod+p exec playerctl play-pause
 bindsym $mod+bracketleft exec playerctl next
 
 # Screen brightness controls.
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-bindsym $mod+plus exec xbacklight -inc 10
-bindsym $mod+minus exec xbacklight -dec 10
+set $xbacklight /home/ben/.files/conf/i3/xbacklight.sh
+bindsym XF86MonBrightnessUp exec $xbacklight -inc
+bindsym XF86MonBrightnessDown exec $xbacklight -dec
+bindsym $mod+plus exec $xbacklight -inc
+bindsym $mod+minus exec $xbacklight -dec
 
 # Specific window rules.
 for_window [class="Joplin"] move to workspace 9
