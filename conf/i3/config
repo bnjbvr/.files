@@ -198,3 +198,5 @@ bindsym $mod+minus exec $xbacklight -dec
 # Specific window rules.
 for_window [class="Joplin"] move to workspace 9
 for_window [class="Spotify"] move to workspace 10
+
+workspace 10 output DP-1
