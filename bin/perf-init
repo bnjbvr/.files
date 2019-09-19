@@ -5,3 +5,8 @@ sudo mount -o remount,mode=755 /sys/kernel/debug/tracing && \
 echo 0 | sudo tee /proc/sys/kernel/kptr_restrict && \
 echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid && \
 sudo chmod a+rw /sys/kernel/debug/tracing/uprobe_events
+
+# put all CPUs in performance mode
+for i in {0..7}; do
+    sudo echo performance > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+done
