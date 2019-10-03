@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+perf script -F +pid > /tmp/test.perf
+
+echo "File written to /tmp/test.perf; now import it in https://profiler.firefox.com"
