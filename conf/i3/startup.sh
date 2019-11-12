@@ -29,5 +29,8 @@ nextcloud &
 # Network-manager applet.
 nm-applet &
 
+# Run redshift if it's installed.
+which redshift >/dev/null && redshift &
+
 # Notes editor.
 /home/ben/.joplin/Joplin.AppImage &
