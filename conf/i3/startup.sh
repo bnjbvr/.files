@@ -16,6 +16,7 @@ fi
 
 # On every restart, try to set a favorite keyboard layout.
 setxkbmap us -variant benjamin || setxkbmap us -variant altgr-intl
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # Disk tray icon.
 udiskie -ans &
