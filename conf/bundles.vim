@@ -44,7 +44,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 
 " Automatically inserts closing chars for pairs of open/close chars (e.g. parens).
-Plug 'Townk/vim-autoclose'
+Plug 'Raimondi/delimitMate'
 
 " Emacs yank schemes
 Plug 'maxbrunsfeld/vim-yankstack'
