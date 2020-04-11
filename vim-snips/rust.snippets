@@ -4,6 +4,22 @@
 
 priority -50
 
+snippet !debug
+impl fmt::Debug for $1 {
+	fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+		write!(fmt, $2)
+	}
+}
+endsnippet
+
+snippet !display
+impl fmt::Display for $1 {
+	fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+		write!(fmt, $2)
+	}
+}
+endsnippet
+
 snippet !fn "pub fn name(?) -> ? {}"
 fn ${1:function_name}($2)${3/..*/ -> /}$3 {
 	${VISUAL}$0
