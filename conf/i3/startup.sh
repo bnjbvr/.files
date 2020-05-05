@@ -30,8 +30,5 @@ nextcloud &
 # Network-manager applet.
 nm-applet &
 
-# Redshift
-redshift -c ~/.config/redshift.conf &
-
 # Run redshift if it's installed.
-which redshift >/dev/null && redshift &
+which redshift >/dev/null && redshift -c ~/.config/redshift.conf &
