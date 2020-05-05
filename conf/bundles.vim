@@ -19,6 +19,7 @@ Plug 'scrooloose/nerdtree'
 
 " Multi-selection UI
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " *****************************************************************************
 " Behavior ********************************************************************
@@ -73,7 +74,7 @@ Plug 'rust-lang/rust.vim'
 " LangServer protocol.
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
+    \ 'do': 'install.sh',
 \ }
 
 " Showing function signature and inline doc

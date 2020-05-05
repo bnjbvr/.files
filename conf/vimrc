@@ -104,9 +104,6 @@ autocmd! BufWritePost vimrc source /home/ben/.config/nvim/init.vim
 " Define leader
 let mapleader = ' '
 
-" Activate fzf :Files with <leader>f (files)
-noremap <leader>f :Files<CR>
-
 " Activate fzf :Buffers with <leader>b (buffers)
 map <leader>b :Buffers<CR>
 
@@ -154,9 +151,10 @@ let g:AutoClosePreserveDotReg = 0
 set hidden
 
 let g:LanguageClient_autoStart=1
+let g:LanguageClient_loadSettings=1
 let g:LanguageClient_selectionUI="fzf"
 let g:LanguageClient_settingsPath="/home/ben/.files/conf/language-client-settings.json"
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useVirtualText = "No"
 
 " Disable these to get language client logging.
 "let g:LanguageClient_loggingFile="/tmp/neovim-lang-client.log"
@@ -164,9 +162,8 @@ let g:LanguageClient_useVirtualText = 0
 
 let g:LanguageClient_serverCommands = {}
 
-if executable('rustup')
-    let g:LanguageClient_serverCommands['rust'] = ['rustup', 'run', 'stable', 'rls']
-    nnoremap <silent> <leader>f :RustFmt<CR>
+if executable('rust-analyzer')
+    let g:LanguageClient_serverCommands['rust'] = ['rust-analyzer']
 endif
 
 if executable('javascript-typescript-stdio')
@@ -186,11 +183,22 @@ if executable('pyls')
     let g:LanguageClient_serverCommands['python'] = ['pyls']
 endif
 
+let g:LanguageClient_rootMarkers = {
+    \ 'typescript': ['tsconfig.json']
+    \ }
+
 nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
 nnoremap <silent> <leader>D :call LanguageClient_textDocument_definition({'gotoCmd': 'vsplit'})<CR>
 nnoremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <leader>i :call LanguageClient#textDocument_implementation()<CR>
+nnoremap <silent> <leader>f :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <silent> <leader>t :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <silent> <leader>a :call LanguageClient_textDocument_codeAction()<CR>
+nnoremap <silent> <leader>m :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> <leader>s :call LanguageClient#textDocument_documentSymbol()<CR>
+nnoremap <silent> <leader>e :call LanguageClient#explainErrorAtPoint()<CR>
 
 " END OF LANGAGE SERVER CONFIG
 
