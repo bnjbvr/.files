@@ -74,7 +74,7 @@ Plug 'rust-lang/rust.vim'
 " LangServer protocol.
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
-    \ 'do': 'install.sh',
+    \ 'do': 'bash install.sh',
 \ }
 
 " Showing function signature and inline doc
