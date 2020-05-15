@@ -13,6 +13,7 @@ i3:
 	ln -s ~/.files/conf/i3/config ~/.config/i3/config || true
 	ln -s ~/.files/conf/compton.conf ~/.config/compton.conf || true
 	ln -s ~/.files/conf/udiskie.yml ~/.config/udiskie/config.yml || true
+	ln -s ~/.files/conf/Xresources ~/.Xresources || true
 
 kalamine:
 	git clone https://github.com/fabi1cazenave/kalamine /tmp/kalamine
