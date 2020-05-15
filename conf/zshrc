@@ -97,6 +97,12 @@ alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftes
 
 alias upvim='nvim +PlugInstall +UpdateRemotePlugins +qa'
 
+alias lsra='cargo run wasm --set enable_verifier=false --set regalloc=experimental_linear_scan --target aarch64 -vdT'
+alias lsra-r='cargo run --release wasm --set enable_verifier=false --set regalloc=experimental_linear_scan --target aarch64 -vdT'
+alias bt='cargo run wasm --set enable_verifier=false --target aarch64 -vdT'
+alias bt-r='cargo run --release wasm --set enable_verifier=false --target aarch64 -vdT'
+alias lsra-perf='cargo build --release && perf record --call-graph=dwarf -F 9999 /home/ben/code/wasmtime/target/release/clif-util wasm --set enable_verifier=false --set regalloc=experimental_linear_scan --target aarch64'
+
 # -----------------------------------------------------------------------------
 # common typos
 # -----------------------------------------------------------------------------
