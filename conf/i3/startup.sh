@@ -7,7 +7,7 @@ if [ "$(hostname)" == "xps-linux" ]; then
 
     # Start bluetooth applet.
     blueman-applet &
-elif [ "$(hostname)" == "benjamin-bertja" ]; then
+elif [ "$(hostname)" == "benjamin-bertja" ] || [ "$(hostname)" == "bertka-linux" ]; then
     # Grosse bertja!
     feh --bg-scale /home/ben/.files/conf/i3/bertja-1.jpg /home/ben/.files/conf/i3/bertja-2.jpg
 else
