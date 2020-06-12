@@ -25,10 +25,8 @@ python:
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && rm get-pip.py
 
 rustdeps:
-	@(cargo install bat > /dev/null 2>&1 || (cargo install bat 2>&1 | grep "already" > /dev/null || echo "error when installing bat"))
 	@(cargo install ripgrep > /dev/null 2>&1 || (cargo install ripgrep 2>&1 | grep "already" > /dev/null || echo "error when installing ripgrep"))
 	@(cargo install fd-find > /dev/null 2>&1 || (cargo install fd-find 2>&1 | grep "already" > /dev/null || echo "error when installing fd-find"))
-	@(cargo install tealdeer > /dev/null 2>&1 || (cargo install 2>&1 | grep "already"> /dev/null || echo "error when installing tealdeer"))
 
 gitdeps:
 	git submodule init

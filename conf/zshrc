@@ -109,5 +109,3 @@ alias sl='ls'
 # -----------------------------------------------------------------------------
 
 [ -f /usr/bin/ncdu ] && alias du="ncdu -rr -x --exclude .git --exclude node_modules"
-which bat >/dev/null 2>&1 && alias cat=bat
-which tldr >/dev/null 2>&1 && alias help=tldr
