@@ -84,7 +84,7 @@ alias meteo='curl -4 wttr.in/Lyon'
 alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && b'
 alias ms='make -s 2>&1 | less'
 
-alias op='gnome-open'
+alias op='xdg-open'
 
 alias paint='pinta'
 alias psg='ps aux | grep $1'
