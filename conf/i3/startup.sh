@@ -14,6 +14,11 @@ else
     notify-send "i3/startup.sh: I don't know this machine!"
 fi
 
+if [ -f /home/ben/sync/bin/cryptomator ]
+then
+    /home/ben/sync/bin/cryptomator &
+fi
+
 # On every restart, try to set a favorite keyboard layout.
 setxkbmap us -variant benjamin || setxkbmap us -variant altgr-intl
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
