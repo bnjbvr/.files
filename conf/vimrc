@@ -166,19 +166,24 @@ if executable('rust-analyzer')
     let g:LanguageClient_serverCommands['rust'] = ['rust-analyzer']
 endif
 
-if executable('javascript-typescript-stdio')
+if executable('typescript-language-server')
+    let g:LanguageClient_serverCommands['javascript'] = ['typescript-language-server', '--stdio']
+    let g:LanguageClient_serverCommands['typescript'] = ['typescript-language-server', '--stdio']
+elseif executable('javascript-typescript-stdio')
     let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-stdio']
     let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-stdio']
 endif
 
-if executable('clangd')
-    let g:LanguageClient_serverCommands['cpp'] = ['clangd']
+if executable('ccls')
+    let g:LanguageClient_serverCommands['cpp'] = ['ccls']
 elseif executable('cquery')
     let g:LanguageClient_serverCommands['cpp'] = [
         \ 'cquery',
         \  '--log-file=/tmp/cq.log',
         \  '--init={"cacheDirectory":"/home/ben/.cache/cquery"}'
     \ ]
+elseif executable('clangd')
+    let g:LanguageClient_serverCommands['cpp'] = ['clangd']
 endif
 
 if executable('pyls')

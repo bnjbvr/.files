@@ -1,4 +1,4 @@
-all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla i3 kalamine
+all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla i3 kalamine lsp
 	@echo "Everything has been set up!"
 
 .PHONY: clean deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla increase-notify i3 kalamine
@@ -85,3 +85,7 @@ clean:
 redshift:
 	sudo apt install -y redshift
 	ln -s ~/.files/conf/redshift.conf ~/.config/redshift.conf || echo "redshift.conf already present"
+
+lsp:
+	sudo apt install -y ccls
+	npm -g i typescript-language-server
