@@ -12,7 +12,6 @@ blackbox =
 absorb = 
 evolve = /home/ben/.mozbuild/evolve/hgext3rd/evolve
 clang-format = /home/ben/.mozbuild/version-control-tools/hgext/clang-format
-phabricator = /home/ben/.files/hgext/phabricator.py
 shelve = 
 js-format = /home/ben/.mozbuild/version-control-tools/hgext/js-format
 
