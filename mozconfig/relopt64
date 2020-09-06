@@ -1,8 +1,5 @@
-mk_add_options MOZ_OBJDIR=/home/ben/code/mozbuilds/browser-r64
+mk_add_options MOZ_OBJDIR=/home/ben/code/mozilla/builds/browser-r64
 mk_add_options AUTOCLOBBER=1
-
-export CC="clang"
-export CXX="clang++"
 
 ac_add_options --disable-debug
 ac_add_options --disable-accessibility

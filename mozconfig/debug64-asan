@@ -1,8 +1,8 @@
 # Use at least -O1 for optimization to avoid stack space
 # exhaustions caused by Clang function inlining.
-mk_add_options MOZ_OBJDIR=/home/ben/code/mozbuilds/browser-asan-d64
+mk_add_options MOZ_OBJDIR=/home/ben/code/mozilla/builds/browser-asan-d64
 mk_add_options AUTOCLOBBER=1
-mk_add_options MOZ_MAKE_FLAGS=-j8
+mk_add_options MOZ_MAKE_FLAGS=-j$(nproc)
 
 export CC="clang"
 export CXX="clang++"
