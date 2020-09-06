@@ -4,9 +4,6 @@ if [ "$(hostname)" == "xps-linux" ]; then
     # XPS-Linux.
     xrandr --output eDP1 --mode 1920x1080
     feh --bg-scale /home/ben/.files/conf/i3/xps.png
-
-    # Start bluetooth applet.
-    blueman-applet &
 elif [ "$(hostname)" == "benjamin-bertja" ] || [ "$(hostname)" == "bertka-linux" ]; then
     # Grosse bertja!
     feh --bg-scale /home/ben/.files/conf/i3/bertja-1.jpg /home/ben/.files/conf/i3/bertja-2.jpg
@@ -14,6 +11,13 @@ else
     notify-send "i3/startup.sh: I don't know this machine!"
 fi
 
+# Start bluetooth applet, if available.
+if [ -f /usr/bin/blueman-applet ]
+then
+    blueman-applet &
+fi
+
+# Start cryptomator, if available.
 if [ -f /home/ben/sync/bin/cryptomator ]
 then
     /home/ben/sync/bin/cryptomator &
@@ -21,6 +25,7 @@ fi
 
 # On every restart, try to set a favorite keyboard layout.
 setxkbmap us -variant benjamin || setxkbmap us -variant altgr-intl
+# Map capslock to escape.
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # Disk tray icon.
