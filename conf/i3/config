@@ -199,4 +199,6 @@ bindsym $mod+minus exec $xbacklight -dec
 for_window [class="Joplin"] move to workspace 9
 for_window [class="Spotify"] move to workspace 10
 
+bindsym $mod+Shift+s exec /home/ben/.files/conf/i3/bertka-second-screen.sh
+
 workspace 10 output DP-1
