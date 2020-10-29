@@ -169,9 +169,11 @@ endif
 if executable('typescript-language-server')
     let g:LanguageClient_serverCommands['javascript'] = ['typescript-language-server', '--stdio']
     let g:LanguageClient_serverCommands['typescript'] = ['typescript-language-server', '--stdio']
+    let g:LanguageClient_serverCommands['typescript.tsx'] = ['typescript-language-server', '--stdio']
 elseif executable('javascript-typescript-stdio')
     let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-stdio']
     let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-stdio']
+    let g:LanguageClient_serverCommands['typescript.tsx'] = ['javascript-typescript-stdio']
 endif
 
 if executable('ccls')

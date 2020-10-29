@@ -68,6 +68,9 @@ Plug 'posva/vim-vue'
 " Syntax highlighting for TypeScript.
 Plug 'leafgarland/typescript-vim'
 
+" Syntax highlighting for TypeScript React files.
+Plug 'peitalin/vim-jsx-typescript'
+
 " Syntax highlighting and detection of rust files.
 Plug 'rust-lang/rust.vim'
 
