@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Usage : shot.sh, select a zone of the screen.
+# Usage : upshot, select a zone of the screen.
 
 filename="`date +%s`.png"
 if [ ! -z "$1" ]
