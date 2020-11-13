@@ -95,7 +95,7 @@ alias paint='pinta'
 alias psg='ps aux | grep $1'
 alias py='python3'
 
-alias serve='python -m SimpleHTTPServer'
+alias serve='python -m http.server'
 
 alias tmux='TERM=screen-256color-bce tmux' # 256 colors mode by default.
 alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftest,jittests -t none'
