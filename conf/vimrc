@@ -104,8 +104,21 @@ autocmd! BufWritePost vimrc source /home/ben/.config/nvim/init.vim
 " Define leader
 let mapleader = ' '
 
-" Activate fzf :Buffers with <leader>b (buffers)
+" FZF shortcuts:
+"  - list of open buffers
 map <leader>b :Buffers<CR>
+"  - grep in open buffers
+map <leader>G :Rg<CR>
+
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+"  - for git projects, grep in all the git files
+map <leader>gg :GGrep<CR>
+"  - for git projects, grep in the list of git files
+map <leader>gf :GFiles<CR>
 
 " erases the highlight on search
 map <silent> <leader><CR> :noh<CR>
@@ -235,3 +248,6 @@ let g:UltiSnipsSnippetDirectories=["/home/ben/.files/vim-snips/"]
 
 " Automatically indent if CR is entered after an expansion.
 let g:delimitMate_expand_cr=1
+
+" In terminal mode, use escape to leave terminal.
+:tnoremap <Esc> <C-\><C-n>
