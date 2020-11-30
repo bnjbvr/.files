@@ -4,15 +4,17 @@ all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla i
 .PHONY: clean deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla increase-notify i3 kalamine
 
 deps:
-	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop
+	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop fonts-hack-ttf
 
 i3:
-	sudo apt-get install -y i3 lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline udiskie feh
+	sudo apt-get install -y i3 lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline udiskie feh rofi
 	mkdir -p ~/.config/i3/
 	mkdir -p ~/.config/udiskie
+	mkdir -p ~/.config/rofi
 	ln -s ~/.files/conf/i3/config ~/.config/i3/config || true
 	ln -s ~/.files/conf/compton.conf ~/.config/compton.conf || true
 	ln -s ~/.files/conf/udiskie.yml ~/.config/udiskie/config.yml || true
+	ln -s ~/.files/conf/rofi ~/.config/rofi/config.rasi || true
 	ln -s ~/.files/conf/Xresources ~/.Xresources || true
 
 kalamine:

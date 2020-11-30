@@ -1,0 +1,7 @@
+configuration {
+  matching: "fuzzy";
+  modi: "window,drun,ssh,combi";
+  theme: "solarized";
+  font: "hack 24";
+  combi-modi: "window,drun,ssh";
+}
