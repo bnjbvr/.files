@@ -10,4 +10,4 @@ else
     prog="vim"
 fi
 
-$prog $*
+$prog "$*"
