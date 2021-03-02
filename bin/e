@@ -3,7 +3,7 @@
 
 # Connect to an existing gvim instance, or run a gvim if none is available
 
-if [ -e /usr/bin/nvim ]
+if [ $(which nvim) ]
 then
     prog="nvim"
 else

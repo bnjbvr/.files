@@ -2,9 +2,7 @@
 # initialization
 # -----------------------------------------------------------------------------
 
-DOTFILES_DIR="/home/ben/.files"
-
-MOZ_SM_SRC_DIR="/home/ben/code/mozilla-inbound/js/src"
+DOTFILES_DIR="$HOME/.files"
 
 # Support for command not found on Ubuntu machines.
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
@@ -30,7 +28,26 @@ export ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}"
 export PROMPT='%{$fg[red]%}%n%{$fg[magenta]%}@%{$fg[yellow]%}%m %{$fg[cyan]%}[%~%\] $(git_prompt_info)
 ${ret_status}%{$reset_color%}'
 
-export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:/home/ben/.cargo/bin:/home/ben/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
+export MANPATH="/usr/local/man:$MANPATH"
+export LC_ALL="en_US.UTF-8"
+
+# Rust source code path.
+if [ -d "$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]
+then
+    RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+    export RUST_SRC_PATH
+fi
+
+# -----------------------------------------------------------------------------
+# PATH
+# -----------------------------------------------------------------------------
+
+export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
+
+if [ -e /opt/homebrew/bin/ ]
+then
+    export PATH=$PATH:/opt/homebrew/bin
+fi
 
 if [ -e ~/bin ]
 then
@@ -47,24 +64,11 @@ then
     export PATH=${PATH}:~/sync/bin
 fi
 
-export MANPATH="/usr/local/man:$MANPATH"
-export LC_ALL="en_US.UTF-8"
-
-# Rust source code path.
-if [ -d "/home/ben/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]
-then
-    RUST_SRC_PATH="/home/ben/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
-    export RUST_SRC_PATH
-fi
-
-# mozilla build shortcuts
-export BUILD_VERBOSE_LOG=1
-
 # -----------------------------------------------------------------------------
 # aliases
 # -----------------------------------------------------------------------------
 
-NUM_CPUS=`nproc`
+NUM_CPUS=`(which nproc > /dev/null 2>&1 && nproc) || sysctl -n hw.logicalcpu`
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
@@ -81,12 +85,8 @@ alias fbn='find ./ -name $1'
 alias g='git'
 alias h='hg'
 
-alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
-alias jitz='$MOZ_SM_SRC_DIR/jit-test/jit_test.py ./dist/bin/js'
-
 alias m="make -sj$NUM_CPUS"
 alias meteo='curl -4 wttr.in/Lyon'
-alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && b'
 alias ms='make -s 2>&1 | less'
 
 alias op='xdg-open'
@@ -98,22 +98,24 @@ alias py='python3'
 alias serve='python -m http.server'
 
 alias tmux='TERM=screen-256color-bce tmux' # 256 colors mode by default.
-alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftest,jittests -t none'
 
 alias upvim='nvim +PlugInstall +UpdateRemotePlugins +qa'
 
-alias lsra='cargo run wasm --set enable_verifier=false --set regalloc=experimental_linear_scan --target aarch64 -vdT'
-alias lsra-r='cargo run --release wasm --set enable_verifier=false --set regalloc=experimental_linear_scan --target aarch64 -vdT'
-alias bt='cargo run wasm --set enable_verifier=false --target aarch64 -vdT'
-alias bt-r='cargo run --release wasm --set enable_verifier=false --target aarch64 -vdT'
-alias lsra-perf='cargo build --release && perf record --call-graph=dwarf -F 9999 /home/ben/code/wasmtime/target/release/clif-util wasm --set enable_verifier=false --set regalloc=experimental_linear_scan --target aarch64'
-
-# -----------------------------------------------------------------------------
-# common typos
-# -----------------------------------------------------------------------------
-
 alias gh='hg'
 alias sl='ls'
+
+# -----------------------------------------------------------------------------
+# mozilla stuff
+# -----------------------------------------------------------------------------
+
+export BUILD_VERBOSE_LOG=1
+
+MOZ_SM_SRC_DIR="$HOME/code/mozilla-inbound/js/src"
+
+alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
+alias jitz='$MOZ_SM_SRC_DIR/jit-test/jit_test.py ./dist/bin/js'
+alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && b'
+alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftest,jittests -t none'
 
 # -----------------------------------------------------------------------------
 # better cli tools
