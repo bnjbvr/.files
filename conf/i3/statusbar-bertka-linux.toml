@@ -9,7 +9,7 @@ buttons = ["play", "next"]
 [[block]]
 block = "net"
 device = "wlx04d4c462af85"
-ssid = true
+ssid = false
 signal_strength = true
 ip = true
 speed_up = false
@@ -32,7 +32,7 @@ critical_swap = 95
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization}% {frequency}GHz"
+format = "{utilization} {frequency}"
 
 [[block]]
 block = "sound"
@@ -40,8 +40,17 @@ step_width = 3
 
 [[block]]
 block = "weather"
-format = "{weather} ({location}) {temp}°, {wind} m/s {direction}"
+format = "{weather} {temp}°, {wind}m/s {direction}"
 service = { name = "openweathermap", api_key="ca6285ee7362d1ec68c5f515e78513ae", city_id = "2996944", units = "metric" }
+
+[[block]]
+block = "pomodoro"
+length = 25
+break_length = 5
+message = "Take a break!"
+break_message = "Get back to werk!"
+use_nag = true
+nag_path = "i3-nagbar"
 
 [[block]]
 block = "time"

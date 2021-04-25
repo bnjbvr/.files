@@ -16,19 +16,21 @@ rustdeps: rust
 alacritty: rust
 	cargo install alacritty
 	mkdir -p ~/.config/alacritty
-	ln -s ~/.files/conf/alacritty.yml ~/.config/alacritty/
+	ln -s ~/.files/conf/alacritty.yml ~/.config/alacritty/ 2> /dev/null || true
 
 i3: rust
 	cargo install i3wsr
-	sudo apt-get install -y i3 lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline udiskie feh rofi
+	sudo add-apt-repository ppa:kgilmer/speed-ricer
+	sudo apt-get update
+	sudo apt-get install -y i3-gaps lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline udiskie feh rofi
 	mkdir -p ~/.config/i3/
 	mkdir -p ~/.config/udiskie
 	mkdir -p ~/.config/rofi
-	ln -s ~/.files/conf/i3/config ~/.config/i3/config || true
-	ln -s ~/.files/conf/compton.conf ~/.config/compton.conf || true
-	ln -s ~/.files/conf/udiskie.yml ~/.config/udiskie/config.yml || true
-	ln -s ~/.files/conf/rofi ~/.config/rofi/config.rasi || true
-	ln -s ~/.files/conf/Xresources ~/.Xresources || true
+	@(ln -s ~/.files/conf/i3/config ~/.config/i3/config || true)
+	@(ln -s ~/.files/conf/compton.conf ~/.config/compton.conf || true)
+	@(ln -s ~/.files/conf/udiskie.yml ~/.config/udiskie/config.yml || true)
+	@(ln -s ~/.files/conf/rofi ~/.config/rofi/config.rasi || true)
+	@(ln -s ~/.files/conf/Xresources ~/.Xresources || true)
 
 kalamine:
 	git clone https://github.com/fabi1cazenave/kalamine /tmp/kalamine

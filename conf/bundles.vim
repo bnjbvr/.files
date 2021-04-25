@@ -74,6 +74,9 @@ Plug 'peitalin/vim-jsx-typescript'
 " Syntax highlighting and detection of rust files.
 Plug 'rust-lang/rust.vim'
 
+" Syntax highlighting and detection of svelte files.
+Plug 'evanleck/vim-svelte'
+
 " LangServer protocol.
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',

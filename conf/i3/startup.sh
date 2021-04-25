@@ -6,7 +6,7 @@ if [ "$(hostname)" == "xps-linux" ]; then
     feh --bg-scale /home/ben/.files/conf/i3/xps.png
 elif [ "$(hostname)" == "benjamin-bertja" ] || [ "$(hostname)" == "bertka-linux" ]; then
     # Grosse bertja!
-    feh --bg-scale /home/ben/.files/conf/i3/bertja-1.jpg /home/ben/.files/conf/i3/bertja-2.jpg
+    feh --bg-scale /home/ben/.files/conf/i3/unsplash.jpg
 else
     notify-send "i3/startup.sh: I don't know this machine!"
 fi
@@ -21,6 +21,12 @@ fi
 if [ -f /home/ben/sync/bin/cryptomator ]
 then
     /home/ben/sync/bin/cryptomator &
+fi
+
+path_i3wsr = $(which i3wsr)
+if [ -x $path_i3wsr ]
+then
+    $path_i3wrs &
 fi
 
 # On every restart, try to set a favorite keyboard layout.

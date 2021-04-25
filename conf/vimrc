@@ -167,6 +167,7 @@ let g:LanguageClient_autoStart=1
 let g:LanguageClient_loadSettings=1
 let g:LanguageClient_selectionUI="fzf"
 let g:LanguageClient_settingsPath="/home/ben/.files/conf/language-client-settings.json"
+"let g:LanguageClient_settingsPath="settings.json"
 let g:LanguageClient_useVirtualText = "No"
 
 " Disable these to get language client logging.
@@ -175,18 +176,24 @@ let g:LanguageClient_useVirtualText = "No"
 
 let g:LanguageClient_serverCommands = {}
 
+if executable('svelteserver')
+    let g:LanguageClient_serverCommands['svelte'] = ['svelteserver', '--stdio']
+endif
+
 if executable('rust-analyzer')
-    let g:LanguageClient_serverCommands['rust'] = ['rust-analyzer']
+    let g:LanguageClient_serverCommands['rust'] = ['rust-analyzer', '--log-file=/tmp/ra.log']
 endif
 
 if executable('typescript-language-server')
     let g:LanguageClient_serverCommands['javascript'] = ['typescript-language-server', '--stdio']
     let g:LanguageClient_serverCommands['typescript'] = ['typescript-language-server', '--stdio']
     let g:LanguageClient_serverCommands['typescript.tsx'] = ['typescript-language-server', '--stdio']
+    let g:LanguageClient_serverCommands['typescriptreact'] = ['typescript-language-server', '--stdio']
 elseif executable('javascript-typescript-stdio')
     let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-stdio']
     let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-stdio']
     let g:LanguageClient_serverCommands['typescript.tsx'] = ['javascript-typescript-stdio']
+    let g:LanguageClient_serverCommands['typescriptreact'] = ['javascript-typescript-stdio']
 endif
 
 if executable('ccls')
