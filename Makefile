@@ -6,7 +6,20 @@ all: deps gitdeps vim hg zsh npm tmux watchman crecord redshift python mozilla i
 deps:
 	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop fonts-hack-ttf
 
-i3:
+rust:
+	@(which cargo > /dev/null || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)
+
+rustdeps: rust
+	@(cargo install ripgrep > /dev/null 2>&1 || (cargo install ripgrep 2>&1 | grep "already" > /dev/null || echo "error when installing ripgrep"))
+	@(cargo install fd-find > /dev/null 2>&1 || (cargo install fd-find 2>&1 | grep "already" > /dev/null || echo "error when installing fd-find"))
+
+alacritty: rust
+	cargo install alacritty
+	mkdir -p ~/.config/alacritty
+	ln -s ~/.files/conf/alacritty.yml ~/.config/alacritty/
+
+i3: rust
+	cargo install i3wsr
 	sudo apt-get install -y i3 lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline udiskie feh rofi
 	mkdir -p ~/.config/i3/
 	mkdir -p ~/.config/udiskie
@@ -25,10 +38,6 @@ kalamine:
 
 python:
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && rm get-pip.py
-
-rustdeps:
-	@(cargo install ripgrep > /dev/null 2>&1 || (cargo install ripgrep 2>&1 | grep "already" > /dev/null || echo "error when installing ripgrep"))
-	@(cargo install fd-find > /dev/null 2>&1 || (cargo install fd-find 2>&1 | grep "already" > /dev/null || echo "error when installing fd-find"))
 
 gitdeps:
 	git submodule init
