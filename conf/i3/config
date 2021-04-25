@@ -128,7 +128,6 @@ bindsym $mod+Escape mode "$mode_system"
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 16
     status_command /home/ben/.files/conf/i3/status.sh
-    tray_output primary
     position top
 
     colors {

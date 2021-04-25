@@ -3,10 +3,10 @@
 if [ "$(hostname)" == "xps-linux" ]; then
     # XPS-Linux.
     xrandr --output eDP1 --mode 1920x1080
-    feh --bg-scale /home/ben/.files/conf/i3/xps.png
+    feh --bg-fill /home/ben/.files/conf/i3/xps.png
 elif [ "$(hostname)" == "benjamin-bertja" ] || [ "$(hostname)" == "bertka-linux" ]; then
     # Grosse bertja!
-    feh --bg-scale /home/ben/.files/conf/i3/unsplash.jpg
+    feh --bg-fill /home/ben/.files/conf/i3/unsplash.jpg
 else
     notify-send "i3/startup.sh: I don't know this machine!"
 fi
@@ -23,10 +23,9 @@ then
     /home/ben/sync/bin/cryptomator &
 fi
 
-path_i3wsr = $(which i3wsr)
-if [ -x $path_i3wsr ]
+if [ -f /home/ben/.cargo/bin/i3wsr ]
 then
-    $path_i3wrs &
+    /home/ben/.cargo/bin/i3wsr --icons awesome --no-icon-names --remove-duplicates &
 fi
 
 # On every restart, try to set a favorite keyboard layout.
