@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## All the programs run at startup.
+
 if [ "$(hostname)" == "xps-linux" ]; then
     # XPS-Linux.
     xrandr --output eDP1 --mode 1920x1080
@@ -11,39 +13,60 @@ else
     notify-send "i3/startup.sh: I don't know this machine!"
 fi
 
-# Start bluetooth applet, if available.
-if [ -f /usr/bin/blueman-applet ]
-then
-    blueman-applet &
-fi
-
-# Start cryptomator, if available.
-if [ -f /home/ben/sync/bin/cryptomator ]
-then
-    /home/ben/sync/bin/cryptomator &
-fi
-
-if [ -f /home/ben/.cargo/bin/i3wsr ]
-then
-    /home/ben/.cargo/bin/i3wsr --icons awesome --no-icon-names --remove-duplicates &
-fi
-
 # On every restart, try to set a favorite keyboard layout.
 setxkbmap us -variant benjamin || setxkbmap us -variant altgr-intl
+
 # Map capslock to escape.
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
+run_if_present () {
+    exists=NO
+
+    command -v $1 &> /dev/null
+    if [ $? -eq 0 ]
+    then
+        exists=YES
+    else
+        which $1 > /dev/null
+        if [ $? -eq 0 ]
+        then
+            exists=YES
+        fi
+    fi
+
+    if [ $exists = "YES" ]
+    then
+        if [ $# -ge 2 ]
+        then
+            prog=$1
+            shift
+            $prog $@ &
+        else
+            $1 &
+        fi
+    fi
+}
+
+# Bluetooth applet.
+run_if_present /usr/bin/blueman-applet
+
 # Disk tray icon.
-udiskie -ans &
+run_if_present udiskie -ans
+
+# On-disk encryption.
+run_if_present /home/ben/sync/bin/cryptomator
+
+# Lighter screen color with red.
+run_if_present redshift -c ~/.config/redshift.conf
+
+# i3 rename workspace according to windows it contains
+run_if_present /home/ben/.cargo/bin/i3wsr --icons awesome --no-icon-names --remove-duplicates
+
+# Network-manager applet.
+nm-applet &
 
 # Compton (compositor).
 compton &
 
 # Nextcloud sync client.
 nextcloud &
-
-# Network-manager applet.
-nm-applet &
-
-# Run redshift if it's installed.
-which redshift >/dev/null && redshift -c ~/.config/redshift.conf &
