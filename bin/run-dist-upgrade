@@ -1,4 +1,13 @@
 #!/bin/bash
 
+set -e
+
+echo "***** apt updates"
 sudo apt update
 sudo apt-get dist-upgrade
+
+if command -v flatpak > /dev/null
+then
+    echo "***** flatpak updates"
+    flatpak update
+fi
