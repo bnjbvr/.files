@@ -126,7 +126,7 @@ bindsym $mod+Escape mode "$mode_system"
 # finds out, if available)
 
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 16
+    font pango:DejaVu Sans Mono, FontAwesome 14
     status_command /home/ben/.files/conf/i3/status.sh
     position top
 
@@ -166,6 +166,10 @@ bindsym $mod+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # 
 bindsym $mod+o exec playerctl previous
 bindsym $mod+p exec playerctl play-pause
 bindsym $mod+bracketleft exec playerctl next
+
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
 
 # Screen brightness controls.
 set $xbacklight /home/ben/.files/conf/i3/xbacklight.sh
