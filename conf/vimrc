@@ -176,7 +176,7 @@ endif
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsSnippetDirectories=["/home/ben/.files/vim-snips/"]
+let g:UltiSnipsSnippetDirectories=["/home/ben/.files/conf/vim/snips/"]
 
 " Automatically indent if CR is entered after an expansion.
 let g:delimitMate_expand_cr=1
