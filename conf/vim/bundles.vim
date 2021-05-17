@@ -78,10 +78,18 @@ Plug 'rust-lang/rust.vim'
 Plug 'evanleck/vim-svelte'
 
 " LangServer protocol.
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-\ }
+"Plug 'autozimu/LanguageClient-neovim', {
+    "\ 'branch': 'next',
+    "\ 'do': 'bash install.sh',
+"\ }
+
+" Native LangServer protocol.
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-lsputils'
+Plug 'ojroques/nvim-lspfuzzy'
+Plug 'ray-x/lsp_signature.nvim'
 
 " Showing function signature and inline doc
 Plug 'Shougo/echodoc.vim'
