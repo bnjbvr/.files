@@ -32,6 +32,11 @@ i3: rust
 	@(ln -s ~/.files/conf/rofi ~/.config/rofi/config.rasi || true)
 	@(ln -s ~/.files/conf/Xresources ~/.Xresources || true)
 
+dunst:
+	sudo apt install dunst
+	mkdir -p ~/.config/dunst
+	@(ln -s ~/.files/conf/dunstrc ~/.config/dunst/ || true)
+
 kalamine:
 	git clone https://github.com/fabi1cazenave/kalamine /tmp/kalamine
 	sudo pip3 install -e /tmp/kalamine
