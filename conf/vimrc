@@ -19,7 +19,7 @@ set hlsearch        " highlight what you search for
 set incsearch       " type-ahead-find
 set wildmenu        " command-line completion shows a list of matches
 set wildmode=longest,list:longest,full " Bash-vim completion behavior
-set autochdir       " use current working directory of a file as base path
+"set autochdir       " use current working directory of a file as base path -- breaks plugins
 
 if has('nvim')
     set icm=split   " show preview of search/replace.
