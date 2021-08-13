@@ -21,16 +21,16 @@ alacritty: rust
 i3: rust
 	cargo install i3wsr
 	sudo add-apt-repository ppa:kgilmer/speed-ricer
+	sudo add-apt-repository ppa:agornostal/ulauncher
 	sudo apt-get update
-	sudo apt-get install -y i3-gaps lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline udiskie feh rofi
+	sudo apt-get install -y i3-gaps lxappearance suckless-tools pulseaudio-utils playerctl xbacklight compton fonts-font-awesome fonts-powerline udiskie feh ulauncher
 	mkdir -p ~/.config/i3/
 	mkdir -p ~/.config/udiskie
-	mkdir -p ~/.config/rofi
 	@(ln -s ~/.files/conf/i3/config ~/.config/i3/config || true)
 	@(ln -s ~/.files/conf/compton.conf ~/.config/compton.conf || true)
 	@(ln -s ~/.files/conf/udiskie.yml ~/.config/udiskie/config.yml || true)
-	@(ln -s ~/.files/conf/rofi ~/.config/rofi/config.rasi || true)
 	@(ln -s ~/.files/conf/Xresources ~/.Xresources || true)
+	@(ln -s ~/.files/conf/ulauncher ~/.config/ulauncher || true)
 
 dunst:
 	sudo apt install dunst

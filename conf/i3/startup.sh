@@ -47,6 +47,8 @@ run_if_present () {
     fi
 }
 
+run_if_present /usr/bin/ulauncher
+
 # Bluetooth applet.
 run_if_present /usr/bin/blueman-applet
 

@@ -1,0 +1,58 @@
+{
+    "com.github.melianmiko.ulauncher-bluetoothd": {
+        "id": "com.github.melianmiko.ulauncher-bluetoothd",
+        "url": "https://github.com/melianmiko/ulauncher-bluetoothd",
+        "updated_at": "2021-07-30T15:59:11.206787",
+        "last_commit": "90063f16989c59cb7cd4587d92eb21cd517646b0",
+        "last_commit_time": "2021-07-20T03:44:37"
+    },
+    "com.github.mikebarkmin.ulauncher-obsidian": {
+        "id": "com.github.mikebarkmin.ulauncher-obsidian",
+        "url": "https://github.com/mikebarkmin/ulauncher-obsidian",
+        "updated_at": "2021-07-30T15:59:26.323907",
+        "last_commit": "85c869eda769eb7cd70b341451281038b5473b92",
+        "last_commit_time": "2021-07-18T21:10:03"
+    },
+    "com.github.tchar.ulauncher-albert-calculate-anything": {
+        "id": "com.github.tchar.ulauncher-albert-calculate-anything",
+        "url": "https://github.com/tchar/ulauncher-albert-calculate-anything",
+        "updated_at": "2021-07-30T16:04:09.056025",
+        "last_commit": "9e2c79bc600f4189f5beb0d4e8f753f3d5dbad0e",
+        "last_commit_time": "2021-07-30T11:03:22"
+    },
+    "com.github.fajtak.ulauncher-weather": {
+        "id": "com.github.fajtak.ulauncher-weather",
+        "url": "https://github.com/fajtak/ulauncher-weather",
+        "updated_at": "2021-07-30T16:04:21.967498",
+        "last_commit": "3199eb7287c56dac4dc4a32311b49b5bdf3f0a2f",
+        "last_commit_time": "2021-07-07T07:56:03"
+    },
+    "com.github.ulauncher.ulauncher-emoji": {
+        "id": "com.github.ulauncher.ulauncher-emoji",
+        "url": "https://github.com/Ulauncher/ulauncher-emoji",
+        "updated_at": "2021-07-30T16:06:06.880650",
+        "last_commit": "d56b2c8106ab5fbc87b55f608a3bd75db23f2904",
+        "last_commit_time": "2020-10-03T19:10:03"
+    },
+    "com.github.manahter.ulauncher-translate": {
+        "id": "com.github.manahter.ulauncher-translate",
+        "url": "https://github.com/manahter/ulauncher-translate",
+        "updated_at": "2021-07-30T16:06:10.378321",
+        "last_commit": "f81d32c583c7e3542bdba655e991a56e6d9a2c28",
+        "last_commit_time": "2021-04-09T18:12:40"
+    },
+    "com.github.iboyperson.ulauncher-system": {
+        "id": "com.github.iboyperson.ulauncher-system",
+        "url": "https://github.com/iboyperson/ulauncher-system",
+        "updated_at": "2021-07-30T16:41:21.646159",
+        "last_commit": "639facd8be9208afde0371def31913b0804709e8",
+        "last_commit_time": "2021-06-01T14:45:38"
+    },
+    "com.github.ulauncher.ulauncher-timer": {
+        "id": "com.github.ulauncher.ulauncher-timer",
+        "url": "https://github.com/ulauncher/ulauncher-timer",
+        "updated_at": "2021-07-31T17:49:12.887969",
+        "last_commit": "4262fc24db08610d01ea311d2e12f22588c98886",
+        "last_commit_time": "2020-11-03T07:21:30"
+    }
+}

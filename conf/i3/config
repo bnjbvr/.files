@@ -21,7 +21,7 @@ bindsym $mod+Shift+q kill
 
 # Program launcher.
 #bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec --no-startup-id rofi -show combi
+bindsym $mod+d exec --no-startup-id ulauncher
 
 # change focus: Vim mode ftw!
 bindsym $mod+h focus left

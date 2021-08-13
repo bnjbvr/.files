@@ -1,9 +1,0 @@
-configuration {
-  matching: "fuzzy";
-  modi: "drun,ssh,combi";
-  theme: "solarized";
-  font: "hack 32";
-  combi-modi: "drun,ssh";
-  icon-theme: "Papirus";
-  show-icons: true;
-}
