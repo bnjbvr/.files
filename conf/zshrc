@@ -101,7 +101,6 @@ alias tmux='TERM=screen-256color-bce tmux' # 256 colors mode by default.
 
 alias upvim='nvim +PlugInstall +UpdateRemotePlugins +qa'
 
-alias gh='hg'
 alias sl='ls'
 
 # -----------------------------------------------------------------------------
