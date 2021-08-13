@@ -9,4 +9,4 @@ then
 fi
 
 scrot -s -q 100 /tmp/$filename
-echo /tmp/$filename
+notify-send /tmp/$filename || echo /tmp/$filename
