@@ -1,4 +1,4 @@
-local helpers = require './helpers'
+helpers = require './helpers' -- ultisnips expects this global variable to be defined for some snippets
 
 helpers.map('n', '<leader>s', '<Cmd>lua telescope.extensions.ultisnips.ultisnips{}<CR>')
 helpers.map('n', '<leader>b', '<Cmd>lua telescope_builtins.buffers{}<CR>')

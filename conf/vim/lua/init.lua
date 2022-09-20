@@ -1,8 +1,12 @@
 math.randomseed(os.time())
 
+vim.g.mapleader = ' '
+
 require './plugins'
+require './plugins_config'
 require './lsp'
 require './autocmd'
+require './keys'
 
 -- *************
 -- Regular settings
@@ -30,7 +34,7 @@ vim.opt.hlsearch = true -- highlight what you search for
 vim.opt.incsearch = true -- type-ahead-find
 vim.opt.wildmenu = true -- command-line completion shows a list of matches
 vim.opt.wildmode = 'longest,list:longest,full' -- bash-vim completion behavior
-vim.opt.autochdir = true -- use current working directory of a file as base path
+--vim.opt.autochdir = true -- use current working directory of a file as base path
 vim.opt.icm = 'split' -- show preview of search/replace
 vim.opt.nu = true -- show line numbers
 vim.opt.showmode = true -- show the current mode on the last line
@@ -49,8 +53,3 @@ vim.opt.ofu = "syntaxcomplete#Complete"
 -- all operations such as yy, D, and P work with the clipboard.
 -- No need to prefix them with "* or "+
 vim.opt.clipboard = 'unnamed'
-
-vim.g.mapleader = ' '
-
-require './plugins_config'
-require './keys'
