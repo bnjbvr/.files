@@ -1,3 +1,8 @@
+exe 'set rtp+=' . expand('~/.files/conf/vim/')
+luafile ~/.files/conf/vim/lua/init.lua
+
+" Remaining things to port to init.lua.
+
 " Deactivate the arrow keys.
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -52,6 +57,3 @@ let g:delimitMate_expand_cr=1
 
 " In terminal mode, use escape to leave terminal.
 :tnoremap <Esc> <C-\><C-n>
-
-exe 'set rtp+=' . expand('~/.files/conf/vim/')
-luafile ~/.files/conf/vim/lua/init.lua

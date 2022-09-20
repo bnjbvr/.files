@@ -18,8 +18,9 @@ vim.opt.shiftwidth = 4  -- indent width
 vim.opt.expandtab = true
 
 vim.opt.colorcolumn = '100' -- highlight the 100th column
-vim.opt.cursorline = true -- highlight the current line
-vim.opt.cursorcolumn = true -- highlight the current column too
+
+vim.wo.cursorline = true -- highlight the current line
+vim.wo.cursorcolumn = true -- highlight the current column too
 
 vim.opt.ignorecase = true -- case-insentive search by default
 vim.opt.smartcase = true -- search case-sensitive if there is an upper-case letter
