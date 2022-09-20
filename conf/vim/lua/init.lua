@@ -1,92 +1,55 @@
-local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+math.randomseed(os.time())
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+require './plugins'
+require './lsp'
+require './autocmd'
 
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', '<leader>d', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<leader>i', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<leader>t', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>q', '<cmd>:LspDiagnosticsAll<CR>', opts)
+-- *************
+-- Regular settings
 
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
-  if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
+vim.opt.encoding = 'utf-8'
+vim.opt.guifont = "Fira Code NerdFont 14"
+vim.opt.textwidth = 99 -- welcome to the future
 
-  -- nvim-lsputils
-  vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-  vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
-  vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
-  vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-  vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-  vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-  vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-  vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+vim.opt.wrap = true -- auto wrap line view, but not text itself
+vim.opt.softtabstop = 4 -- tab width
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4  -- indent width
+vim.opt.expandtab = true
 
-  -- diagnostics
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = true,
-      signs = true,
-      update_in_insert = true,
-    }
-  )
+vim.opt.colorcolumn = '100' -- highlight the 100th column
+vim.opt.cursorline = true -- highlight the current line
+vim.opt.cursorcolumn = true -- highlight the current column too
 
-  -- inlay hints!
-  require'lsp_extensions'.inlay_hints{
-      highlight = "Comment",
-      prefix = "» ",
-      aligned = false,
-      only_current_line = false,
-      enabled = { "ChainingHint", "TypeHint", "ParameterHint", }
-  }
+vim.opt.ignorecase = true -- case-insentive search by default
+vim.opt.smartcase = true -- search case-sensitive if there is an upper-case letter
+vim.opt.gdefault = true -- when replacing, use /g by default
+vim.opt.showmatch = true -- paren match highlighting
+vim.opt.hlsearch = true -- highlight what you search for
+vim.opt.incsearch = true -- type-ahead-find
+vim.opt.wildmenu = true -- command-line completion shows a list of matches
+vim.opt.wildmode = 'longest,list:longest,full' -- bash-vim completion behavior
+vim.opt.autochdir = true -- use current working directory of a file as base path
+vim.opt.icm = 'split' -- show preview of search/replace
+vim.opt.nu = true -- show line numbers
+vim.opt.showmode = true -- show the current mode on the last line
+vim.opt.showcmd = true -- show informations about selection while in visual mode
+vim.opt.ruler = true
+vim.opt.backspace = 'indent,eol,start' -- magic for backspace/delete issues in term mode
+vim.opt.splitbelow = true -- new splits placed below...
+vim.opt.splitright = true -- ...new vsplits placed right.
+vim.opt.scrolloff = 5 -- always keep lines around the cursor
+vim.opt.signcolumn = 'yes' -- always draw the sign column
+vim.opt.listchars = 'trail:·,nbsp:·,tab:▸ ,extends:»,precedes:«,' -- print tabs with special char + trailing chars
+vim.opt.list = true
+vim.opt.laststatus = 2 -- always show the statusline, even where there is only one file edited
+vim.opt.ofu = "syntaxcomplete#Complete"
 
-  -- fzf
-  require('lspfuzzy').setup {}
-end
+-- all operations such as yy, D, and P work with the clipboard.
+-- No need to prefix them with "* or "+
+vim.opt.clipboard = 'unnamed'
 
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
-local servers = { "tsserver", "svelte" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
-end
+vim.g.mapleader = ' '
 
-require'lsp_signature'.on_attach()
-
-nvim_lsp.rust_analyzer.setup {
-    on_attach = on_attach,
-    init_options = {
-        codeLenses = {
-            test = true
-        }
-    },
-    settings = {
-        ["rust-analyzer"] = {
-            inlayHints = {
-                enable = true,
-                maxLength = 100
-            },
-            cargo = {
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
-            }
-        }
-    }
-}
+require './plugins_config'
+require './keys'

@@ -1,88 +1,3 @@
-set nocompatible    " do not try to be vi-compatible
-
-set guifont=Inconsolata\ 11
-
-set textwidth=79
-set wrap            " auto wrap line view, but not text itself
-
-filetype indent on  " activates indenting for files
-set softtabstop=4   " width of a tab
-set tabstop=4
-set shiftwidth=4    " width of the indentation
-set expandtab
-
-set ignorecase      " case-insentive search by default
-set smartcase       " search case-sensitive if there is an upper-case letter
-set gdefault        " when replacing, use /g by default
-set showmatch       " paren match highlighting
-set hlsearch        " highlight what you search for
-set incsearch       " type-ahead-find
-set wildmenu        " command-line completion shows a list of matches
-set wildmode=longest,list:longest,full " Bash-vim completion behavior
-"set autochdir       " use current working directory of a file as base path -- breaks plugins
-
-if has('nvim')
-    set icm=split   " show preview of search/replace.
-endif
-
-set encoding=utf-8
-
-set nu              " show line numbers
-set showmode        " show the current mode on the last line
-set showcmd         " show informations about selection while in visual mode
-
-set guioptions-=T   "remove toolbar
-
-set colorcolumn=80,100  " highlight the 80th and 100th column
-
-set cursorline " highlight current line
-set cursorcolumn " and column too
-
-set signcolumn=yes " always draw the signcolumn.
-
-" all operations such as yy, D, and P work with the clipboard.
-" No need to prefix them with "* or "+
-set clipboard=unnamed
-
-" New split placed below
-set splitbelow
-" New vsplit placed right
-set splitright
-
-" set foldmethod=syntax " makes vim horribly slow, with syntax coloring
-set foldlevelstart=20 " buffer are always loaded with opened folds
-
-" always keep lines around the cursor
-set scrolloff=5
-
-" Yank the line, comment it, paste it
-nnoremap yp yygccp
-
-" When jumping to a given line, center the screen
-nnoremap G Gzz
-
-" print tabs with a special character (add ",eol:·" for end of lines)
-set listchars=trail:·,nbsp:·,tab:▸\ ,extends:»,precedes:«,
-set list
-
-" also mark trailing whitespaces as error so they show up in red.
-match ErrorMsg '\s\+$'
-
-set laststatus=2 " always show the statusline, even when there is only one file edited
-
-filetype plugin on
-set ofu=syntaxcomplete#Complete
-
-"ctags
-map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-set tags=./tags;/
-
-source ~/.files/conf/vim/bundles.vim
-
-" older regexp engine, makes vim faster?
-syntax on             " syntax coloring by default
-set re=1
-
 " Deactivate the arrow keys.
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -97,58 +12,15 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
-autocmd! BufWritePost .vimrc source /home/ben/.vimrc
-autocmd! BufWritePost init.vim source /home/ben/.config/nvim/init.vim
-autocmd! BufWritePost vimrc source /home/ben/.config/nvim/init.vim
-
-" Define leader
-let mapleader = ' '
-
-" FZF shortcuts:
-"  - list of open buffers
-map <leader>b :Buffers<CR>
-"  - grep in open buffers
-map <leader>G :Rg<CR>
-
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
-"  - for git projects, grep in all the git files
-map <leader>gg :GGrep<CR>
-"  - for git projects, grep in the list of git files
-map <leader>gf :GFiles<CR>
-
 " erases the highlight on search
 map <silent> <leader><CR> :noh<CR>
-
-" build tags of your own project with <leader>T (T is for tags)
-map <leader>T :exec '!ctags --recurse --append --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q'<CR>
-
-" show next tag match
-map <leader><Space> :tn<CR>
-
-" open reject file (j is for reJects)
-map <silent> <leader>j :vs %.rej<CR>
 
 " side pane of files (n is for nerdtree)
 nnoremap <leader>n :NERDTreeToggle<cr>
 
-" Solarized
-set background=dark
-set rtp+=~/.vim/bundle/vim-colors-solarized/
-let g:solarized_termcolors=256
-colorscheme solarized
-
-set ruler
-
 " reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
-
-" magic for backspace and delete issues in terminal mode
-set backspace=indent,eol,start
 
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 nmap <leader>p <Plug>yankstack_substitute_older_paste
@@ -164,9 +36,6 @@ let g:AutoClosePreserveDotReg = 0
 let g:airline_solarized_bg='dark'
 set t_Co=256 " use 256 colors
 
-" Half indent for switch cases
-set cino=:0.5s,=0.5s
-
 " Have JJ command erase supplementary spaces.
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j
@@ -176,7 +45,7 @@ endif
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsSnippetDirectories=["/home/ben/.files/conf/vim/snips/"]
+let g:UltiSnipsSnippetDirectories=["~/.files/conf/vim/snips/"]
 
 " Automatically indent if CR is entered after an expansion.
 let g:delimitMate_expand_cr=1
@@ -184,6 +53,5 @@ let g:delimitMate_expand_cr=1
 " In terminal mode, use escape to leave terminal.
 :tnoremap <Esc> <C-\><C-n>
 
-"source ~/.files/conf/vim/languageclient.vim
 exe 'set rtp+=' . expand('~/.files/conf/vim/')
 luafile ~/.files/conf/vim/lua/init.lua
