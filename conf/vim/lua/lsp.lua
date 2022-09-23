@@ -2,7 +2,7 @@ local nvim_lsp = require('lspconfig')
 
 -- *************
 -- LSP handler.
-local on_attach = function(client, bufnr)
+local lsp_on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   local keymap_opts = { noremap=true, silent=true }
@@ -49,34 +49,34 @@ local on_attach = function(client, bufnr)
 end
 
 -- TypeScript
-nvim_lsp.tsserver.setup { on_attach = on_attach }
+nvim_lsp.tsserver.setup { on_attach = lsp_on_attach }
 
 -- Svelte??
---nvim_lsp.svelte.setup { on_attach = on_attach }
+--nvim_lsp.svelte.setup { on_attach = lsp_on_attach }
 
 -- Lua
---nvim_lsp.sumneko_lua.setup { on_attach = on_attach }
+--nvim_lsp.sumneko_lua.setup { on_attach = lsp_on_attach }
 
--- Another one bites the Rust
-nvim_lsp.rust_analyzer.setup {
-    on_attach = on_attach,
-    init_options = {
-        codeLenses = {
-            test = true
-        }
-    },
-    settings = {
-        ["rust-analyzer"] = {
-            inlayHints = {
-                enable = true,
-                maxLength = 100
-            },
-            cargo = {
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
+-- Rust LSP + tools
+require('rust-tools').setup({
+    server = {
+        on_attach = function(client, bufnr) 
+            lsp_on_attach(client, bufnr)
+        end,
+
+        settings = {
+            ["rust-analyzer"] = {
+                inlayHints = {
+                    enable = true,
+                    maxLength = 100
+                },
+                cargo = {
+                    loadOutDirsFromCheck = true
+                },
+                procMacro = {
+                    enable = true
+                }
             }
-        }
-    }
-}
+        },
+    },
+})

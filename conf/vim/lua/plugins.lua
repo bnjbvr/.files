@@ -78,6 +78,9 @@ return require('packer').startup(function(use)
     -- Native LangServer protocol.
     use 'neovim/nvim-lspconfig'
 
+    -- Extra LSP for rust!
+    use 'simrat39/rust-tools.nvim'
+
     -- Fuzzy finder and nice windows
     use 'nvim-telescope/telescope.nvim'
 
