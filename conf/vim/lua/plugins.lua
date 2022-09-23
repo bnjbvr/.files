@@ -23,8 +23,10 @@ return require('packer').startup(function(use)
     use 'Mofiqul/dracula.nvim'
 
     -- Better status line.
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
     -- ********************************************************************************************
     -- Behaviors
@@ -51,7 +53,8 @@ return require('packer').startup(function(use)
     use 'maxbrunsfeld/vim-yankstack'
 
     -- Snippets engine (requires Python support).
-    use 'SirVer/ultisnips'
+    use({"L3MON4D3/LuaSnip", tag = "v1.*"})
+    use 'benfowler/telescope-luasnip.nvim'
 
     -- Github integration.
     use {
@@ -89,9 +92,6 @@ return require('packer').startup(function(use)
 
     --- Show LSP status above the status line
     use 'j-hui/fidget.nvim'
-
-    --- Ultisnips + Telescope = <3
-    use 'fhill2/telescope-ultisnips.nvim'
 
     -- ********************************************************************************************
     -- Automatically set up your configuration after cloning packer.nvim

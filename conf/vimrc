@@ -37,22 +37,12 @@ let g:multi_cursor_quit_key='<esc>'
 
 let g:AutoClosePreserveDotReg = 0
 
-" Airline configuration.
-let g:airline_solarized_bg='dark'
-set t_Co=256 " use 256 colors
-
 " Have JJ command erase supplementary spaces.
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j
 endif
 
-" UltiSnips snippets engine.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsSnippetDirectories=["~/.files/conf/vim/snips/"]
-
-" Automatically indent if CR is entered after an expansion.
+" " Automatically indent if CR is entered after an expansion.
 let g:delimitMate_expand_cr=1
 
 " In terminal mode, use escape to leave terminal.

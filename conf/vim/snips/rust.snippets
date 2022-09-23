@@ -4,125 +4,111 @@
 
 priority -50
 
-snippet debug
-impl fmt::Debug for $1 {
-	fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
-		write!(fmt, $2)
+snippet debug "Debug implementation"
+	impl fmt::Debug for $1 {
+		fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+			write!(fmt, $2)
+		}
 	}
-}
-endsnippet
 
 snippet display
-impl fmt::Display for $1 {
-	fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
-		write!(fmt, $2)
+	impl fmt::Display for $1 {
+		fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+			write!(fmt, $2)
+		}
 	}
-}
-endsnippet
 
 snippet fn "fn name(?) -> ? {}"
-fn ${1:function_name}($2)${3/..*/ -> /}$3 {
-	${VISUAL}$0
-}
-endsnippet
+	fn ${1:function_name}($2)${3/..*/ -> /}$3 {
+		${VISUAL}$0
+	}
 
 snippet pfn "pub fn name(?) -> ? {}"
-pub fn ${1:function_name}($2)${3/..*/ -> /}$3 {
-	${VISUAL}$0
-}
-endsnippet
+	pub fn ${1:function_name}($2)${3/..*/ -> /}$3 {
+		${VISUAL}$0
+	}
 
 snippet ctor "constructor"
-pub fn new($1) -> Self {
-	Self {
+	pub fn new($1) -> Self {
+		Self {
+		}
 	}
-}
-endsnippet
 
 snippet s "struct"
-struct $1 {
-	$2
-}
-endsnippet
+	struct $1 {
+		$2
+	}
 
 snippet i "impl"
-impl $1${2/..*/ for /}$2 {
-	$3
-}
-endsnippet
+	impl $1${2/..*/ for /}$2 {
+		$3
+	}
 
 snippet si "struct and impl"
-struct $1 {
-	$2
-}
+	struct $1 {
+		$2
+	}
 
-impl $1 {
-	fn new($2) -> Self {
-		Self {
+	impl $1 {
+		fn new($2) -> Self {
+			Self {
+				$3
+			}
+		}
+	}
+
+snippet pln "println!(..)" b
+	println!("$1"${2/..*/, /}$2);
+
+snippet fmt "format!(..)"
+	format!("$1"${2/..*/, /}$2);
+
+snippet bd
+	declare_behavior! {
+		"`!v v:lua.helpers.gen_guid()`"
+		$2Behavior {
 			$3
 		}
 	}
-}
-endsnippet
-
-snippet pln "println!(..)" b
-println!("$1"${2/..*/, /}$2);
-endsnippet
-
-snippet fmt "format!(..)"
-format!("$1"${2/..*/, /}$2);
-endsnippet
-
-snippet bd
-declare_behavior! {
-	"`!v v:lua.helpers.gen_guid()`"
-	$2Behavior {
-		$3
-	}
-}
-endsnippet
 
 snippet bi
-#[derive(Clone, serde::Serialize, serde::Deserialize, Behavior)]
-#[behavior(declaration = $1Behavior)]
-pub struct $2BehaviorImpl {
-}
-
-impl $2BehaviorImpl {
-	fn think(&mut self, msg: &ThinkMsg, api: &dyn BehaviorApi) {
+	#[derive(Clone, serde::Serialize, serde::Deserialize, Behavior)]
+	#[behavior(declaration = $1Behavior)]
+	pub struct $2BehaviorImpl {
 	}
-}
 
-impl BehaviorImpl for $2BehaviorImpl {
-	fn build(b: &mut impl BehaviorImplBuilder<Self>) {
-		b.category(BehaviorCategory::Game);
-		b.on_msg::<ThinkMsg>(Self::think);
+	impl $2BehaviorImpl {
+		fn think(&mut self, msg: &ThinkMsg, api: &dyn BehaviorApi) {
+		}
 	}
-}
-endsnippet
+
+	impl BehaviorImpl for $2BehaviorImpl {
+		fn build(b: &mut impl BehaviorImplBuilder<Self>) {
+			b.category(BehaviorCategory::Game);
+			b.on_msg::<ThinkMsg>(Self::think);
+		}
+	}
 
 snippet asp
-#[derive(
-	Debug, Clone, serde::Serialize, serde::Deserialize, speedy::Writable, speedy::Readable, Aspect
-)]
-#[aspect(guid = "`!v v:lua.helpers.gen_guid()`")]
-pub struct $1Aspect {
-	$0
-}
-endsnippet
+	#[derive(
+		Debug, Clone, serde::Serialize, serde::Deserialize, speedy::Writable, speedy::Readable, Aspect
+	)]
+	#[aspect(guid = "`!v v:lua.helpers.gen_guid()`")]
+	pub struct $1Aspect {
+		$0
+	}
 
 snippet msg
-#[derive(
-	Debug, Clone, serde::Serialize, serde::Deserialize, speedy::Writable, speedy::Readable,
-)]
-pub struct $1Msg {
-	$0
-}
+	#[derive(
+		Debug, Clone, serde::Serialize, serde::Deserialize, speedy::Writable, speedy::Readable,
+	)]
+	pub struct $1Msg {
+		$0
+	}
 
-impl Message for $1Msg {
-	const GUID: MessageGuid =
-		MessageGuid::const_new_from_str("`!v v:lua.helpers.gen_guid()`");
-}
-endsnippet
+	impl Message for $1Msg {
+		const GUID: MessageGuid =
+			MessageGuid::const_new_from_str("`!v v:lua.helpers.gen_guid()`");
+	}
 
 # vim:ft=snippets:
