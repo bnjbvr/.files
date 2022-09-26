@@ -87,7 +87,7 @@ return require('packer').startup(function(use)
     --- Use telescope for e.g. code actions
     use 'nvim-telescope/telescope-ui-select.nvim'
 
-    --- Use fzf for fuzzy search in telescope! (assume preinstalled)
+    --- Use a C clone of fzf for fuzzy search in telescope! (assume preinstalled)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     --- Helper functions used by telescope
