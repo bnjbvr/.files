@@ -1,21 +1,9 @@
-[submodule "bin/colout-dir"]
-	path = bin/colout-dir
-	url = https://github.com/nojhan/colout
 [submodule "bin/ohmyzsh"]
 	path = bin/ohmyzsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "bin/watchman-dir"]
-	path = bin/watchman-dir
-	url = https://github.com/facebook/watchman
-[submodule "myiongraph"]
-	path = bin/iongraph
-	url = https://github.com/bnjbvr/iongraph
 [submodule "bin/z"]
 	path = bin/z
 	url = https://github.com/rupa/z
-[submodule "bin/cquery"]
-	path = bin/cquery
-	url = https://github.com/cquery-project/cquery.git
 [submodule "bin/fzf"]
 	path = bin/fzf
 	url = https://github.com/junegunn/fzf.git
