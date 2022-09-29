@@ -13,6 +13,8 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.files/bin/z/z.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # -----------------------------------------------------------------------------
 # global variables
@@ -44,6 +46,11 @@ fi
 
 export PATH="$DOTFILES_DIR/bin:$DOTFILES_DIR/private/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 
+if [ -e ~/go/bin/ ]
+then
+    export PATH=$PATH:~/go/bin
+fi
+
 if [ -e /opt/homebrew/bin/ ]
 then
     export PATH=$PATH:/opt/homebrew/bin
@@ -52,11 +59,6 @@ fi
 if [ -e ~/bin ]
 then
     export PATH=${PATH}:~/bin
-fi
-
-if [ -e ~/bin/$(hostname) ]
-then
-    export PATH=${PATH}:$(find ~/bin/$(hostname) -type d | tr '\n' ':' | sed 's/:$//')
 fi
 
 if [ -e ~/sync/bin ]
@@ -83,6 +85,8 @@ alias dc='docker-compose'
 alias fbn='find ./ -name $1'
 
 alias g='git'
+alias gch="git checkout \"\$(git branch --all | fzf | tr -d '[:space:]')\"";
+alias gpf="git push --force-with-lease"
 alias h='hg'
 
 alias m="make -sj$NUM_CPUS"
