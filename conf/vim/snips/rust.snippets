@@ -44,6 +44,18 @@ snippet i "impl"
 		$3
 	}
 
+snippet ils "if let some"
+	if let Some($1) = $2 {
+		$3
+	}
+
+snippet lils "let var = if let some"
+	let $1 = if let Some($2) = $3 {
+		$2
+	} else {
+		$4
+	};
+
 snippet si "struct and impl"
 	struct $1 {
 		$2
