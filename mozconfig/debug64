@@ -1,9 +1,0 @@
-mk_add_options MOZ_OBJDIR=/home/ben/code/mozilla/builds/browser-d64
-mk_add_options AUTOCLOBBER=1
-
-ac_add_options --enable-debug
-ac_add_options --disable-optimize
-#ac_add_options --disable-accessibility
-ac_add_options --with-ccache=/usr/bin/ccache
-ac_add_options --enable-linker=lld
-mk_add_options MOZ_MAKE_FLAGS=-j$(nproc)
