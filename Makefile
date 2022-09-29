@@ -35,7 +35,8 @@ python:
 
 redshift:
 	#sudo apt install -y redshift
-	ln -s ~/.files/conf/redshift.conf ~/.config/redshift.conf || echo "redshift.conf already present"
+	mkdir -p ~/.config/redshift
+	ln -s ~/.files/conf/redshift.conf ~/.config/redshift/redshift.conf || echo "redshift.conf already present"
 
 rust:
 	@(which cargo > /dev/null || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)
