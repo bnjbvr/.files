@@ -33,8 +33,8 @@ helpers.map('n', '<leader>gg', '<Cmd>lua telescope_builtins.live_grep{}<CR>')
 helpers.map('n', '<leader>o', '<Cmd>:RustRunnables<CR>')
 
 -- Toggle terminal
-helpers.map('n', '<leader>z', '<Cmd>lua require("FTerm").toggle()<CR>')
-helpers.map('t', '<leader>z', '<Cmd>lua require("FTerm").toggle()<CR>')
+helpers.map('n', '\\z', '<Cmd>lua require("FTerm").toggle()<CR>')
+helpers.map('t', '\\z', '<Cmd>lua require("FTerm").toggle()<CR>')
 
 -- ****************************************************************
 -- Better tab sequence that expands lua snippets or inserts tab
