@@ -34,6 +34,7 @@ helpers.map('n', '<leader>o', '<Cmd>:RustRunnables<CR>')
 
 -- Toggle terminal
 helpers.map('n', '<leader>z', '<Cmd>lua require("FTerm").toggle()<CR>')
+helpers.map('t', '<leader>z', '<Cmd>lua require("FTerm").toggle()<CR>')
 
 -- ****************************************************************
 -- Better tab sequence that expands lua snippets or inserts tab
