@@ -84,6 +84,11 @@ alias dc='docker-compose'
 
 alias fbn='find ./ -name $1'
 
+if which lazygit &>/dev/null
+then
+    alias lg='lazygit'
+fi
+
 alias g='git'
 alias gch="git checkout \"\$(git branch --all | fzf | tr -d '[:space:]')\"";
 alias gpf="git push --force-with-lease"
