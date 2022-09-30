@@ -10,8 +10,8 @@ helpers.map('v', '>', '>gv')
 -- erase the highlight on search
 helpers.map('n', '<leader><CR>', ':noh<CR>')
 
--- leave terminal mode with escape
-helpers.map('t', '<Esc>', '<C-\\><C-n>')
+-- leave terminal mode with shift+escape
+helpers.map('t', '<s-Esc>', '<C-\\><C-n>')
 
 -- generate a GUID with \g
 helpers.map('i', '\\g', '<Cmd>lua helpers.guid()<CR>')
@@ -31,6 +31,9 @@ helpers.map('n', '<leader>gg', '<Cmd>lua telescope_builtins.live_grep{}<CR>')
 
 -- Extra rust actions!
 helpers.map('n', '<leader>o', '<Cmd>:RustRunnables<CR>')
+
+-- Toggle terminal
+helpers.map('n', '<leader>z', '<Cmd>lua require("FTerm").toggle()<CR>')
 
 -- ****************************************************************
 -- Better tab sequence that expands lua snippets or inserts tab

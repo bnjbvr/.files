@@ -28,6 +28,24 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
+    -- Fuzzy finder and nice windows
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { 'nvim-lua/plenary.nvim' }
+    }
+
+    --- Use telescope for e.g. code actions
+    use 'nvim-telescope/telescope-ui-select.nvim'
+
+    --- Use a C clone of fzf for fuzzy search in telescope! (assume preinstalled)
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+    --- Show LSP status above the status line
+    use 'j-hui/fidget.nvim'
+
+    --- Floating terminal windows!
+    use "numToStr/FTerm.nvim"
+
     -- ********************************************************************************************
     -- Behaviors
 
@@ -52,8 +70,10 @@ return require('packer').startup(function(use)
     -- Emacs yank schemes
     use 'maxbrunsfeld/vim-yankstack'
 
-    -- Snippets engine (requires Python support).
+    -- Snippets engine
     use({"L3MON4D3/LuaSnip", tag = "v1.*"})
+
+    -- Snippets engine integration with telescope
     use 'benfowler/telescope-luasnip.nvim'
 
     -- Github integration.
@@ -72,29 +92,11 @@ return require('packer').startup(function(use)
     -- ********************************************************************************************
     -- Language specific
 
-    -- Cranelift IR.
-    use 'CraneStation/cranelift.vim'
-
     -- Native LangServer protocol.
     use 'neovim/nvim-lspconfig'
 
     -- Extra LSP for rust!
     use 'simrat39/rust-tools.nvim'
-
-    -- Fuzzy finder and nice windows
-    use 'nvim-telescope/telescope.nvim'
-
-    --- Use telescope for e.g. code actions
-    use 'nvim-telescope/telescope-ui-select.nvim'
-
-    --- Use a C clone of fzf for fuzzy search in telescope! (assume preinstalled)
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-    --- Helper functions used by telescope
-    use 'nvim-lua/plenary.nvim'
-
-    --- Show LSP status above the status line
-    use 'j-hui/fidget.nvim'
 
     -- ********************************************************************************************
     -- Automatically set up your configuration after cloning packer.nvim
