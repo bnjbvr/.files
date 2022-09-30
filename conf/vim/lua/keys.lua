@@ -13,6 +13,9 @@ helpers.map('n', '<leader><CR>', ':noh<CR>')
 -- leave terminal mode with escape
 helpers.map('t', '<Esc>', '<C-\\><C-n>')
 
+-- generate a GUID with \g
+helpers.map('i', '\\g', '<Cmd>lua helpers.guid()<CR>')
+
 -- ****************************************************************
 -- Plugins
 
