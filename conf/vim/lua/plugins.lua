@@ -34,6 +34,12 @@ return require('packer').startup(function(use)
         requires = { 'nvim-lua/plenary.nvim' }
     }
 
+    -- Treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
     --- Use telescope for e.g. code actions
     use 'nvim-telescope/telescope-ui-select.nvim'
 
