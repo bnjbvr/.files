@@ -70,7 +70,7 @@ helpers.map('n', '<leader>o', '<Cmd>:RustRunnables<CR>')
 -- FTerm bindings
 local FTerm = require('FTerm')
 
---      open terminal with \t
+-- > open terminal with \t
 vim.keymap.set('n', '\\t', function()
     FTerm.toggle()
 end)
@@ -78,29 +78,36 @@ vim.keymap.set('t', '\\t', function()
     FTerm.toggle()
 end)
 
---      open btop or htop with \b
-local btop = FTerm:new({
-    ft = 'fterm_btop',
-    cmd = 'btop || htop'
-})
-vim.keymap.set('n', '\\b', function()
-    btop:toggle()
-end)
-vim.keymap.set('t', '\\b', function()
-    btop:toggle()
-end)
+-- > moar bindings
+local fterms = {
+    ['\\b'] = {
+        ft = 'fterm_btop',
+        cmd = 'btop || htop || top'
+    },
+    ['\\g'] = {
+        ft = "fterm_lazygit",
+        cmd = "lazygit"
+    },
+    ['\\s'] = {
+        ft = "fterm_ncspot",
+        cmd = "ncspot"
+    }
+}
 
---      open terminal with \g
-local lazygit = FTerm:new({
-    ft = 'fterm_lazygit',
-    cmd = 'lazygit'
-})
-vim.keymap.set('n', '\\g', function()
-    lazygit:toggle()
-end)
-vim.keymap.set('t', '\\g', function()
-    lazygit:toggle()
-end)
+local function set_up_fterm(map)
+    for k, v in pairs(map) do
+        local term = FTerm:new({
+            ft = v.ft,
+            cmd = v.cmd
+        })
+        local function toggle()
+            term:toggle()
+        end
+        vim.keymap.set('n', k, toggle)
+        vim.keymap.set('t', k, toggle)
+    end
+end
+set_up_fterm(fterms)
 
 -- ****************************************************************
 -- Better tab sequence that expands lua snippets or inserts tab
