@@ -32,9 +32,40 @@ helpers.map('n', '<leader>gg', '<Cmd>lua telescope_builtins.live_grep{}<CR>')
 -- Extra rust actions!
 helpers.map('n', '<leader>o', '<Cmd>:RustRunnables<CR>')
 
--- Toggle terminal with \t
-helpers.map('n', '\\t', '<Cmd>lua require("FTerm").toggle()<CR>')
-helpers.map('t', '\\t', '<Cmd>lua require("FTerm").toggle()<CR>')
+-- FTerm bindings
+local FTerm = require('FTerm')
+
+--      open terminal with \t
+vim.keymap.set('n', '\\t', function()
+    FTerm.toggle()
+end)
+vim.keymap.set('t', '\\t', function()
+    FTerm.toggle()
+end)
+
+--      open btop or htop with \b
+local btop = FTerm:new({
+    ft = 'fterm_btop',
+    cmd = 'btop || htop'
+})
+vim.keymap.set('n', '\\b', function()
+    btop:toggle()
+end)
+vim.keymap.set('t', '\\b', function()
+    btop:toggle()
+end)
+
+--      open terminal with \g
+local lazygit = FTerm:new({
+    ft = 'fterm_lazygit',
+    cmd = 'lazygit'
+})
+vim.keymap.set('n', '\\g', function()
+    lazygit:toggle()
+end)
+vim.keymap.set('t', '\\g', function()
+    lazygit:toggle()
+end)
 
 -- ****************************************************************
 -- Better tab sequence that expands lua snippets or inserts tab
