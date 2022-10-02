@@ -25,9 +25,9 @@ local lsp_keys = function(client, buf_set_keymap)
   buf_set_keymap('n', '<leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>')
   buf_set_keymap('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>')
   buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
   -- Telescope mappings
 
