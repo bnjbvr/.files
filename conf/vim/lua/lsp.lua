@@ -1,4 +1,3 @@
-local nvim_lsp = require('lspconfig')
 local lsp_keys = require('./keys')
 
 -- *************
@@ -25,35 +24,40 @@ local lsp_on_attach = function(client, bufnr)
   )
 end
 
--- TypeScript
-nvim_lsp.tsserver.setup { on_attach = lsp_on_attach }
-
--- Svelte??
---nvim_lsp.svelte.setup { on_attach = lsp_on_attach }
-
--- Lua
---nvim_lsp.sumneko_lua.setup { on_attach = lsp_on_attach }
-
--- Rust LSP + tools
-require('rust-tools').setup({
-    server = {
-        on_attach = function(client, bufnr) 
-            lsp_on_attach(client, bufnr)
-        end,
-
-        settings = {
-            ["rust-analyzer"] = {
-                inlayHints = {
-                    enable = true,
-                    maxLength = 100
-                },
-                cargo = {
-                    loadOutDirsFromCheck = true
-                },
-                procMacro = {
-                    enable = true
-                }
-            }
-        },
-    },
+-- *************
+-- Auto install LSP language servers
+require('mason').setup()
+require('mason-lspconfig').setup({
+    ensure_installed = { "tsserver", "rust_analyzer" }
 })
+
+require("mason-lspconfig").setup_handlers {
+    function (server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup { on_attach = lsp_on_attach }
+    end,
+
+    ["rust_analyzer"] = function ()
+        require('rust-tools').setup({
+            server = {
+                on_attach = function(client, bufnr)
+                    lsp_on_attach(client, bufnr)
+                end,
+
+                settings = {
+                    ["rust-analyzer"] = {
+                        inlayHints = {
+                            enable = true,
+                            maxLength = 100
+                        },
+                        cargo = {
+                            loadOutDirsFromCheck = true
+                        },
+                        procMacro = {
+                            enable = true
+                        }
+                    }
+                },
+            },
+        })
+    end
+}

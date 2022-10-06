@@ -104,6 +104,10 @@ return require('packer').startup(function(use)
     -- Extra LSP for rust!
     use 'simrat39/rust-tools.nvim'
 
+    -- Auto install LSP.
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+
     -- ********************************************************************************************
     -- Automatically set up your configuration after cloning packer.nvim
     -- Keep this at the end after all plugins
