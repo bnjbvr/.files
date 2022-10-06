@@ -25,6 +25,7 @@ local lsp_keys = function(client, buf_set_keymap)
   buf_set_keymap('n', '<leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>')
   buf_set_keymap('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>')
   buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
   buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
@@ -40,15 +41,6 @@ local lsp_keys = function(client, buf_set_keymap)
 
   buf_set_keymap('n', '<leader>ws', '<cmd>lua telescope_builtins.lsp_dynamic_workspace_symbols{}<CR>')
   buf_set_keymap('n', '<leader>ls', '<cmd>lua telescope_builtins.lsp_document_symbols{}<CR>')
-
-  -- Set some keybinds conditional on server capabilities
-
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
-  end
-  if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>")
-  end
 end
 
 -- ****************************************************************
