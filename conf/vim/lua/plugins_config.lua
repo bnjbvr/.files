@@ -9,6 +9,20 @@ require('moonlight').set()
 require("nvim-tree").setup()
 
 -- *************
+-- Quick search with s{char1}{char2}
+require('leap').set_default_keymaps(true)
+
+-- *************
+-- Automatically pair opening and closing parens/braces etc
+require('nvim-autopairs').setup({
+    map_cr = true
+})
+
+-- *************
+-- Add indentation line
+require('indent_blankline').setup()
+
+-- *************
 -- Fidget (displays LSP status in the status line)
 
 require"fidget".setup{}
@@ -46,6 +60,10 @@ require'nvim-treesitter.configs'.setup {
   sync_install = false,
   -- Automatically install missing parsers when entering buffer
   auto_install = true,
+
+  indent = {
+    enable = true,
+  },
 
   highlight = {
     enable = true,

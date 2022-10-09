@@ -64,10 +64,7 @@ return require('packer').startup(function(use)
     -- Behaviors
 
     -- Indent lines
-    use 'Yggdroot/indentLine'
-
-    -- Sublime-like multiple cursors.
-    use 'terryma/vim-multiple-cursors'
+    use 'lukas-reineke/indent-blankline.nvim'
 
     -- Add surround operator for text objects.
     use 'tpope/vim-surround'
@@ -79,7 +76,7 @@ return require('packer').startup(function(use)
     use 'scrooloose/nerdcommenter'
 
     -- Automatically inserts closing chars for pairs of open/close chars (e.g. parens).
-    use 'Raimondi/delimitMate'
+    use "windwp/nvim-autopairs"
 
     -- Emacs yank schemes
     use 'maxbrunsfeld/vim-yankstack'
@@ -102,6 +99,9 @@ return require('packer').startup(function(use)
         require"octo".setup()
       end
     }
+
+    -- Quick search with s(char1)(char2)
+    use 'ggandor/leap.nvim'
 
     -- ********************************************************************************************
     -- Language specific
