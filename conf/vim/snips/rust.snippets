@@ -44,6 +44,13 @@ snippet i "impl"
 		$3
 	}
 
+snippet drop "drop"
+	impl Drop for $1 {
+		fn drop(&mut self) {
+			$2
+		}
+	}
+
 snippet ils "if let some"
 	if let Some($1) = $2 {
 		$3
