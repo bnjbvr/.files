@@ -5,6 +5,10 @@ require('moonlight').set()
 --vim.cmd[[colorscheme dracula]]
 
 -- *************
+-- File tree
+require("nvim-tree").setup()
+
+-- *************
 -- Fidget (displays LSP status in the status line)
 
 require"fidget".setup{}

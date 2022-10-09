@@ -10,6 +10,9 @@ helpers.map('v', '>', '>gv')
 -- erase the highlight on search
 helpers.map('n', '<leader><CR>', ':noh<CR>')
 
+--- file tree!
+helpers.map('n', '<leader>n', '<Cmd>:NvimTreeFindFile<CR>')
+
 -- leave terminal mode with shift+escape
 helpers.map('t', '<s-Esc>', '<C-\\><C-n>')
 
