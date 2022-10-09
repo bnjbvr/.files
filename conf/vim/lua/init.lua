@@ -24,7 +24,13 @@ vim.opt.expandtab = true
 vim.opt.colorcolumn = '100' -- highlight the 100th column
 
 vim.wo.cursorline = true -- highlight the current line
+vim.api.nvim_set_hl(0, 'CursorLine', {
+    bg = "#305050",
+})
 vim.wo.cursorcolumn = true -- highlight the current column too
+vim.api.nvim_set_hl(0, 'CursorColumn', {
+    bg = "#305050",
+})
 
 vim.opt.ignorecase = true -- case-insentive search by default
 vim.opt.smartcase = true -- search case-sensitive if there is an upper-case letter
