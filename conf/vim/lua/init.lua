@@ -18,7 +18,7 @@ vim.opt.textwidth = 99 -- welcome to the future
 vim.opt.wrap = true -- auto wrap line view, but not text itself
 vim.opt.softtabstop = 4 -- tab width
 vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4  -- indent width
+vim.opt.shiftwidth = 4 -- indent width
 vim.opt.expandtab = true
 
 vim.opt.colorcolumn = '100' -- highlight the 100th column

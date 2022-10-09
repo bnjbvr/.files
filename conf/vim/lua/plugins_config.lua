@@ -25,7 +25,7 @@ require('indent_blankline').setup()
 -- *************
 -- Fidget (displays LSP status in the status line)
 
-require"fidget".setup{}
+require "fidget".setup {}
 
 -- *************
 -- Status line
@@ -55,24 +55,24 @@ maybe_load_vscode_snippets()
 -- *************
 -- Treesitter
 
-require'nvim-treesitter.configs'.setup {
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-  -- Automatically install missing parsers when entering buffer
-  auto_install = true,
+require 'nvim-treesitter.configs'.setup {
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+    -- Automatically install missing parsers when entering buffer
+    auto_install = true,
 
-  indent = {
-    enable = true,
-  },
+    indent = {
+        enable = true,
+    },
 
-  highlight = {
-    enable = true,
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
+    highlight = {
+        enable = true,
+        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        additional_vim_regex_highlighting = false,
+    },
 }
 
 -- *************
@@ -81,19 +81,19 @@ require'nvim-treesitter.configs'.setup {
 telescope = require('telescope')
 
 telescope.setup {
-  extensions = {
-    ["ui-select"] = {
-      require("telescope.themes").get_dropdown {
-        -- even more opts
-      }
-    },
-    fzf = {
-        fuzzy = true,
-        override_generic_sorter = true,
-        override_file_sorter = true,
-        case_mode = "smart_case"
+    extensions = {
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+                -- even more opts
+            }
+        },
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case"
+        }
     }
-  }
 }
 
 telescope.load_extension("ui-select")

@@ -1,12 +1,12 @@
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
     use 'nvim-telescope/telescope-ui-select.nvim'
 
     --- Use a C clone of fzf for fuzzy search in telescope! (assume preinstalled)
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     --- Show LSP status above the status line
     use 'j-hui/fidget.nvim'
@@ -54,10 +54,10 @@ return require('packer').startup(function(use)
 
     --- File tree!
     use {
-      'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons', -- optional, for file icons
-      },
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icons
+        },
     }
 
     -- ********************************************************************************************
@@ -82,22 +82,22 @@ return require('packer').startup(function(use)
     use 'maxbrunsfeld/vim-yankstack'
 
     -- Snippets engine
-    use({"L3MON4D3/LuaSnip", tag = "v1.*"})
+    use({ "L3MON4D3/LuaSnip", tag = "v1.*" })
 
     -- Snippets engine integration with telescope
     use 'benfowler/telescope-luasnip.nvim'
 
     -- Github integration.
     use {
-      'pwntester/octo.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope.nvim',
-        'kyazdani42/nvim-web-devicons',
-      },
-      config = function ()
-        require"octo".setup()
-      end
+        'pwntester/octo.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'kyazdani42/nvim-web-devicons',
+        },
+        config = function()
+            require "octo".setup()
+        end
     }
 
     -- Quick search with s(char1)(char2)

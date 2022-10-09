@@ -23,27 +23,27 @@ helpers.map('i', '\\g', '<Cmd>lua helpers.guid()<CR>')
 -- LSP maps
 
 local lsp_keys = function(client, buf_set_keymap)
-  -- Regular LSP mappings.
+    -- Regular LSP mappings.
 
-  buf_set_keymap('n', '<leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-  buf_set_keymap('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
-  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
-  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+    buf_set_keymap('n', '<leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+    buf_set_keymap('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>')
+    buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
+    buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
+    buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+    buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
-  -- Telescope mappings
+    -- Telescope mappings
 
-  buf_set_keymap('n', '<leader>d', '<Cmd>lua telescope_builtins.lsp_definitions{}<CR>')
-  buf_set_keymap('n', '<leader>c', '<Cmd>lua telescope_builtins.lsp_incoming_calls{}<CR>')
-  buf_set_keymap('n', '<leader>i', '<cmd>lua telescope_builtins.lsp_implementations{}<CR>')
-  buf_set_keymap('n', '<leader>t', '<cmd>lua telescope_builtins.lsp_type_definitions{}<CR>')
-  buf_set_keymap('n', '<leader>r', '<cmd>lua telescope_builtins.lsp_references{}<CR>')
-  buf_set_keymap('n', '<leader>q', '<cmd>lua telescope_builtins.diagnostics{}<CR>')
+    buf_set_keymap('n', '<leader>d', '<Cmd>lua telescope_builtins.lsp_definitions{}<CR>')
+    buf_set_keymap('n', '<leader>c', '<Cmd>lua telescope_builtins.lsp_incoming_calls{}<CR>')
+    buf_set_keymap('n', '<leader>i', '<cmd>lua telescope_builtins.lsp_implementations{}<CR>')
+    buf_set_keymap('n', '<leader>t', '<cmd>lua telescope_builtins.lsp_type_definitions{}<CR>')
+    buf_set_keymap('n', '<leader>r', '<cmd>lua telescope_builtins.lsp_references{}<CR>')
+    buf_set_keymap('n', '<leader>q', '<cmd>lua telescope_builtins.diagnostics{}<CR>')
 
-  buf_set_keymap('n', '<leader>ws', '<cmd>lua telescope_builtins.lsp_dynamic_workspace_symbols{}<CR>')
-  buf_set_keymap('n', '<leader>ls', '<cmd>lua telescope_builtins.lsp_document_symbols{}<CR>')
+    buf_set_keymap('n', '<leader>ws', '<cmd>lua telescope_builtins.lsp_dynamic_workspace_symbols{}<CR>')
+    buf_set_keymap('n', '<leader>ls', '<cmd>lua telescope_builtins.lsp_document_symbols{}<CR>')
 end
 
 -- ****************************************************************
@@ -98,10 +98,12 @@ local function set_up_fterm(map)
         local function toggle()
             term:toggle()
         end
+
         vim.keymap.set('n', k, toggle)
         vim.keymap.set('t', k, toggle)
     end
 end
+
 set_up_fterm(fterms)
 
 -- ****************************************************************
@@ -109,7 +111,7 @@ set_up_fterm(fterms)
 
 local luasnip = require 'luasnip'
 local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 function helpers.tab()
