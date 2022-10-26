@@ -5,25 +5,23 @@
 priority -50
 
 snippet !wasmbin
-let bin = wasmTextToBinary(\`
-	(module
-		(func (export "f")
-			$1
+	let bin = wasmTextToBinary(\`
+		(module
+			(func (export "f")
+				$1
+			)
 		)
-	)
-\`);
-let ta = new Uint8Array(bin);
-os.file.writeTypedArrayToFile('/tmp/$2.wasm', ta);
-endsnippet
+	\`);
+	let ta = new Uint8Array(bin);
+	os.file.writeTypedArrayToFile('/tmp/$2.wasm', ta);
 
 snippet !wasm
-let { exports } = new WebAssembly.Instance(
-	new WebAssembly.Module(wasmTextToBinary(\`
-	(module
-		(func (export "f")
-			$1
+	let { exports } = new WebAssembly.Instance(
+		new WebAssembly.Module(wasmTextToBinary(\`
+		(module
+			(func (export "f")
+				$1
+			)
 		)
-	)
-	\`))
-);
-endsnippet
+		\`))
+	);
