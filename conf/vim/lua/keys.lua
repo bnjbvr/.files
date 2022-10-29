@@ -50,6 +50,7 @@ end
 -- Plugins
 
 -- Move in the yank stack
+vim.g.yankstack_yank_keys = { 'c', 'd', 'x', 'y' }
 vim.keymap.set('n', '<leader>P', '<Plug>yankstack_substitute_newer_paste')
 vim.keymap.set('n', '<leader>p', '<Plug>yankstack_substitute_older_paste')
 

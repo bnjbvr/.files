@@ -10,7 +10,7 @@ require("nvim-tree").setup()
 
 -- *************
 -- Quick search with s{char1}{char2}
-require('leap').set_default_keymaps(true)
+require('leap').add_default_mappings()
 
 -- *************
 -- Automatically pair opening and closing parens/braces etc
