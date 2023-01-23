@@ -4,6 +4,12 @@
 
 DOTFILES_DIR="$HOME/.files"
 
+# Remap capslock to escape
+if [[ ! -e /tmp/capslock-is-escape ]]; then
+    setxkbmap -option caps:escape
+    touch /tmp/capslock-is-escape
+fi
+
 # Support for command not found on Ubuntu machines.
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
