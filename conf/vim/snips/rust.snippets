@@ -4,17 +4,38 @@
 
 priority -50
 
-snippet debug "Debug implementation"
+snippet idebug "Debug implementation"
 	impl fmt::Debug for $1 {
 		fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
 			write!(fmt, $2)
 		}
 	}
 
-snippet display
+snippet idisplay
 	impl fmt::Display for $1 {
 		fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
 			write!(fmt, $2)
+		}
+	}
+
+snippet idef "Default implementation"
+	impl Default for $1 {
+		fn default() -> Self {
+			Self {
+				$2
+			}
+		}
+	}
+
+snippet ifuture "Future implementation"
+	impl std::future::Future for $1 {
+		type Output = $2;
+
+		fn poll(
+			self: std::pin::Pin<&mut Self>,
+			_cx: &mut std::task::Context<'_>,
+		) -> std::task::Poll<Self::Output> {
+			$3
 		}
 	}
 
@@ -51,26 +72,8 @@ snippet drop "Drop implementation"
 		}
 	}
 
-snippet default "Default implementation"
-	impl Default for $1 {
-		fn default() -> Self {
-			Self {
-				$2
-			}
-		}
-	}
-
-snippet future "Future implementation"
-	impl std::future::Future for $1 {
-		type Output = $2;
-
-		fn poll(
-			self: std::pin::Pin<&mut Self>,
-			_cx: &mut std::task::Context<'_>,
-		) -> std::task::Poll<Self::Output> {
-			$3
-		}
-	}
+snippet def "Default::default()"
+	Default::default()
 
 snippet ils "if let some"
 	if let Some($1) = $2 {
@@ -103,19 +106,19 @@ snippet pln "println!(..)" b
 snippet fmt "format!(..)"
 	format!("$1"${2/..*/, /}$2);
 
-snippet ltra "log::trace!(...)"
+snippet logt "log::trace!(...)"
 	log::trace!("$1");
 
-snippet ldeb "log::debug!(...)"
+snippet logd "log::debug!(...)"
 	log::debug!("$1");
 
-snippet linf "log::info!(...)"
+snippet logi "log::info!(...)"
 	log::info!("$1");
 
-snippet lwar "log::warn!(...)"
+snippet logw "log::warn!(...)"
 	log::warn!("$1");
 
-snippet lerr "log::error!(...)"
+snippet loge "log::error!(...)"
 	log::error!("$1");
 
 # vim:ft=snippets:
