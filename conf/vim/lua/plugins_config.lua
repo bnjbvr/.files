@@ -18,6 +18,14 @@ require('nvim-autopairs').setup({
     map_cr = true
 })
 
+-- Map shift+enter to autopairs too.
+vim.api.nvim_set_keymap(
+    'i',
+    '<S-CR>',
+    'v:lua.MPairs.completion_confirm()',
+    { expr = true, noremap = true }
+)
+
 -- *************
 -- Add indentation line
 require('indent_blankline').setup()
