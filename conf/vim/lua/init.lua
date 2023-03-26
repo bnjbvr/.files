@@ -55,6 +55,7 @@ vim.opt.listchars = 'trail:·,nbsp:·,tab:▸ ,extends:»,precedes:«,' -- print
 vim.opt.list = true
 vim.opt.laststatus = 2 -- always show the statusline, even where there is only one file edited
 vim.opt.ofu = "syntaxcomplete#Complete"
+vim.opt.completeopt = "menu" -- don't show the "preview" scratch window when auto-completing
 
 -- all operations such as yy, D, and P work with the clipboard.
 -- No need to prefix them with "* or "+
