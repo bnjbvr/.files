@@ -57,9 +57,6 @@ require("mason-lspconfig").setup_handlers {
                         procMacro = {
                             enable = true
                         },
-                        check = {
-                            command = "clippy"
-                        }
                     }
                 },
             },
