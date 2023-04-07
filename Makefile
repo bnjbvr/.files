@@ -1,7 +1,7 @@
-all: deps gitdeps python redshift tmux vim zsh 
+all: deps gitdeps python redshift tmux vim zsh kitty
 	@echo "Everything has been set up!"
 
-.PHONY: alacritty clean deps git gitdeps increase-notify npm python redshift rust rustdeps tmux vim zsh
+.PHONY: alacritty clean deps git gitdeps increase-notify npm python redshift rust rustdeps tmux vim zsh kitty
 
 alacritty: rust
 	cargo install alacritty
@@ -26,6 +26,10 @@ gitdeps:
 increase-inotify:
 	sudo cp ~/.files/conf/sysctl_10_inotify.conf /etc/sysctl.d/10-inotify.conf
 	sudo sysctl -p --system
+
+kitty:
+	mkdir -p ~/.config/kitty/
+	ln -s ~/.files/conf/kitty.conf ~/.config/kitty/ || echo "kitty.conf already present"
 
 npm:
 	ln -s ~/.files/private/conf/npmrc ~/.npmrc || echo ".npmrc already present"
