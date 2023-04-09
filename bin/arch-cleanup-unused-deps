@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Remove all unused Pacman dependencies, that is, packages that were installed as part of explicit
+# dependencies (and not installed manually by any user), but for which the dependee has been
+# removed in the meanwhile.
+
+sudo pacman -Rsn $(pacman -Qdtq)
