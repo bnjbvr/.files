@@ -1,7 +1,7 @@
 all: deps gitdeps python redshift tmux vim zsh kitty
 	@echo "Everything has been set up!"
 
-.PHONY: alacritty clean deps git gitdeps increase-notify npm python redshift rust rustdeps tmux vim zsh kitty betterutils
+.PHONY: alacritty clean deps git gitdeps increase-notify npm python redshift rust rustdeps tmux vim zsh kitty betterutils fish
 
 alacritty: rust
 	cargo install alacritty
@@ -70,6 +70,12 @@ vim:
 	mkdir -p ~/.vim
 	ln -s ~/.config/nvim/autoload ~/.vim/autoload || echo "autoload already present"
 	ln -s ~/.files/conf/vimrc ~/.config/nvim/init.vim || echo "init.vim already present"
+
+fish:
+	sudo pacman -S fish
+	ln -s ~/.files/conf/fish ~/.config/fish || echo "fish config folder already exists!"
+	echo $(which fish) | tee -a /etc/shells
+	sudo chsh -s /usr/sbin/fish ben
 
 zsh:
 	#sudo apt install -y zsh
