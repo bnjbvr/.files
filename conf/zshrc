@@ -9,13 +9,12 @@ DOTFILES_DIR="$HOME/.files"
 
 # Programs to activate
 ZSH=$HOME/.files/bin/ohmyzsh
+
 source $ZSH/oh-my-zsh.sh
 
 if which zoxide &>/dev/null
 then
     eval "$(zoxide init zsh)"
-else
-    source ~/.files/bin/z/z.sh
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -121,19 +120,6 @@ alias tmux='TERM=screen-256color-bce tmux' # 256 colors mode by default.
 alias upvim='nvim +PlugInstall +UpdateRemotePlugins +qa'
 
 alias sl='ls'
-
-# -----------------------------------------------------------------------------
-# mozilla stuff
-# -----------------------------------------------------------------------------
-
-export BUILD_VERBOSE_LOG=1
-
-MOZ_SM_SRC_DIR="$HOME/code/mozilla-inbound/js/src"
-
-alias jit='$MOZ_SM_SRC_DIR/jit-test/jit_test.py'
-alias jitz='$MOZ_SM_SRC_DIR/jit-test/jit_test.py ./dist/bin/js'
-alias mrproper='mv build.sh /tmp/build.sh && (rm -rf ./* .deps) && mv /tmp/build.sh ./ && b'
-alias try='cd $MOZ_SM_SRC_DIR && cd ../.. && ./mach try -b do -p all -u jsreftest,jittests -t none'
 
 # -----------------------------------------------------------------------------
 # better cli tools
