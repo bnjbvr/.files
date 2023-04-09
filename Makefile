@@ -1,7 +1,7 @@
 all: deps gitdeps python redshift tmux vim zsh kitty
 	@echo "Everything has been set up!"
 
-.PHONY: alacritty clean deps git gitdeps increase-notify npm python redshift rust rustdeps tmux vim zsh kitty
+.PHONY: alacritty clean deps git gitdeps increase-notify npm python redshift rust rustdeps tmux vim zsh kitty betterutils
 
 alacritty: rust
 	cargo install alacritty
@@ -48,6 +48,17 @@ rust:
 rustdeps: rust
 	@(cargo install ripgrep > /dev/null 2>&1 || (cargo install ripgrep 2>&1 | grep "already" > /dev/null || echo "error when installing ripgrep"))
 	@(cargo install fd-find > /dev/null 2>&1 || (cargo install fd-find 2>&1 | grep "already" > /dev/null || echo "error when installing fd-find"))
+
+betterutils:
+	# exa: replacement of ls with colors
+	# bottom: system information
+	# ripgrep: parallel grep with better defaults
+	# fd: find with better default search
+	# dust: faster du
+	# zoxide: replacement for cd/z
+	# sd: faster and sipler sed
+	# fzf (go, booo): fuzzy find
+	sudo pacman -S exa bottom ripgrep fd dust zoxide sd fzf
 
 tmux:
 	#sudo apt install -y tmux
