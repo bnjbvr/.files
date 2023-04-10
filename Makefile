@@ -68,6 +68,7 @@ vim:
 	mkdir -p ~/.config/nvim
 	mkdir -p ~/.local/share/nvim/backup
 	mkdir -p ~/.vim
+	sudo pacman -S ttf-firacode-nerd
 	ln -s ~/.config/nvim/autoload ~/.vim/autoload || echo "autoload already present"
 	ln -s ~/.files/conf/vimrc ~/.config/nvim/init.vim || echo "init.vim already present"
 
