@@ -72,10 +72,10 @@ vim:
 	ln -s ~/.files/conf/vimrc ~/.config/nvim/init.vim || echo "init.vim already present"
 
 fish:
-	sudo pacman -S fish
-	ln -s ~/.files/conf/fish ~/.config/fish || echo "fish config folder already exists!"
-	echo $(which fish) | tee -a /etc/shells
-	sudo chsh -s /usr/sbin/fish ben
+	sudo pacman -S fish
+	ln -s ~/.files/conf/fish ~/.config/ || echo "fish config folder already exists!"
+	which fish | sudo tee -a /etc/shells
+	sudo chsh -s /usr/sbin/fish ben
 
 zsh:
 	#sudo apt install -y zsh
