@@ -11,8 +11,8 @@ fish_add_path $HOME/sync/bin
 zoxide init fish | source
 
 # set up fzf!
-if test -e $HOME/.fzf/shell/key-bindings.fish
-    source $HOME/.fzf/shell/key-bindings.fish
+if test -e /usr/share/fish/vendor_functions.d/fzf_key_bindings.fish
+    source /usr/share/fish/vendor_functions.d/fzf_key_bindings.fish
     # Configure Ctrl+T (file widget) / Ctrl+R (history) / Alt+C (cd widget)
     fzf_key_bindings
 end
