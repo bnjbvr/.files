@@ -57,6 +57,12 @@ vim.opt.laststatus = 2 -- always show the statusline, even where there is only o
 vim.opt.ofu = "syntaxcomplete#Complete"
 vim.opt.completeopt = "menu" -- don't show the "preview" scratch window when auto-completing
 
+-- Seriously, highlight non-breakable spaces in red, as they're usually a typo.
+vim.cmd[[
+    highlight NBSP ctermbg=red guibg=red
+    au VimEnter,BufWinEnter * syn match NBSP " "
+]]
+
 -- all operations such as yy, D, and P work with the clipboard.
 -- No need to prefix them with "* or "+
 vim.opt.clipboard = 'unnamed'
