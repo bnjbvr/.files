@@ -16,7 +16,8 @@ deps:
 	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop fonts-hack-ttf
 
 git:
-	#sudo apt install -y git
+	mkdir -p ~/.config/lazygit
+	ln -s ~/.files/conf/lazygit.yml ~/.config/lazygit/config.yml || echo "lazygit config already present"
 	ln -s ~/.files/conf/gitconfig ~/.gitconfig || echo ".gitconfig already present"
 
 gitdeps:
