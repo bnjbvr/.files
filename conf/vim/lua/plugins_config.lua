@@ -1,8 +1,8 @@
 -- *************
 -- Themes
 
-require('moonlight').set()
---vim.cmd[[colorscheme dracula]]
+--require('moonlight').set()
+vim.cmd[[colorscheme tokyonight-night]]
 
 -- *************
 -- File tree

@@ -21,6 +21,8 @@ return require('packer').startup(function(use)
     -- Fancy themes!
     use 'shaunsingh/moonlight.nvim'
     use 'Mofiqul/dracula.nvim'
+    use 'catppuccin/nvim'
+    use 'folke/tokyonight.nvim'
 
     -- Better status line.
     use {
