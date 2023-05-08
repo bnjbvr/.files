@@ -29,6 +29,7 @@ increase-inotify:
 	sudo sysctl -p --system
 
 kitty:
+	sudo pacman -S ttf-firacode-nerd
 	mkdir -p ~/.config/kitty/
 	ln -s ~/.files/conf/kitty.conf ~/.config/kitty/ || echo "kitty.conf already present"
 
