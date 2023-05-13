@@ -16,6 +16,7 @@ deps:
 	sudo apt-get install -y build-essential curl python3-pygments python-dev pinta ncdu libtool libssl-dev htop fonts-hack-ttf
 
 git:
+	sudo pacman -S git lazygit
 	mkdir -p ~/.config/lazygit
 	ln -s ~/.files/conf/lazygit.yml ~/.config/lazygit/config.yml || echo "lazygit config already present"
 	ln -s ~/.files/conf/gitconfig ~/.gitconfig || echo ".gitconfig already present"
@@ -29,7 +30,7 @@ increase-inotify:
 	sudo sysctl -p --system
 
 kitty:
-	sudo pacman -S ttf-firacode-nerd
+	sudo pacman -S kitty ttf-firacode-nerd
 	mkdir -p ~/.config/kitty/
 	ln -s ~/.files/conf/kitty.conf ~/.config/kitty/ || echo "kitty.conf already present"
 
@@ -58,7 +59,7 @@ betterutils:
 	# fd: find with better default search
 	# dust: faster du
 	# zoxide: replacement for cd/z
-	# sd: faster and sipler sed
+	# sd: faster and simpler sed
 	# fzf (go, booo): fuzzy find
 	sudo pacman -S exa bottom ripgrep fd dust zoxide sd fzf
 
