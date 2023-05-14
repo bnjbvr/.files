@@ -30,7 +30,7 @@ end
 -- Auto install LSP language servers
 require('mason').setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { "tsserver", "rust_analyzer" }
+    ensure_installed = { "rust_analyzer" }
 })
 
 require("mason-lspconfig").setup_handlers {
