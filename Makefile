@@ -1,4 +1,4 @@
-all: deps gitdeps python redshift tmux vim zsh kitty
+all: deps gitdeps python redshift tmux vim zsh kitty helix zellij
 	@echo "Everything has been set up!"
 
 .PHONY: alacritty clean deps git gitdeps increase-notify npm python redshift rust rustdeps tmux vim zsh kitty betterutils fish
@@ -74,6 +74,15 @@ vim:
 	sudo pacman -S ttf-firacode-nerd
 	ln -s ~/.config/nvim/autoload ~/.vim/autoload || echo "autoload already present"
 	ln -s ~/.files/conf/vimrc ~/.config/nvim/init.vim || echo "init.vim already present"
+
+helix:
+	sudo pacman -S helix
+	ln -s ~/.files/conf/helix ~/.config/helix || echo "helix config already present"
+
+zellij:
+	sudo pacman -S zellij
+	mkdir -p ~/.config/zellij
+	ln -s ~/.files/conf/zellij.kdl ~/.config/zellij/config.kdl || echo "zellij config already present"
 
 fish:
 	sudo pacman -S fish

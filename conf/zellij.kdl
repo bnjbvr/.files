@@ -1,0 +1,16 @@
+// Remove frames around panes.
+pane_frames false;
+
+keybinds {
+  normal {
+    // What a way to leave an app.
+    unbind "Ctrl q"
+
+    // Farewell resize.
+    unbind "Ctrl n"
+
+    // Remap Ctrl+P to Alt+P.
+    unbind "Ctrl p"
+    bind "Alt p" { SwitchToMode "pane"; }
+  }
+}

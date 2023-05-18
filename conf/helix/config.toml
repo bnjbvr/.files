@@ -1,0 +1,17 @@
+theme = "tokyonight"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor]
+auto-format = false
+
+[editor.whitespace.render]
+nbsp = "all"
+
+[editor.whitespace.characters]
+nbsp = "#"
+
+[editor.indent-guides]
+render = true
