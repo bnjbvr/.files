@@ -6,11 +6,23 @@ keybinds {
     // What a way to leave an app.
     unbind "Ctrl q"
 
-    // Farewell resize.
+    // Remap resize to Alt+R.
     unbind "Ctrl n"
+    bind "Alt r" { SwitchToMode "resize"; }
 
     // Remap Ctrl+P to Alt+P.
     unbind "Ctrl p"
     bind "Alt p" { SwitchToMode "pane"; }
+
+    // Remap Ctrl+O to Alt+O.
+    unbind "Ctrl o"
+    bind "Alt o" { SwitchToMode "session"; }
+
+    // Too many conflicts with ^W+H in vim/helix.
+    unbind "Ctrl h"
+    bind "Alt m" { SwitchToMode "move"; }
+
+    // Alt+f to open a floating pane.
+    bind "Alt f" { ToggleFloatingPanes; }
   }
 }
