@@ -5,7 +5,7 @@ display-messages = true
 display-inlay-hints = true
 
 [editor]
-auto-format = false
+#auto-format = false
 
 [editor.whitespace.render]
 nbsp = "all"
