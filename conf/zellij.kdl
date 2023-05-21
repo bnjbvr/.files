@@ -22,6 +22,14 @@ keybinds {
     unbind "Ctrl h"
     bind "Alt m" { SwitchToMode "move"; }
 
+    // Ctrl s is a shortcut in helix too; remap to Alt+S for consistency.
+    unbind "Ctrl s"
+    bind "Alt s" { SwitchToMode "search"; }
+
+    // Remap Ctrl+T to Alt+T.
+    unbind "Ctrl t"
+    bind "Alt t" { SwitchToMode "tab"; }
+
     // Alt+f to open a floating pane.
     bind "Alt f" { ToggleFloatingPanes; }
   }
