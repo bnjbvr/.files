@@ -30,7 +30,7 @@ keybinds {
     unbind "Ctrl t"
     bind "Alt t" { SwitchToMode "tab"; }
 
-    // Alt+f to open a floating pane.
+    // Alt+f to toggle floating pane.
     bind "Alt f" { ToggleFloatingPanes; }
   }
 }

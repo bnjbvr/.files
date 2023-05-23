@@ -81,8 +81,7 @@ helix:
 
 zellij:
 	sudo pacman -S zellij
-	mkdir -p ~/.config/zellij
-	ln -s ~/.files/conf/zellij.kdl ~/.config/zellij/config.kdl || echo "zellij config already present"
+	ln -s ~/.files/conf/zellij ~/.config/zellij || echo "zellij config already present"
 
 fish:
 	sudo pacman -S fish
