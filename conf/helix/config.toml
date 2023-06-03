@@ -4,9 +4,6 @@ theme = "tokyonight"
 display-messages = true
 display-inlay-hints = true
 
-[editor]
-#auto-format = false
-
 [editor.whitespace.render]
 nbsp = "all"
 
@@ -15,3 +12,20 @@ nbsp = "#"
 
 [editor.indent-guides]
 render = true
+
+[keys.normal]
+"{" = "goto_prev_paragraph"
+"}" = "goto_next_paragraph"
+
+[keys.normal.g]
+"D" = ["vsplit", "goto_definition"]
+"Y" = ["vsplit", "goto_type_definition"]
+
+[keys.normal.z]
+# replace default zk/zj (move up/down one line)
+"k" = "half_page_up"
+"j" = "half_page_down"
+
+[keys.select]
+"{" = "goto_prev_paragraph"
+"}" = "goto_next_paragraph"
