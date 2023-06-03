@@ -558,7 +558,7 @@ LAYOUTS = [{
             key <LSGT> {[ less            , greater         , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ]}; // < >
 
             // Space bar
-            key <SPCE> {[ space           , U202F           , U2019           , U2019           , space           , nobreakspace    , VoidSymbol      , VoidSymbol      ]}; //     ’ ’
+            key <SPCE> {[ space           , space           , U2019           , U2019           , space           , nobreakspace    , VoidSymbol      , VoidSymbol      ]}; //     ’ ’
 
             // The “OneDeadKey” is an ISO_Level3_Latch, i.e. a “dead AltGr” key:
             // this is the only way to have a multi-purpose dead key with XKB.
