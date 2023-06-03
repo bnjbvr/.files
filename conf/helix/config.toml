@@ -16,6 +16,7 @@ render = true
 [keys.normal]
 "{" = "goto_prev_paragraph"
 "}" = "goto_next_paragraph"
+"*" = ["move_next_word_start", "move_prev_word_start", "search_selection", "search_next"]
 
 [keys.normal.g]
 "D" = ["vsplit", "goto_definition"]
