@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
     -- Better status line.
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = { 'kyazdani42/nvim-web-devicons' }
     }
 
     -- Fuzzy finder and nice windows
@@ -104,6 +104,15 @@ return require('packer').startup(function(use)
 
     -- Quick search with s(char1)(char2)
     use 'ggandor/leap.nvim'
+
+    -- Completion framework
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-buffer'
+    use 'saadparwaiz1/cmp_luasnip'
 
     -- ********************************************************************************************
     -- Language specific

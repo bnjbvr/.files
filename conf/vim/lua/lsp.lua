@@ -19,11 +19,24 @@ local lsp_on_attach = function(client, bufnr)
     -- diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = true,
-        signs = true,
-        update_in_insert = true,
-    }
+            virtual_text = true,
+            signs = true,
+            update_in_insert = true,
+        }
     )
+
+    -- Autoformat on save
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+    if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr }),
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format()
+            end,
+        })
+    end
 end
 
 -- *************
@@ -52,6 +65,7 @@ require("mason-lspconfig").setup_handlers {
                             maxLength = 100
                         },
                         cargo = {
+                            autoreload = false,
                             loadOutDirsFromCheck = true
                         },
                         procMacro = {
