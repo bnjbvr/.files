@@ -26,8 +26,6 @@ helpers.map('n', '<leader>v', '<Cmd>:vsplit<CR>')
 -- LSP maps
 
 local lsp_keys = function(client, buf_set_keymap)
-    -- Regular LSP mappings, common with helix.
-
     buf_set_keymap('n', '<leader>k', '<Cmd>lua vim.lsp.buf.hover()<CR>')
     buf_set_keymap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>')
     buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
@@ -35,15 +33,20 @@ local lsp_keys = function(client, buf_set_keymap)
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
     buf_set_keymap('n', 'gd', '<Cmd>lua telescope_builtins.lsp_definitions{}<CR>')
+    buf_set_keymap('n', 'g]d', '<Cmd>vsplit<CR><Cmd>lua telescope_builtins.lsp_definitions{}<CR>')
+    buf_set_keymap('n', 'g[d', '<Cmd>split<CR><Cmd>lua telescope_builtins.lsp_definitions{}<CR>')
+
     buf_set_keymap('n', 'gi', '<cmd>lua telescope_builtins.lsp_implementations{}<CR>')
-    buf_set_keymap('n', 'gy', '<cmd>lua telescope_builtins.lsp_type_definitions{}<CR>')
     buf_set_keymap('n', 'gr', '<cmd>lua telescope_builtins.lsp_references{}<CR>')
     buf_set_keymap('n', '<leader>d', '<cmd>lua telescope_builtins.diagnostics{}<CR>')
 
-    -- Other mappings
+    buf_set_keymap('n', 'gy', '<cmd>lua telescope_builtins.lsp_type_definitions{}<CR>')
+    buf_set_keymap('n', 'g]y', '<Cmd>vsplit<CR><Cmd>lua telescope_builtins.lsp_type_definitions{}<CR>')
+    buf_set_keymap('n', 'g[y', '<Cmd>split<CR><Cmd>lua telescope_builtins.lsp_type_definitions{}<CR>')
+
+    buf_set_keymap('n', 'gc', '<Cmd>lua telescope_builtins.lsp_incoming_calls{}<CR>')
 
     buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
-    buf_set_keymap('n', '<leader>c', '<Cmd>lua telescope_builtins.lsp_incoming_calls{}<CR>')
 
     buf_set_keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
     buf_set_keymap('n', '<leader>W', '<cmd>lua telescope_builtins.lsp_dynamic_workspace_symbols{}<CR>')
