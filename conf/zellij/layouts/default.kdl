@@ -3,18 +3,12 @@ layout {
         plugin location="zellij:tab-bar"
     }
     pane
-    pane size=2 borderless=true {
-        plugin location="zellij:status-bar"
-    }
 
     tab_template name="ui" {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
         children
-        pane size=2 borderless=true {
-            plugin location="zellij:status-bar"
-        }
     }
 
     swap_tiled_layout name="vertical" {
