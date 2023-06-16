@@ -14,7 +14,7 @@
     st = status
     br = branch
     co = checkout
-    ci = commit -s
+    ci = commit
     fix = commit --no-edit --amend
 
 [color]
