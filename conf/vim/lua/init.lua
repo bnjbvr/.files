@@ -32,7 +32,7 @@ vim.wo.cursorcolumn = true -- highlight the current column too
 --bg = "#305050",
 --})
 
-vim.opt.ignorecase = true                                         -- case-insentive search by default
+vim.opt.ignorecase = true                                         -- case-insensitive search by default
 vim.opt.smartcase = true                                          -- search case-sensitive if there is an upper-case letter
 vim.opt.gdefault = true                                           -- when replacing, use /g by default
 vim.opt.showmatch = true                                          -- paren match highlighting
@@ -44,7 +44,7 @@ vim.opt.wildmode = 'longest,list:longest,full'                    -- bash-vim co
 vim.opt.icm = 'split'                                             -- show preview of search/replace
 vim.opt.nu = true                                                 -- show line numbers
 vim.opt.showmode = true                                           -- show the current mode on the last line
-vim.opt.showcmd = true                                            -- show informations about selection while in visual mode
+vim.opt.showcmd = true                                            -- show information about selection while in visual mode
 vim.opt.ruler = true
 vim.opt.backspace = 'indent,eol,start'                            -- magic for backspace/delete issues in term mode
 vim.opt.splitbelow = true                                         -- new splits placed below...
