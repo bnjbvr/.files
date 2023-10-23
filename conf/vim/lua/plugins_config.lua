@@ -120,6 +120,7 @@ require 'nvim-treesitter.configs'.setup {
 -- Telescope setup
 
 telescope = require('telescope')
+local trouble = require("trouble.providers.telescope")
 
 telescope.setup {
     extensions = {
@@ -134,7 +135,14 @@ telescope.setup {
             override_file_sorter = true,
             case_mode = "smart_case"
         }
-    }
+    },
+
+    defaults = {
+        mappings = {
+            i = { ["<c-t>"] = trouble.open_with_trouble },
+            n = { ["<c-t>"] = trouble.open_with_trouble },
+        },
+    },
 }
 
 telescope.load_extension("ui-select")

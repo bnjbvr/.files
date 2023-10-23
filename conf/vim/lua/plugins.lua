@@ -62,6 +62,12 @@ return require('packer').startup(function(use)
         },
     }
 
+    --- Diagnostic/references/telescope results/quickfix/location lists.
+    use {
+        'folke/trouble.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' }
+    }
+
     -- ********************************************************************************************
     -- Behaviors
 
