@@ -73,6 +73,7 @@ return require('packer').startup(function(use)
 
     -- Git information from within vim.
     use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
 
     -- Easy comment code blocks in/out.
     use 'scrooloose/nerdcommenter'
