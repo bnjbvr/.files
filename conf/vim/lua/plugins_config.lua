@@ -61,7 +61,7 @@ vim.api.nvim_set_keymap(
 
 -- *************
 -- Add indentation line
-require('indent_blankline').setup()
+require('ibl').setup()
 
 -- *************
 -- Fidget (displays LSP status in the status line)

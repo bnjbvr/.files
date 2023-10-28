@@ -72,7 +72,11 @@ return require('packer').startup(function(use)
     -- Behaviors
 
     -- Indent lines
-    use 'lukas-reineke/indent-blankline.nvim'
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        main = 'ibl',
+        opts = {}
+    }
 
     -- Add surround operator for text objects.
     use 'tpope/vim-surround'
