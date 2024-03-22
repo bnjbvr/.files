@@ -16,3 +16,8 @@ if test -e /usr/share/fish/vendor_functions.d/fzf_key_bindings.fish
     # Configure Ctrl+T (file widget) / Ctrl+R (history) / Alt+C (cd widget)
     fzf_key_bindings
 end
+
+# set up gnome-keyring as the ssh-agent
+if test -e $XDG_RUNTIME_DIR/gcr/ssh
+    set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/gcr/ssh"
+end
