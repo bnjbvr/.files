@@ -3,3 +3,4 @@ bin/hgwatchman/*
 *.pyc
 conf/npmrc
 conf/helix/runtime
+conf/fish/fish_variables
