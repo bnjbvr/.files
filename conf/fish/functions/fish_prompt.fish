@@ -44,7 +44,9 @@ function fish_prompt --description 'Write out the prompt'
     or set -g __fish_git_prompt_color_branch green
     set -q __fish_git_prompt_char_stateseparator
     or set -g __fish_git_prompt_char_stateseparator '💫'
-    fish_vcs_prompt ' | %s'
+    #fish_vcs_prompt ' | %s'
+    # ^ This can be replaced with the following line, as long as I'm only using git:
+    fish_git_prompt ' | %s'
     echo
 
     if not test $last_status -eq 0
