@@ -6,6 +6,7 @@ fish_add_path $HOME/.files/private/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/sync/bin
+fish_add_path /opt/homebrew/bin
 
 # set up zoxide!
 zoxide init fish | source
