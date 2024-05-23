@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Usage: `autofmt prettier` / `autofmt cargo fmt --`
-
-git ls-files -m -o --exclude-standard | xargs -L 1 $@
