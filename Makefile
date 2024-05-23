@@ -1,7 +1,7 @@
 all: deps gitdeps python redshift tmux vim zsh kitty helix zellij
 	@echo "Everything has been set up!"
 
-.PHONY: alacritty clean deps git gitdeps increase-notify npm python redshift rust rustdeps tmux vim zsh kitty betterutils fish
+.PHONY: alacritty clean deps git gitdeps increase-notify npm python redshift rust rustdeps tmux vim zsh kitty betterutils fish wezterm
 
 alacritty: rust
 	cargo install alacritty
@@ -88,6 +88,10 @@ fish:
 	ln -s ~/.files/conf/fish ~/.config/ || echo "fish config folder already exists!"
 	which fish | sudo tee -a /etc/shells
 	sudo chsh -s /usr/sbin/fish ben
+
+wezterm:
+	sudo pacman -S wezterm
+	ln -s ~/.files/conf/wezterm.lua ~/.wezterm.lua || echo "wezterm conf already exists!"
 
 zsh:
 	#sudo apt install -y zsh
