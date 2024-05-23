@@ -4,3 +4,4 @@ bin/hgwatchman/*
 conf/npmrc
 conf/helix/runtime
 conf/fish/fish_variables
+.DS_Store
