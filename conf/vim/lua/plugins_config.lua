@@ -73,6 +73,10 @@ require "fidget".setup {}
 require('lualine').setup()
 
 -- *************
+-- Find those typos
+require('typos').setup()
+
+-- *************
 -- Snippets
 require("luasnip.loaders.from_snipmate").lazy_load({
     paths = "~/.files/conf/vim/snips/"
