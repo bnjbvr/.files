@@ -123,7 +123,8 @@ require 'nvim-treesitter.configs'.setup {
 -- *************
 -- Telescope setup
 
-local telescope = require('telescope')
+-- Must be global.
+telescope = require('telescope')
 local trouble = require("trouble.sources.telescope")
 
 telescope.setup {
@@ -153,7 +154,8 @@ telescope.load_extension("ui-select")
 telescope.load_extension('luasnip')
 telescope.load_extension('fzf')
 
-require('telescope.builtin')
+-- Must be global.
+telescope_builtins = require('telescope.builtin')
 
 -- *************
 -- Completion

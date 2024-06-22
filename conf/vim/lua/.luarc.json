@@ -1,5 +1,7 @@
 {
     "diagnostics.globals": [
-        "vim"
+        "vim",
+        "telescope_builtins",
+        "telescope"
     ]
 }
