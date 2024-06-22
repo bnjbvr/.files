@@ -124,7 +124,7 @@ require 'nvim-treesitter.configs'.setup {
 -- Telescope setup
 
 telescope = require('telescope')
-local trouble = require("trouble.providers.telescope")
+local trouble = require("trouble.sources.telescope")
 
 telescope.setup {
     extensions = {
@@ -143,8 +143,8 @@ telescope.setup {
 
     defaults = {
         mappings = {
-            i = { ["<c-t>"] = trouble.open_with_trouble },
-            n = { ["<c-t>"] = trouble.open_with_trouble },
+            i = { ["<c-t>"] = trouble.open },
+            n = { ["<c-t>"] = trouble.open },
         },
     },
 }
