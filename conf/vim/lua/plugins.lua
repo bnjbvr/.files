@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     --- Show LSP status above the status line
-    use { 'j-hui/fidget.nvim', tag = 'legacy' }
+    use { 'j-hui/fidget.nvim' }
 
     --- Floating terminal windows!
     use "numToStr/FTerm.nvim"
