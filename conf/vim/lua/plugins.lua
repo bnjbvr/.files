@@ -131,6 +131,28 @@ return require('packer').startup(function(use)
     -- Look for typos
     use 'poljar/typos.nvim'
 
+    -- Nice dashboard.
+    use {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                -- config
+            }
+        end,
+        requires = { 'nvim-tree/nvim-web-devicons' }
+    }
+
+    -- Remember work sessions.
+    use {
+        "folke/persistence.nvim",
+        event = "VimEnter",
+        module = "persistence",
+        config = function()
+            require("persistence").setup()
+        end
+    }
+
     -- ********************************************************************************************
     -- Language specific
 
