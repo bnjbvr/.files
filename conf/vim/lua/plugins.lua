@@ -68,6 +68,9 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons' }
     }
 
+    --- Good looking input/select replacements.
+    use { 'stevearc/dressing.nvim' }
+
     -- ********************************************************************************************
     -- Behaviors
 

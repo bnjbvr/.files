@@ -123,7 +123,7 @@ require 'nvim-treesitter.configs'.setup {
 -- *************
 -- Telescope setup
 
-telescope = require('telescope')
+local telescope = require('telescope')
 local trouble = require("trouble.sources.telescope")
 
 telescope.setup {
@@ -153,7 +153,7 @@ telescope.load_extension("ui-select")
 telescope.load_extension('luasnip')
 telescope.load_extension('fzf')
 
-telescope_builtins = require('telescope.builtin')
+require('telescope.builtin')
 
 -- *************
 -- Completion
@@ -247,3 +247,5 @@ cmp.setup({
         end,
     },
 })
+
+require('dressing').setup()
