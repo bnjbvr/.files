@@ -3,7 +3,6 @@
 
 [diff]
     tool = difftastic
-    external = difft
 
 [difftool]
     prompt = false
@@ -23,6 +22,7 @@
 
 [alias]
     d = diff
+    dt = difftool
     st = status
     br = branch
     co = checkout
