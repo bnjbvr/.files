@@ -17,7 +17,7 @@
     default = simple
 
 [user]
-    email = public@benj.me
+	email = benjamin@bouvier.cc
     name = Benjamin Bouvier
 
 [alias]
