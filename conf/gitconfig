@@ -17,7 +17,7 @@
     default = simple
 
 [user]
-	email = benjamin@bouvier.cc
+    email = benjamin@bouvier.cc
     name = Benjamin Bouvier
 
 [alias]
