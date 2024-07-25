@@ -1,0 +1,5 @@
+#!/bin/bash
+
+## List all open ports on a given machine.
+
+sudo lsof -i | grep LISTEN | sort
