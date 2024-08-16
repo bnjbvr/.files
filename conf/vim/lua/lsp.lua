@@ -24,8 +24,10 @@ local lsp_on_attach = function(client, bufnr)
             update_in_insert = true,
         }
     )
+end
 
-    -- Autoformat on save
+-- Autoformat on save
+local autoformat_on_save = function(client, bufnr)
     local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
     if client.supports_method("textDocument/formatting") then
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -56,6 +58,7 @@ require("mason-lspconfig").setup_handlers {
             server = {
                 on_attach = function(client, bufnr)
                     lsp_on_attach(client, bufnr)
+                    autoformat_on_save(client, bufnr)
                 end,
 
                 settings = {
