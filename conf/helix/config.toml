@@ -1,10 +1,30 @@
 theme = "tokyonight"
 
+[editor]
+# highlight the current lines (both vertically and horizontally)
+cursorline = true
+rulers = [100, 120]
+# force true-color for the current theme
+true-color = true
+# Minimum severity to show a diagnostic after the end of a line
+end-of-line-diagnostics = "hint"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.inline-diagnostics]
+cursor-line = "error" # Show inline diagnostics when the cursor is on the line
+other-lines = "disable" # Don't expand diagnostics unless the cursor is on the line
+
 [editor.lsp]
 display-messages = true
-display-inlay-hints = true
+display-progress-messages = true
+display-inlay-hints = false # Still a bit too annoying when typing :/
 
 [editor.whitespace.render]
+# This comment contains nbsp!
 nbsp = "all"
 
 [editor.whitespace.characters]
