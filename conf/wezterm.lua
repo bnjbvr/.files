@@ -22,12 +22,12 @@ end
 -- Start wezterm full-screen.
 local mux = wezterm.mux
 wezterm.on("gui-startup", function()
-  local tab, pane, window = mux.spawn_window{}
-  if is_linux then
-      window:gui_window():maximize()
-  else
-      window:gui_window():toggle_fullscreen() -- nice on MacOS, not on Linux
-  end
+    local _tab, _pane, window = mux.spawn_window {}
+    if is_linux then
+        window:gui_window():maximize()
+    else
+        window:gui_window():toggle_fullscreen() -- nice on MacOS, not on Linux
+    end
 end)
 
 local config = wezterm.config_builder()
@@ -45,17 +45,6 @@ config.color_scheme = 'cyberpunk'
 -- Be able to read what's behind, but not be annoying.
 config.window_background_opacity = 0.85
 
--- Default program run at start.
-if is_linux then
-    config.default_prog = { 'zellij' }
-    config.window_decorations = "RESIZE"
-else
-    config.default_prog = { '/opt/homebrew/bin/zellij' }
-end
-
--- Hide the tab bar; I'm using zellij :)
-config.enable_tab_bar = false
-
 -- Cool fonts
 config.font = wezterm.font 'FiraCode Nerd Font'
 
@@ -64,5 +53,67 @@ if use_big_screen then
 else
     config.font_size = 14
 end
+
+config.leader = { key = 'b', mods = 'CTRL' }
+config.keys = {
+    -- Split vertically to the right with alt+n.
+    {
+        key = 'n',
+        mods = 'ALT',
+        action = wezterm.action.SplitPane {
+            direction = 'Right',
+            size = { Percent = 50 },
+        },
+    },
+
+    -- Split horizontally to the bottom with alt+m.
+    {
+        key = 'm',
+        mods = 'ALT',
+        action = wezterm.action.SplitPane {
+            direction = 'Down',
+            size = { Percent = 50 },
+        },
+    },
+
+    -- Open a new pane with alt+t.
+    {
+        key = 't',
+        mods = 'ALT',
+        action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+    },
+
+    -- Change focus using leader + vim shortcuts.
+    {
+        key = 'h',
+        mods = 'LEADER',
+        action = wezterm.action.ActivatePaneDirection 'Left',
+    },
+    {
+        key = 'l',
+        mods = 'LEADER',
+        action = wezterm.action.ActivatePaneDirection 'Right',
+    },
+    {
+        key = 'k',
+        mods = 'LEADER',
+        action = wezterm.action.ActivatePaneDirection 'Up',
+    },
+    {
+        key = 'j',
+        mods = 'LEADER',
+        action = wezterm.action.ActivatePaneDirection 'Down',
+    },
+
+    -- Another press of ctrl+b will send ctrl+b to the terminal.
+    {
+        key = 'b',
+        mods = 'LEADER|CTRL',
+        action = wezterm.action.SendKey {
+            key = 'b',
+            mods = 'CTRL',
+        },
+    }
+}
 
 return config
