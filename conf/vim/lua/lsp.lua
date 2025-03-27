@@ -42,41 +42,65 @@ local autoformat_on_save = function(client, bufnr)
 end
 
 -- *************
--- Auto install LSP language servers
-require('mason').setup()
-require('mason-lspconfig').setup({
-    ensure_installed = { "rust_analyzer" }
+-- Basic configuration of LSP servers.
+
+-- LSP for Rust
+vim.lsp.config.rust_analyzer = {
+    cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
+    settings = {
+        ["rust-analyzer"] = {
+            inlayHints = {
+                enable = true,
+                maxLength = 100
+            },
+            cargo = {
+                autoreload = true,
+                loadOutDirsFromCheck = true
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    },
+    root_markers = { "Cargo.toml" },
+}
+vim.lsp.enable('rust_analyzer')
+
+-- LSP for lua
+vim.lsp.config.lua_ls = {
+    cmd = { "lua-language-server" },
+    filetypes = { "lua" },
+    root_markers = { '.luarc.json', '.luarc.jsonc' },
+}
+vim.lsp.enable('lua_ls')
+
+-- LSP for TypeScript
+vim.lsp.config.ts_ls = {
+    cmd = { "typescript-language-server", "--stdio" },
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
+}
+vim.lsp.enable('ts_ls')
+
+-- General LSP configuration.
+vim.diagnostic.config({
+    virtual_text = true,
+    --virtual_lines = true, -- a bit too invasive
 })
 
-require("mason-lspconfig").setup_handlers {
-    function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup { on_attach = lsp_on_attach }
+vim.lsp.inlay_hint.enable()
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+        lsp_on_attach(client, args.buf)
+        autoformat_on_save(client, args.buf)
+
+        -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
+        if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+        end
     end,
-
-    ["rust_analyzer"] = function()
-        require('rust-tools').setup({
-            server = {
-                on_attach = function(client, bufnr)
-                    lsp_on_attach(client, bufnr)
-                    autoformat_on_save(client, bufnr)
-                end,
-
-                settings = {
-                    ["rust-analyzer"] = {
-                        inlayHints = {
-                            enable = true,
-                            maxLength = 100
-                        },
-                        cargo = {
-                            autoreload = false,
-                            loadOutDirsFromCheck = true
-                        },
-                        procMacro = {
-                            enable = true
-                        },
-                    }
-                },
-            },
-        })
-    end
-}
+})

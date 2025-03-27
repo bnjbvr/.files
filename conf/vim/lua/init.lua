@@ -3,7 +3,6 @@ math.randomseed(os.time())
 vim.g.mapleader = ' '
 
 require './plugins'
-require './plugins_config'
 require './lsp'
 require './autocmd'
 require './keys'
