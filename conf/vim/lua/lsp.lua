@@ -63,7 +63,8 @@ vim.lsp.config.rust_analyzer = {
             },
         }
     },
-    root_markers = { "Cargo.toml" },
+    -- Do not include `Cargo.toml` here, otherwise this will badly break in workspaces.
+    root_markers = { ".git", ".rustfmt" },
 }
 vim.lsp.enable('rust_analyzer')
 
