@@ -77,7 +77,7 @@ vim.keymap.set("n", "<leader>tr", function() require("trouble").toggle("lsp_refe
 
 -- Extra rust actions!
 helpers.map('n', '<leader>o', '<Cmd>:RustRunnables<CR>')
-helpers.map('n', '<leader>x', '<Cmd>:RustExpandMacro<CR>')
+helpers.map('n', '<leader>x', '<Cmd>lua expand_macro{}<CR>')
 
 -- Quick load the latest session in the current directory.
 vim.keymap.set("n", "<leader>ql", function() require("persistence").load() end)

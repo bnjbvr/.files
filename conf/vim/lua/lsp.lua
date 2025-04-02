@@ -41,6 +41,35 @@ local autoformat_on_save = function(client, bufnr)
     end
 end
 
+expand_macro = function()
+    vim.lsp.buf_request_all(0, "rust-analyzer/expandMacro", vim.lsp.util.make_position_params(), function(result)
+        -- Create a new tab
+        vim.cmd("vsplit")
+
+        -- Create an empty scratch buffer (non-listed, non-file i.e scratch)
+        local buf = vim.api.nvim_create_buf(false, true)
+
+        -- and set it to the current window
+        vim.api.nvim_win_set_buf(0, buf)
+
+        if result then
+            -- set the filetype to rust so that rust's syntax highlighting works
+            vim.api.nvim_set_option_value("filetype", "rust", {buf = 0})
+
+            -- Insert the result into the new buffer.
+            for client_id, res in pairs(result) do
+                if res and res.result and res.result.expansion then
+                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, vim.split(res.result.expansion,"\n"))
+                end
+            end
+        else
+            vim.api.nvim_buf_set_lines(buf, -1, -1, false, {
+                "Error: No result returned."
+            })
+        end
+    end)
+end
+
 -- *************
 -- Basic configuration of LSP servers.
 
