@@ -16,6 +16,8 @@ local lsp_on_attach = function(client, bufnr)
         buf_set_keymap(mode, from, to, keymap_opts)
     end)
 
+    buf_set_keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", keymap_opts)
+
     -- diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
