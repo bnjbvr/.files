@@ -115,6 +115,14 @@ vim.lsp.config.ts_ls = {
 }
 vim.lsp.enable('ts_ls')
 
+-- LSP for Python
+vim.lsp.config.pylsp = {
+    cmd = { "pylsp" },
+    filetypes = { "python" },
+    root_markers = { ".git", ".pylintrc", "setup.py", "setup.cfg", "pyproject.toml" },
+}
+vim.lsp.enable('pylsp')
+
 -- General LSP configuration.
 vim.diagnostic.config({
     virtual_text = true,
