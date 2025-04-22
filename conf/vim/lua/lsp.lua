@@ -76,23 +76,38 @@ end
 -- Basic configuration of LSP servers.
 
 -- LSP for Rust
+local rust_analyzer_settings = {
+    inlayHints = {
+        enable = true,
+        maxLength = 100
+    },
+    cargo = {
+        autoreload = true,
+        loadOutDirsFromCheck = true
+    },
+    procMacro = {
+        enable = true
+    },
+}
+
+-- If the current machine is the work machine, add a configuration to use rustfmt nightly, for
+-- better compatibility with work on the Matrix Rust SDK.
+local status, result = pcall(function() return vim.fn.system("hostnamectl --static") end)
+if status then
+    result = vim.trim(result)
+    if result == 'archlinux' then
+        rust_analyzer_settings.rustfmt = {}
+        rust_analyzer_settings.rustfmt.extraArgs = { "+nightly-2025-02-20" }
+    end
+else
+    vim.notify("Error getting hostname: " .. result, vim.log.levels.ERROR)
+end
+
 vim.lsp.config.rust_analyzer = {
     cmd = { "rust-analyzer" },
     filetypes = { "rust" },
     settings = {
-        ["rust-analyzer"] = {
-            inlayHints = {
-                enable = true,
-                maxLength = 100
-            },
-            cargo = {
-                autoreload = true,
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
-            },
-        }
+        ["rust-analyzer"] = rust_analyzer_settings
     },
     -- Do not include `Cargo.toml` here, otherwise this will badly break in workspaces.
     root_markers = { ".git", ".rustfmt" },
