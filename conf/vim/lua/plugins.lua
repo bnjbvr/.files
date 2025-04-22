@@ -19,14 +19,16 @@ return require('packer').startup(function(use)
     -- Interface
 
     -- Fancy themes!
-    use 'shaunsingh/moonlight.nvim'
+    --use 'shaunsingh/moonlight.nvim'
     --use 'Mofiqul/dracula.nvim'
     --use 'catppuccin/nvim'
+    --use 'bluz71/vim-nightfly-colors'
+    --use 'folke/tokyonight.nvim'
 
     use {
-        'folke/tokyonight.nvim',
+        'bluz71/vim-moonfly-colors',
         config = function()
-            vim.cmd [[colorscheme tokyonight-night]]
+            vim.cmd [[ colorscheme moonfly ]]
         end
     }
 
