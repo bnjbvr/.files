@@ -54,12 +54,12 @@ expand_macro = function()
 
         if result then
             -- set the filetype to rust so that rust's syntax highlighting works
-            vim.api.nvim_set_option_value("filetype", "rust", {buf = 0})
+            vim.api.nvim_set_option_value("filetype", "rust", { buf = 0 })
 
             -- Insert the result into the new buffer.
             for client_id, res in pairs(result) do
                 if res and res.result and res.result.expansion then
-                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, vim.split(res.result.expansion,"\n"))
+                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, vim.split(res.result.expansion, "\n"))
                 end
             end
         else
