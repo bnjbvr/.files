@@ -7,6 +7,7 @@ function hostname()
     return result:gsub("\n$", "")
 end
 
+-- When set to true, will use a big screen font size.
 local use_big_screen = false
 local is_linux = false
 
@@ -16,7 +17,7 @@ wezterm.log_info("Status: " .. tostring(status) .. "/ Hostname: " .. hostname)
 
 if status then
     use_big_screen = hostname == "archlinux"
-    is_linux = hostname == "archlinux"
+    is_linux = hostname == "archlinux" or hostname == "karch"
 end
 
 -- Start wezterm full-screen.
@@ -24,9 +25,11 @@ local mux = wezterm.mux
 wezterm.on("gui-startup", function()
     local _tab, _pane, window = mux.spawn_window {}
     if is_linux then
+        -- Maximize the windows will make it large, rather than full-screen.
         window:gui_window():maximize()
     else
-        window:gui_window():toggle_fullscreen() -- nice on MacOS, not on Linux
+        -- This is nice on MacOS, but not on Linux.
+        window:gui_window():toggle_fullscreen()
     end
 end)
 
