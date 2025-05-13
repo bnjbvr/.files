@@ -138,6 +138,14 @@ vim.lsp.config.pylsp = {
 }
 vim.lsp.enable('pylsp')
 
+-- LSP for Go
+vim.lsp.config.gopls = {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod" },
+    root_markers = { ".git", "go.mod" },
+}
+vim.lsp.enable('gopls')
+
 -- General LSP configuration.
 vim.diagnostic.config({
     virtual_text = true,
