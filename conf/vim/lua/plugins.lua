@@ -22,13 +22,13 @@ return require('packer').startup(function(use)
     --use 'shaunsingh/moonlight.nvim'
     --use 'Mofiqul/dracula.nvim'
     --use 'catppuccin/nvim'
-    --use 'bluz71/vim-nightfly-colors'
+    --use 'bluz71/vim-moonfly-colors'
     --use 'folke/tokyonight.nvim'
 
     use {
-        'bluz71/vim-moonfly-colors',
+        'bluz71/vim-nightfly-colors',
         config = function()
-            vim.cmd [[ colorscheme moonfly ]]
+            vim.cmd [[ colorscheme nightfly ]]
         end
     }
 
