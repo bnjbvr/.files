@@ -11,7 +11,8 @@ betterutils: ## Install betters utils
 	# zoxide: replacement for cd/z
 	# sd: faster and simpler sed
 	# fzf (go, booo): fuzzy find
-	sudo pacman -S lsd bottom ripgrep fd dust zoxide sd fzf
+	# fx: JSON query tool
+	sudo pacman -S lsd bottom ripgrep fd dust zoxide sd fzf fx
 
 fish: ## Install the fish shell and set it up.
 	sudo pacman -S fish
