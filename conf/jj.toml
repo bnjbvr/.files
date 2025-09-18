@@ -1,0 +1,51 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+[user]
+name = "Benjamin Bouvier"
+email = "benjamin@bouvier.cc"
+
+[ui]
+default-command = "log"
+#diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
+diff-editor = ["nvim", "-d", "$left $right $output"]
+editor = ["nvim"]
+
+[aliases]
+bo = ["bookmark"]
+l = ["log"]
+d = ["diff"]
+gl = ["log", "-r", ".."]
+e = ["edit"]
+pull = ["git", "fetch"]
+push = ["git", "push"]
+sl = ["log", "--limit=10", "--no-pager", "-r", "recent()"]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
+#fixup = ["util", "exec", "--", "~/.files/bin/fixup-jj"]
+
+[revset-aliases]
+"immutable_heads()" = "builtin_immutable_heads() | remote_bookmarks()"
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'recent()' = 'committer_date(after:"3 months ago")'
+
+[template-aliases]
+short_description ='''
+if(root,
+  "",
+  "{:@:}"++
+    separate(", ",
+      format_short_change_id_with_hidden_and_divergent_info(self),
+      if(description,
+          description.trim_end(),
+          label(if(empty, ""), "")
+      )
+    )
+)
+'''
+
+#[merge-tools.diffconflicts]
+#program = "nvim"
+#merge-args = [
+#    "-c", "let g:jj_diffconflicts_marker_length=$marker_length",
+#    "-c", "JJDiffConflicts!", "$output", "$base", "$left", "$right",
+#]
+#merge-tool-edits-conflict-markers = true
