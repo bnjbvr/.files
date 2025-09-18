@@ -27,7 +27,7 @@ git: ## Install git, lazygit and setups the configurations
 	ln -s ~/.files/conf/gitconfig ~/.gitconfig || echo ".gitconfig already present"
 
 jj: ## Install jj and set up its configuration file.
-	sudo pacman -S jj
+	sudo pacman -S jujutsu
 	mkdir -p ~/.config/jj
 	ln -s ~/.files/conf/jj.toml ~/.config/jj/config.toml || echo "jj config already present"
 
