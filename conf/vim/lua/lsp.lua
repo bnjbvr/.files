@@ -97,7 +97,7 @@ if status then
     result = vim.trim(result)
     if result == 'archlinux' then
         rust_analyzer_settings.rustfmt = {}
-        rust_analyzer_settings.rustfmt.extraArgs = { "+nightly-2025-02-20" }
+        rust_analyzer_settings.rustfmt.extraArgs = { "+nightly-2025-08-08" }
     end
 else
     vim.notify("Error getting hostname: " .. result, vim.log.levels.ERROR)
