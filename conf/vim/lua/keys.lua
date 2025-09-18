@@ -16,9 +16,6 @@ helpers.map('n', '<leader>n', '<Cmd>:NvimTreeFindFile<CR>')
 -- leave terminal mode with shift+escape
 helpers.map('t', '<s-Esc>', '<C-\\><C-n>')
 
--- generate a GUID with \g
-helpers.map('i', '\\g', '<Cmd>lua helpers.guid()<CR>')
-
 -- open a new vsplit with space-v
 helpers.map('n', '<leader>v', '<Cmd>:vsplit<CR>')
 
