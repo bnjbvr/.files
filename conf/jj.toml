@@ -28,6 +28,9 @@ tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'recent()' = 'committer_date(after:"3 months ago")'
 
+[templates]
+git_push_bookmark = "bnjbvr/push-"
+
 [template-aliases]
 short_description ='''
 if(root,
