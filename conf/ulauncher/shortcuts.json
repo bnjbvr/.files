@@ -1,4 +1,14 @@
 {
+    "513118c9-48ea-4b11-956f-75e16b642641": {
+        "id": "513118c9-48ea-4b11-956f-75e16b642641",
+        "name": "Lycos",
+        "keyword": "s",
+        "cmd": "https://lycos.delire.party/search?q=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1758298876.1071062
+    },
     "208d4216-96fe-4908-a6c6-fc70a259bffc": {
         "id": "208d4216-96fe-4908-a6c6-fc70a259bffc",
         "name": "Google Search",
