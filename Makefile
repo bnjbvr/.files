@@ -27,9 +27,9 @@ git: ## Install git, lazygit and setups the configurations
 	ln -s ~/.files/conf/gitconfig ~/.gitconfig || echo ".gitconfig already present"
 
 jj: ## Install jj and set up its configuration file.
-	sudo pacman -S jujutsu
-	mkdir -p ~/.config/jj
-	ln -s ~/.files/conf/jj.toml ~/.config/jj/config.toml || echo "jj config already present"
+	@jj --version > /dev/null 2>&1 || sudo pacman -S jujutsu
+	@mkdir -p ~/.config/jj
+	@ln -s ~/.files/conf/jj.toml ~/.config/jj/config.toml || echo "jj config already present"
 
 helix: ## Install and set up the second-to-best text editor in the world.
 	sudo pacman -S helix
