@@ -12,7 +12,6 @@ editor = ["nvim"]
 diff-formatter = ["difft", "--color=always", "--display=side-by-side-show-both", "$left", "$right"]
 
 [aliases]
-bo = ["bookmark"]
 l = ["log"]
 d = ["diff"]
 gl = ["log", "-r", ".."]
