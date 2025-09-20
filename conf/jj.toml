@@ -8,6 +8,9 @@ email = "benjamin@bouvier.cc"
 default-command = "log"
 editor = ["nvim"]
 
+# Use Meld for 3-way merges, if installed.
+merge-editor = "meld"
+
 # Use difftastic by default for showing diffs with `jj diff`.
 diff-formatter = ["difft", "--color=always", "--display=side-by-side-show-both", "$left", "$right"]
 

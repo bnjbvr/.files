@@ -28,6 +28,7 @@ git: ## Install git, lazygit and setups the configurations
 
 jj: ## Install jj and set up its configuration file.
 	@jj --version > /dev/null 2>&1 || sudo pacman -S jujutsu
+	@meld --version > /dev/null 2>&1 || sudo pacman -S meld
 	@mkdir -p ~/.config/jj
 	@ln -s ~/.files/conf/jj.toml ~/.config/jj/config.toml || echo "jj config already present"
 
