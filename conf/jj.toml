@@ -41,7 +41,7 @@ email = "benjamin@bouvier.cc"
 
 
 [revsets]
-log = '@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
+log = '@ | ancestors(trunk()..(visible_heads() & mine()), 3) | trunk()'
 
 
 [revset-aliases]
