@@ -83,7 +83,10 @@ local rust_analyzer_settings = {
     },
     cargo = {
         autoreload = true,
-        loadOutDirsFromCheck = true
+        loadOutDirsFromCheck = true,
+        -- Use a different subdirectory for build artifacts, so other cargo commands can still make
+        -- progress. May consume more disk space, but that's fine.
+        targetDir = true
     },
     procMacro = {
         enable = true
