@@ -1,8 +1,28 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
-[user]
-name = "Benjamin Bouvier"
-email = "benjamin@bouvier.cc"
+
+[aliases]
+d = ["diff"]
+ds = ["diff", "--stat"]
+e = ["edit"]
+n = ["new"]
+
+init = ["git", "init"]
+fetch = ["git", "fetch"]
+push = ["git", "push"]
+
+l = ["log"]
+sl = ["log", "--limit=10", "--no-pager", "-r", "recent()"]
+gl = ["log", "-r", ".."]
+
+tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
+#fixup = ["util", "exec", "--", "~/.files/bin/fixup-jj"]
+
+
+[git]
+# Allow pushing new bookmarks (branches) to git remotes, so as to not have to specify `--allow-new` when pushing a bookmark.
+push-new-bookmarks = true
+
 
 [ui]
 default-command = "log"
@@ -14,25 +34,31 @@ merge-editor = "meld"
 # Use difftastic by default for showing diffs with `jj diff`.
 diff-formatter = ["difft", "--color=always", "--display=side-by-side-show-both", "$left", "$right"]
 
-[aliases]
-l = ["log"]
-d = ["diff"]
-gl = ["log", "-r", ".."]
-e = ["edit"]
-init = ["git", "init"]
-fetch = ["git", "fetch"]
-push = ["git", "push"]
-sl = ["log", "--limit=10", "--no-pager", "-r", "recent()"]
-tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
-#fixup = ["util", "exec", "--", "~/.files/bin/fixup-jj"]
+
+[user]
+name = "Benjamin Bouvier"
+email = "benjamin@bouvier.cc"
+
+
+[revsets]
+log = '@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
+
 
 [revset-aliases]
+# Set all remote bookmarks (commits pushed to remote branches) to be immutable.
 "immutable_heads()" = "builtin_immutable_heads() | remote_bookmarks()"
+
+# Alias for finding the closest bookmark (parent) to a given commit. Useful for the `tug` alias above.
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
-'recent()' = 'committer_date(after:"3 months ago")'
+
+# Define recent as being no more than 3 months old.
+'recent()' = 'committer_date(after:"1 months ago")'
+
 
 [templates]
+# When a bookmark (branch) is automatically created on a `git push`, use this prefix.
 git_push_bookmark = "bnjbvr/push-"
+
 
 [template-aliases]
 short_description ='''
@@ -49,10 +75,5 @@ if(root,
 )
 '''
 
-#[merge-tools.diffconflicts]
-#program = "nvim"
-#merge-args = [
-#    "-c", "let g:jj_diffconflicts_marker_length=$marker_length",
-#    "-c", "JJDiffConflicts!", "$output", "$base", "$left", "$right",
-#]
-#merge-tool-edits-conflict-markers = true
+# Show only the prefix of a change ID in the log, to make it super short.
+'format_short_change_id(id)' = 'id.shortest()'
