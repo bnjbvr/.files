@@ -85,9 +85,9 @@ return require('packer').startup(function(use)
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
+        branch = 'main',
         config = function()
-            require 'nvim-treesitter.configs'.setup {
+            require 'nvim-treesitter.config'.setup {
                 -- Install parsers synchronously (only applied to `ensure_installed`)
                 sync_install = false,
                 -- Automatically install missing parsers when entering buffer
