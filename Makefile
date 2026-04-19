@@ -1,6 +1,9 @@
-.PHONY: betterutils fish git helix help increase-notify kitty redshift tmux vim wezterm zellij
+.PHONY: arch betterutils fish git helix help increase-notify kitty redshift tmux vim wezterm zellij
 
 .DEFAULT_GOAL := help
+
+arch: ## archlinux specific stuff
+	ln -s ~/.files/conf/makeflags.conf /etc/makepkg.conf.d/ || echo "makepkg conf already exists!"
 
 betterutils: ## Install betters utils
 	# lsd: replacement of ls with colors
