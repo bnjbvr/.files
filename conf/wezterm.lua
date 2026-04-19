@@ -16,8 +16,8 @@ local status, hostname = pcall(hostname)
 wezterm.log_info("Status: " .. tostring(status) .. "/ Hostname: " .. hostname)
 
 if status then
-    use_big_screen = hostname == "archlinux" or hostname == "karch"
-    is_linux = hostname == "archlinux" or hostname == "karch"
+    use_big_screen = hostname == "archlinux"
+    is_linux = hostname == "archlinux" or hostname == "grosse-bertha-linux"
 end
 
 -- Start wezterm full-screen.
